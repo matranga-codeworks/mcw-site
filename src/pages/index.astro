@@ -1,16 +1,477 @@
 ---
+import {
+  CONTACT_EMAIL,
+  COMPANY_LEGAL_NAME,
+  COMPANY_LOCATION,
+} from "@lib/company";
+import Navbar from "@components/Navbar.astro";
+import Button from "@components/Button.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import ServiceCard from "@components/ServiceCard.astro";
 
+import CaretDownBold from "@assets/icons/caret-down-bold.svg";
+import Gear from "@assets/gear.svg";
+
+import "../styles/global.css";
+
+const faq = [
+  {
+    question: "What does custom software development cost?",
+    answer:
+      "Project costs vary based on complexity and scope, typically ranging from $10,000 for simple business tools to $75,000+ for fully comprehensive systems. I provide detailed estimates after understanding your specific needs and always discuss budget upfront to ensure we're on the same page.",
+  },
+  {
+    question: "Do you offer payment plans?",
+    answer:
+      "Yes, I structure payments around project milestones, so you're never paying for work that hasn't been completed. Most projects are split into 3-4 payments over the development timeline. An example payment schedule might look like this: 25% upfront, 50% at milestones, 25% at completion.",
+  },
+  {
+    question: "How long do projects typically take?",
+    answer:
+      "Simple applications usually take 6-12 weeks, while comprehensive business systems can take 3-6 months. I provide realistic timelines upfront and keep you updated on progress throughout.",
+  },
+  {
+    question: "What happens if my needs change during development?",
+    answer:
+      "I build flexibility into every project plan. Minor adjustments are included, and I'll always discuss costs for significant changes before implementing them.",
+  },
+  {
+    question: "Will I own the source code?",
+    answer:
+      "Absolutely. You'll own all code, designs, and intellectual property created for your project. I also provide documentation so you're never locked into working only with me.",
+  },
+  {
+    question: "How involved will I need to be?",
+    answer:
+      "I handle all the technical complexity, but I'll need your input on business requirements and feedback during development. Most clients spend 1-2 hours per week in meetings and reviews.",
+  },
+  {
+    question: "Can you work with our existing systems?",
+    answer:
+      "Yes, I specialize in integrating new solutions with your current tools and databases. I'll assess your existing setup during our initial consultation.",
+  },
+  {
+    question: "What if something breaks after launch?",
+    answer:
+      "I include a 90-day warranty on all work, and I offer ongoing maintenance plans for long-term support. Since I'm local, I can respond quickly when you need help.",
+  },
+
+  {
+    question: "What if we're not happy with the results?",
+    answer:
+      "I work in phases with regular check-ins specifically to prevent this. You'll see and approve everything before we move forward. My goal is building long-term relationships, not one-time projects.",
+  },
+  {
+    question: "Do you have references?",
+    answer:
+      "I'm happy to provide references from previous clients and showcase relevant work samples during our consultation.",
+  },
+  {
+    question: "Do you offer discounts?",
+    answer:
+      "Yes! I offer discounts for non-profit organizations, educational institutions, and churches. Let's discuss your specific situation during our consultation.",
+  },
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Matranga Codeworks</title>
+    <script src="/gear-rotate.js" defer></script>
+  </head>
+  <body class="font-display text-text-dark bg-[#fdfdfd]">
+    <header
+      class="from-primary to-primary-500 bg-gradient-to-br min-h-[60vh] z-[1] relative overflow-hidden"
+    >
+      <Gear
+        class="absolute top-[100px] right-32 translate-x-1/2 translate-y-[-50%] hidden md:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
+      />
+      <Gear
+        data-direction="reverse"
+        class="absolute top-[300px] right-64 translate-x-1/2 translate-y-[-50%] hidden md:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
+      />
+      <Gear
+        class="absolute top-[500px] right-32 translate-x-1/2 translate-y-[-50%] hidden md:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
+      />
+
+      <Navbar />
+      <section id="splash" class="flex items-center justify-center">
+        <div
+          id="heading"
+          class="container mx-auto flex flex-col gap-6 items-start px-6 py-16 text-primary-100"
+        >
+          <h1 class="text-5xl md:text-7xl font-semibold md:flex">
+            <span>Matranga</span>&nbsp;<br class="block md:hidden" /><span
+              class="code">Code</span
+            ><div class="inline-block" id="space"></div><span
+              id="works"
+              class="text-primary-300">works</span
+            >
+          </h1>
+          <p class="text-xl text-left md:text-2xl max-w-2xl">
+            I design and develop tailored software solutions that help local
+            businesses streamline operations, reach more customers, and scale
+            efficiently.
+          </p>
+          <Button href="#contact" variant="secondary">Free Consultation</Button>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section id="testimonials">
+        <div class="container mx-auto px-6 py-16">
+          <SectionHeader header="What My Clients Say" />
+          <div class="flex flex-col md:flex-row gap-8">
+            <div
+              class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
+            >
+              <p class="text-gray-700 mb-4">
+                "Matranga Codeworks transformed our product idea into reality.
+                Their attention to detail and commitment to quality is
+                unmatched!"
+              </p>
+              <p class="font-semibold">- Preston Center of Compassion</p>
+            </div>
+            <div
+              class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
+            >
+              <p class="text-gray-700 mb-4">
+                "The team at Matranga Codeworks is incredibly skilled and easy
+                to work with. They delivered on time and exceeded our
+                expectations."
+              </p>
+              <p class="font-semibold">- Rensselaer Center for Open Source</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="py-32 bg-primary-400/5">
+        <div class="container mx-auto px-6 max-w-3xl">
+          <SectionHeader header="How I Help Your Local Organization Grow" />
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ServiceCard
+              heading="Custom Business Software"
+              subheading="I build software systems designed around your specific workflows and business processes. From inventory management to customer portals, I create solutions that actually fit how your business operates."
+            />
+            <ServiceCard
+              heading="Mobile & Web App Development"
+              subheading="I create responsive and user-friendly mobile and web applications that help you engage with your customers and streamline your operations."
+            />
+            <ServiceCard
+              heading="Technical Architecture & Consulting"
+              subheading="I help you design scalable and maintainable software architectures that align with your business goals."
+            />
+            <ServiceCard
+              heading="Ongoing Development & Support"
+              subheading="I provide ongoing maintenance, feature additions, and technical support to keep your systems running smoothly as your business evolves."
+            />
+          </div>
+        </div>
+      </section>
+      <section id="about" class="py-16">
+        <div class="container mx-auto px-6 max-w-2xl text-center">
+          <div class="p-12 rounded shadow flex flex-col gap-8 bg-primary-400/5">
+            <SectionHeader header="Your Local Technical Partner" />
+
+            <p>
+              I'm a software engineer and current Director of Engineering at a
+              healthcare technology company, with deep experience building
+              systems that businesses depend on every day. Now I'm bringing that
+              expertise directly to local businesses in our community.
+            </p>
+            <p>
+              Having worked in everything from startups to highly regulated
+              industries, I understand that every business has unique
+              challenges. I take the time to really understand your operations,
+              then design software that makes your work easier, not harder.
+            </p>
+            <p>
+              As a Cohoes resident, I'm invested in seeing our local businesses
+              thrive. When you work with me, you're not just hiring a
+              developer—you're partnering with someone who cares about your
+              success and is right here in the community when you need support.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="featured"
+        class="py-32 bg-primary-400/5 flex flex-col gap-28"
+      >
+        <div
+          class="container mx-auto px-6 flex flex-col md:flex-row gap-8 items-center"
+        >
+          <div class="flex flex-col gap-6">
+            <h2 class="section-header font-semibold text-2xl md:text-4xl">
+              Featured Projects
+            </h2>
+
+            <div>
+              <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
+                Preston Center of Compassion
+              </h3>
+              <p>
+                Preston Center of Compassion's <span
+                  class="text-primary font-semibold">August Fundraiser</span
+                > allows local residents in the Bronx, NYC to make realtime donations,
+                purchase raffle tickets, and place dinner reservations for PCC's
+                major summer fundraising event every year.
+              </p>
+            </div>
+
+            <p>
+              Locals can login via desktop or mobile to access the platform and
+              participate in the fundraiser. Participants securely checkout with
+              Stripe, never revealing their payment information. PCC
+              administrators can manage the event, track donations, and download
+              Excel reports at any time.
+            </p>
+
+            <p>
+              Built on Google's Firebase platform, the administrators can change
+              event details, turn on and off purchasing based on availability,
+              and manage the event in realtime. This virtual platform
+              complements the in-person experience by providing a seamless way
+              for locals to engage with the fundraiser from anywhere.
+            </p>
+          </div>
+
+          <video
+            src="/videos/pcc.mp4"
+            muted
+            autoplay
+            controls
+            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div
+          class="container mx-auto px-6 flex flex-col md:flex-row-reverse gap-8 items-center"
+        >
+          <div class="flex flex-col gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
+                Soapbox Hosting
+              </h3>
+              <p>
+                <span class="text-primary font-semibold">Soapbox</span> is my own
+                podcast technology Software-as-a-Service (SaaS) platform that simplifies
+                the process of launching and managing a podcast. With Soapbox, users
+                can easily record, edit, and publish their episodes, all from a user-friendly
+                web interface.
+              </p>
+            </div>
+            <p>
+              Built with modern web technologies, Soapbox is designed to be
+              fast, reliable, and easy to use. Whether you're a seasoned
+              podcaster or just getting started, Soapbox has everything you need
+              to create and share your podcast with the world.
+            </p>
+          </div>
+
+          <video
+            src="/videos/soapbox.webm"
+            muted
+            autoplay
+            controls
+            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      <section id="contact" class="py-32 bg-primary-400/5">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row gap-8">
+          <div class="flex-1 flex flex-col gap-4">
+            <h2 class="font-semibold text-2xl md:text-4xl section-header">
+              Interested in working together? Reach out now for a free
+              consultation to see how I can help you.
+            </h2>
+            <p>
+              I'll hop on a call or meet in person to get to know you, your
+              organization, and its needs. Free of charge. I want to understand
+              your vision and challenges to provide the best solutions. I will
+              let you know if I think it's a good fit.
+            </p>
+            <ul class="list-disc pl-6">
+              <li>
+                <strong>Initial Consultation:</strong> I'll discuss your project
+                goals, challenges, and timeline.
+              </li>
+              <li>
+                <strong>Proposal:</strong> Based on our conversation, I'll provide
+                a detailed proposal outlining my approach and pricing.
+              </li>
+              <li>
+                <strong>Kickoff:</strong> Once you approve the proposal, I'll schedule
+                a kickoff meeting to start the project.
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <div class="bg-white p-8 rounded shadow">
+              <form method="POST" class="flex flex-col gap-8">
+                <div class="flex flex-col gap-1">
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700">Name</label
+                  >
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
+                    placeholder="Jane Doe"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700">Email</label
+                  >
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="jane.doe@example.com"
+                    required
+                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label
+                    for="company"
+                    class="block text-sm font-medium text-gray-700"
+                    >Company</label
+                  >
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    placeholder="ACME Corp"
+                    required
+                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-gray-700"
+                    >How can I help?</label
+                  >
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="4"
+                    required
+                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3 min-h-12 max-h-64"
+                    placeholder="I'm looking for..."></textarea>
+                </div>
+                <Button variant="secondary">Get in Touch</Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="py-32">
+        <div class="container px-6 mx-auto max-w-2xl flex flex-col gap-8">
+          <h2
+            class="section-header font-semibold text-2xl md:text-4xl text-center"
+          >
+            Frequently Asked Questions
+          </h2>
+
+          <div class="flex flex-col gap-8">
+            {
+              faq.map(({ question, answer }) => (
+                <details>
+                  <summary class="block font-semibold text-xl md:text-2xl text-primary-900">
+                    <div class="border-b-2 border-primary py-2 cursor-pointer flex justify-between">
+                      <span>{question}</span>
+                      <span class="text-primary-500">
+                        <CaretDownBold class="caret w-8 h-8 fill-primary-500" />
+                      </span>
+                    </div>
+                  </summary>
+                  <p class="py-2">{answer}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary text-white py-8">
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="text-center md:text-left flex-1">
+          <h3 class="text-xl font-medium mb-2">
+            Matranga Code<span class="text-primary-400">works</span>
+          </h3>
+          <p class="mb-1">
+            <a class="underline" href={"mailto:" + CONTACT_EMAIL}>
+              {CONTACT_EMAIL}
+            </a>
+          </p>
+          <p>{COMPANY_LOCATION}</p>
+        </div>
+        <nav
+          class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 justify-center"
+        >
+          <a href="#" class="hover:underline">Back to Top</a>
+        </nav>
+        <div class="flex-1 text-center md:text-right text-sm text-white/80">
+          &copy; {new Date().getFullYear()}
+          {COMPANY_LEGAL_NAME}. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
+
+<style scoped>
+  .caret {
+    transition: transform 0.2s ease;
+  }
+  details[open] .caret {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script type="module">
+  import {
+    animate,
+    scroll,
+    stagger,
+    inView,
+  } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+
+  inView(".service", (element) => {
+    animate(
+      element,
+      { opacity: [0, 1], y: [20, 0] },
+      { duration: 0.5, easing: "ease-out" }
+    );
+  });
+
+  inView(".section-header", (element) => {
+    animate(
+      element,
+      { opacity: [0, 1], y: [20, 0] },
+      { duration: 0.5, easing: "ease-out", delay: 0.15 }
+    );
+  });
+</script>

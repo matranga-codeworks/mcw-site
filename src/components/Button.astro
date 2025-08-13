@@ -1,0 +1,22 @@
+---
+type Props = astroHTML.JSX.ButtonHTMLAttributes & {
+  variant?: "primary" | "secondary";
+  href?: string;
+};
+
+const { variant = "primary", ...props } = Astro.props;
+
+const Element = props.href ? "a" : "button";
+---
+
+<Element
+  {...props}
+  class:list={[
+    `cursor-pointer font-medium text-white px-12 py-4 uppercase rounded shadow transition`,
+    variant === "primary"
+      ? "bg-primary-600 hover:bg-primary-700"
+      : "bg-secondary hover:bg-secondary-700",
+  ]}
+>
+  <slot />
+</Element>
