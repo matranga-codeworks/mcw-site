@@ -1,4 +1,6 @@
 export const COMPANY_NAME = "Matranga Codeworks";
 export const COMPANY_LEGAL_NAME = "Matranga Codeworks LLC";
 export const COMPANY_LOCATION = "Cohoes, NY";
-export const CONTACT_EMAIL = "frank@matranga.dev";
+export const CONTACT_EMAIL = "frank@matrangacode.works";
+export const CONTACT_PHONE = "+15182178298";
+export const CONTACT_PHONE_DISPLAY = "(518) 217-8298";

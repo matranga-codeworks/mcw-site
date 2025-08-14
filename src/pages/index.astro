@@ -5,6 +5,8 @@ import {
   CONTACT_EMAIL,
   COMPANY_LEGAL_NAME,
   COMPANY_LOCATION,
+  CONTACT_PHONE,
+  CONTACT_PHONE_DISPLAY,
 } from "@lib/company";
 import Navbar from "@components/Navbar.astro";
 import Button from "@components/Button.astro";
@@ -94,6 +96,17 @@ const faq = [
     />
   </head>
   <body class="font-display text-text-dark bg-[#fdfdfd]">
+    <aside class="bg-slate-800 text-white py-2 px-3">
+      <div class="container mx-auto">
+        <p class="text-center text-sm">
+          🚀 Now booking projects for Fall 2025 and beyond!{" "}
+          <a class="underline" href="#contact">Get in touch</a> or call <a
+            class="underline"
+            href={"tel:" + CONTACT_PHONE}>{CONTACT_PHONE_DISPLAY}</a
+          > to discuss your needs.
+        </p>
+      </div>
+    </aside>
     <header
       class="from-primary to-primary-500 bg-gradient-to-br min-h-[60vh] z-[1] relative overflow-hidden"
     >
@@ -509,15 +522,16 @@ const faq = [
     <div
       class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
     >
-      <div class="text-center md:text-left flex-1">
+      <div class="text-center md:text-left flex-1 flex flex-col gap-1">
         <h3 class="text-xl font-medium mb-2">
           Matranga Code<span class="text-primary-400">works</span>
         </h3>
-        <p class="mb-1">
-          <a class="underline" href={"mailto:" + CONTACT_EMAIL}>
-            {CONTACT_EMAIL}
-          </a>
-        </p>
+        <a class="underline" href={"mailto:" + CONTACT_EMAIL}>
+          {CONTACT_EMAIL}
+        </a>
+        <a href={"tel:" + CONTACT_PHONE}>
+          {CONTACT_PHONE_DISPLAY}
+        </a>
         <p>{COMPANY_LOCATION}</p>
       </div>
       <nav
@@ -568,6 +582,12 @@ const faq = [
 
   animate(
     "#heading h1 span:not(.period)",
+    { opacity: [0, 1], y: [-20, 0] },
+    { delay: stagger(0.05) }
+  );
+
+  animate(
+    "aside > div",
     { opacity: [0, 1], y: [-20, 0] },
     { delay: stagger(0.05) }
   );
