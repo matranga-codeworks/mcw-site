@@ -1,4 +1,6 @@
 ---
+import { SEO } from "astro-seo";
+
 import {
   CONTACT_EMAIL,
   COMPANY_LEGAL_NAME,
@@ -82,6 +84,14 @@ const faq = [
     <meta name="generator" content={Astro.generator} />
     <title>Matranga Codeworks</title>
     <script src="/gear-rotate.js" defer></script>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <SEO
+      title="Matranga Codeworks"
+      description="Custom, local software for the NY Capital Region and beyond."
+      canonical="https://matrangacode.works"
+      charset="UTF-8"
+    />
   </head>
   <body class="font-display text-text-dark bg-[#fdfdfd]">
     <header
@@ -147,8 +157,7 @@ const faq = [
         </div>
       </section>
     </header>
-  </body>
-  <main>
+  </body><main>
     <section id="testimonials">
       <div class="container mx-auto px-6 py-16 flex flex-col gap-8">
         <SectionHeader header="What My Clients Say" />
