@@ -88,14 +88,14 @@ const faq = [
       class="from-primary to-primary-500 bg-gradient-to-br min-h-[60vh] z-[1] relative overflow-hidden"
     >
       <Gear
-        class="absolute top-[100px] right-32 translate-x-1/2 translate-y-[-50%] hidden md:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
+        class="absolute top-[100px] right-32 translate-x-1/2 translate-y-[-50%] hidden lg:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
       />
       <Gear
         data-direction="reverse"
-        class="absolute top-[300px] right-64 translate-x-1/2 translate-y-[-50%] hidden md:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
+        class="absolute top-[300px] right-64 translate-x-1/2 translate-y-[-50%] hidden lg:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
       />
       <Gear
-        class="absolute top-[500px] right-32 translate-x-1/2 translate-y-[-50%] hidden md:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
+        class="absolute top-[500px] right-32 translate-x-1/2 translate-y-[-50%] hidden lg:block md:h-64 md:w-64 gear-rotate-on-scroll pointer-events-none select-none"
       />
 
       <Navbar />
@@ -104,7 +104,7 @@ const faq = [
           id="heading"
           class="group container mx-auto flex flex-col gap-6 items-start px-6 py-16 text-primary-100"
         >
-          <h1 class="text-5xl md:text-7xl font-semibold md:flex">
+          <h1 class="flex flex-wrap text-5xl md:text-7xl font-semibold">
             <div class="flex">
               <span>M</span>
               <span>a</span>
@@ -141,7 +141,9 @@ const faq = [
             businesses streamline operations, reach more customers, and scale
             efficiently.
           </p>
-          <Button href="#contact" variant="secondary">Free Consultation</Button>
+          <Button class="hover:scale-105" href="#contact" variant="secondary"
+            >Free Consultation</Button
+          >
         </div>
       </section>
     </header>
@@ -235,16 +237,19 @@ const faq = [
       </div>
     </section>
 
-    <section id="featured" class="py-32 bg-primary-400/5 flex flex-col gap-28">
+    <section
+      id="featured"
+      class="py-32 px-6 bg-primary-400/5 flex flex-col gap-28"
+    >
       <SectionHeader
         header="Featured Projects"
         subheader="Showcasing some of my favorite recent work."
       />
       <div
-        class="container mx-auto px-6 flex flex-col md:flex-row gap-8 items-center"
+        class="container mx-auto flex flex-col md:flex-row gap-8 items-center"
       >
         <div class="flex flex-col gap-6">
-          <div>
+          <div class="flex flex-col gap-2">
             <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
               Preston Center of Compassion
             </h3>
@@ -286,10 +291,10 @@ const faq = [
       </div>
 
       <div
-        class="container mx-auto px-6 flex flex-col md:flex-row-reverse gap-8 items-center"
+        class="container mx-auto flex flex-col md:flex-row-reverse gap-8 items-center"
       >
         <div class="flex flex-col gap-6">
-          <div>
+          <div class="flex flex-col gap-2">
             <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
               Soapbox Hosting
             </h3>
@@ -321,10 +326,10 @@ const faq = [
       </div>
 
       <div
-        class="container mx-auto px-6 flex flex-col md:flex-row gap-8 items-center"
+        class="container mx-auto flex flex-col md:flex-row gap-8 items-center"
       >
         <div class="flex flex-col gap-6">
-          <div>
+          <div class="flex flex-col gap-2">
             <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
               Rensselaer Center for Open Source (pro bono)
             </h3>
@@ -557,7 +562,7 @@ const faq = [
 
   animate(
     "#heading h1 span:not(.period)",
-    { opacity: [0, 1], y: [20, 0] },
+    { opacity: [0, 1], y: [-20, 0] },
     { delay: stagger(0.05) }
   );
 </script>

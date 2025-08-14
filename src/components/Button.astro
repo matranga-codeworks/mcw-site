@@ -16,6 +16,8 @@ const Element = props.href ? "a" : "button";
     variant === "primary"
       ? "bg-primary-600 hover:bg-primary-700"
       : "bg-secondary hover:bg-secondary-700",
+    props["class"],
+    props["class:list"],
   ]}
 >
   <slot />
