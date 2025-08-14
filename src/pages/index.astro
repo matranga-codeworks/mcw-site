@@ -102,15 +102,39 @@ const faq = [
       <section id="splash" class="flex items-center justify-center">
         <div
           id="heading"
-          class="container mx-auto flex flex-col gap-6 items-start px-6 py-16 text-primary-100"
+          class="group container mx-auto flex flex-col gap-6 items-start px-6 py-16 text-primary-100"
         >
           <h1 class="text-5xl md:text-7xl font-semibold md:flex">
-            <span>Matranga</span>&nbsp;<br class="block md:hidden" /><span
-              class="code">Code</span
-            ><div class="inline-block" id="space"></div><span
-              id="works"
-              class="text-primary-300">works</span
-            >
+            <div class="flex">
+              <span>M</span>
+              <span>a</span>
+              <span>t</span>
+              <span>r</span>
+              <span>a</span>
+              <span>n</span>
+              <span>g</span>
+              <span>a</span>
+            </div>
+
+            &nbsp;<br class="block md:hidden" />
+            <div class="code flex">
+              <span>C</span>
+              <span>o</span>
+              <span>d</span>
+              <span>e</span>
+            </div>
+            <div class="inline-block" id="space"></div>
+            <div class="flex text-primary-300" id="works">
+              <span>w</span>
+              <span>o</span>
+              <span>r</span>
+              <span>k</span>
+              <span>s</span>
+              <span
+                class="period opacity-0 group-hover:opacity-100 transition-opacity"
+                >.</span
+              >
+            </div>
           </h1>
           <p class="text-xl text-left md:text-2xl max-w-2xl">
             I design and develop tailored software solutions that help local
@@ -121,330 +145,381 @@ const faq = [
         </div>
       </section>
     </header>
-    <main>
-      <section id="testimonials">
-        <div class="container mx-auto px-6 py-16">
-          <SectionHeader header="What My Clients Say" />
-          <div class="flex flex-col md:flex-row gap-8">
-            <div
-              class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
-            >
-              <p class="text-gray-700 mb-4">
-                "Matranga Codeworks transformed our product idea into reality.
-                Their attention to detail and commitment to quality is
-                unmatched!"
-              </p>
-              <p class="font-semibold">- Preston Center of Compassion</p>
-            </div>
-            <div
-              class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
-            >
-              <p class="text-gray-700 mb-4">
-                "The team at Matranga Codeworks is incredibly skilled and easy
-                to work with. They delivered on time and exceeded our
-                expectations."
-              </p>
-              <p class="font-semibold">- Rensselaer Center for Open Source</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="services" class="py-32 bg-primary-400/5">
-        <div class="container mx-auto px-6 max-w-3xl">
-          <SectionHeader header="How I Help Your Local Organization Grow" />
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ServiceCard
-              heading="Custom Business Software"
-              subheading="I build software systems designed around your specific workflows and business processes. From inventory management to customer portals, I create solutions that actually fit how your business operates."
-            />
-            <ServiceCard
-              heading="Mobile & Web App Development"
-              subheading="I create responsive and user-friendly mobile and web applications that help you engage with your customers and streamline your operations."
-            />
-            <ServiceCard
-              heading="Technical Architecture & Consulting"
-              subheading="I help you design scalable and maintainable software architectures that align with your business goals."
-            />
-            <ServiceCard
-              heading="Ongoing Development & Support"
-              subheading="I provide ongoing maintenance, feature additions, and technical support to keep your systems running smoothly as your business evolves."
-            />
-          </div>
-        </div>
-      </section>
-      <section id="about" class="py-16">
-        <div class="container mx-auto px-6 max-w-2xl text-center">
-          <div class="p-12 rounded shadow flex flex-col gap-8 bg-primary-400/5">
-            <SectionHeader header="Your Local Technical Partner" />
-
-            <p>
-              I'm a software engineer and current Director of Engineering at a
-              healthcare technology company, with deep experience building
-              systems that businesses depend on every day. Now I'm bringing that
-              expertise directly to local businesses in our community.
-            </p>
-            <p>
-              Having worked in everything from startups to highly regulated
-              industries, I understand that every business has unique
-              challenges. I take the time to really understand your operations,
-              then design software that makes your work easier, not harder.
-            </p>
-            <p>
-              As a Cohoes resident, I'm invested in seeing our local businesses
-              thrive. When you work with me, you're not just hiring a
-              developer—you're partnering with someone who cares about your
-              success and is right here in the community when you need support.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="featured"
-        class="py-32 bg-primary-400/5 flex flex-col gap-28"
-      >
-        <div
-          class="container mx-auto px-6 flex flex-col md:flex-row gap-8 items-center"
-        >
-          <div class="flex flex-col gap-6">
-            <h2 class="section-header font-semibold text-2xl md:text-4xl">
-              Featured Projects
-            </h2>
-
-            <div>
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
-                Preston Center of Compassion
-              </h3>
-              <p>
-                Preston Center of Compassion's <span
-                  class="text-primary font-semibold">August Fundraiser</span
-                > allows local residents in the Bronx, NYC to make realtime donations,
-                purchase raffle tickets, and place dinner reservations for PCC's
-                major summer fundraising event every year.
-              </p>
-            </div>
-
-            <p>
-              Locals can login via desktop or mobile to access the platform and
-              participate in the fundraiser. Participants securely checkout with
-              Stripe, never revealing their payment information. PCC
-              administrators can manage the event, track donations, and download
-              Excel reports at any time.
-            </p>
-
-            <p>
-              Built on Google's Firebase platform, the administrators can change
-              event details, turn on and off purchasing based on availability,
-              and manage the event in realtime. This virtual platform
-              complements the in-person experience by providing a seamless way
-              for locals to engage with the fundraiser from anywhere.
-            </p>
-          </div>
-
-          <video
-            src="/videos/pcc.mp4"
-            muted
-            autoplay
-            controls
-            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+  </body>
+  <main>
+    <section id="testimonials">
+      <div class="container mx-auto px-6 py-16">
+        <SectionHeader header="What My Clients Say" />
+        <div class="flex flex-col md:flex-row gap-8">
+          <div
+            class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
           >
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div
-          class="container mx-auto px-6 flex flex-col md:flex-row-reverse gap-8 items-center"
-        >
-          <div class="flex flex-col gap-6">
-            <div>
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
-                Soapbox Hosting
-              </h3>
-              <p>
-                <span class="text-primary font-semibold">Soapbox</span> is my own
-                podcast technology Software-as-a-Service (SaaS) platform that simplifies
-                the process of launching and managing a podcast. With Soapbox, users
-                can easily record, edit, and publish their episodes, all from a user-friendly
-                web interface.
-              </p>
-            </div>
-            <p>
-              Built with modern web technologies, Soapbox is designed to be
-              fast, reliable, and easy to use. Whether you're a seasoned
-              podcaster or just getting started, Soapbox has everything you need
-              to create and share your podcast with the world.
+            <p class="text-gray-700 mb-4">
+              "Matranga Codeworks transformed our product idea into reality.
+              Their attention to detail and commitment to quality is unmatched!"
             </p>
+            <p class="font-semibold">- Preston Center of Compassion</p>
           </div>
-
-          <video
-            src="/videos/soapbox.webm"
-            muted
-            autoplay
-            controls
-            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+          <div
+            class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
           >
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </section>
-
-      <section id="contact" class="py-32 bg-primary-400/5">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row gap-8">
-          <div class="flex-1 flex flex-col gap-4">
-            <h2 class="font-semibold text-2xl md:text-4xl section-header">
-              Interested in working together? Reach out now for a free
-              consultation to see how I can help you.
-            </h2>
-            <p>
-              I'll hop on a call or meet in person to get to know you, your
-              organization, and its needs. Free of charge. I want to understand
-              your vision and challenges to provide the best solutions. I will
-              let you know if I think it's a good fit.
+            <p class="text-gray-700 mb-4">
+              "The team at Matranga Codeworks is incredibly skilled and easy to
+              work with. They delivered on time and exceeded our expectations."
             </p>
-            <ul class="list-disc pl-6">
-              <li>
-                <strong>Initial Consultation:</strong> I'll discuss your project
-                goals, challenges, and timeline.
-              </li>
-              <li>
-                <strong>Proposal:</strong> Based on our conversation, I'll provide
-                a detailed proposal outlining my approach and pricing.
-              </li>
-              <li>
-                <strong>Kickoff:</strong> Once you approve the proposal, I'll schedule
-                a kickoff meeting to start the project.
-              </li>
-            </ul>
+            <p class="font-semibold">- Rensselaer Center for Open Source</p>
           </div>
-          <div class="flex-1">
-            <div class="bg-white p-8 rounded shadow">
-              <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                class="flex flex-col gap-8"
-              >
-                <div class="flex flex-col gap-1">
-                  <label
-                    for="name"
-                    class="block text-sm font-medium text-gray-700">Name</label
-                  >
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required
-                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
-                    placeholder="Jane Doe"
-                  />
-                </div>
-                <div class="flex flex-col gap-1">
-                  <label
-                    for="email"
-                    class="block text-sm font-medium text-gray-700">Email</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="jane.doe@example.com"
-                    required
-                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
-                  />
-                </div>
-                <div class="flex flex-col gap-1">
-                  <label
-                    for="company"
-                    class="block text-sm font-medium text-gray-700"
-                    >Company</label
-                  >
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    placeholder="ACME Corp"
-                    required
-                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
-                  />
-                </div>
-                <div class="flex flex-col gap-1">
-                  <label
-                    for="message"
-                    class="block text-sm font-medium text-gray-700"
-                    >How can I help?</label
-                  >
-                  <textarea
-                    name="message"
-                    id="message"
-                    rows="4"
-                    required
-                    class="block w-full border border-gray-300 rounded-md shadow-sm p-3 min-h-12 max-h-64"
-                    placeholder="I'm looking for..."></textarea>
-                </div>
-                <Button variant="secondary">Get in Touch</Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="faq" class="py-32">
-        <div class="container px-6 mx-auto max-w-2xl flex flex-col gap-8">
-          <h2
-            class="section-header font-semibold text-2xl md:text-4xl text-center"
-          >
-            Frequently Asked Questions
-          </h2>
-
-          <div class="flex flex-col gap-8">
-            {
-              faq.map(({ question, answer }) => (
-                <details>
-                  <summary class="block font-semibold text-xl md:text-2xl text-primary-900">
-                    <div class="border-b-2 border-primary py-2 cursor-pointer flex justify-between">
-                      <span>{question}</span>
-                      <span class="text-primary-500">
-                        <CaretDownBold class="caret w-8 h-8 fill-primary-500" />
-                      </span>
-                    </div>
-                  </summary>
-                  <p class="py-2">{answer}</p>
-                </details>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="bg-primary text-white py-8">
-      <div
-        class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
-      >
-        <div class="text-center md:text-left flex-1">
-          <h3 class="text-xl font-medium mb-2">
-            Matranga Code<span class="text-primary-400">works</span>
-          </h3>
-          <p class="mb-1">
-            <a class="underline" href={"mailto:" + CONTACT_EMAIL}>
-              {CONTACT_EMAIL}
-            </a>
-          </p>
-          <p>{COMPANY_LOCATION}</p>
-        </div>
-        <nav
-          class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 justify-center"
-        >
-          <a href="#" class="hover:underline">Back to Top</a>
-        </nav>
-        <div class="flex-1 text-center md:text-right text-sm text-white/80">
-          &copy; {new Date().getFullYear()}
-          {COMPANY_LEGAL_NAME}. All rights reserved.
         </div>
       </div>
-    </footer>
-  </body>
+    </section>
+    <section id="services" class="py-32 bg-primary-400/5">
+      <div class="container mx-auto px-6 max-w-3xl flex flex-col gap-8">
+        <SectionHeader header="How I Help Your Local Organization Grow" />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ServiceCard
+            heading="Custom Business Software"
+            subheading="I build software systems designed around your specific workflows and business processes. From inventory management to customer portals, I create solutions that actually fit how your business operates."
+          />
+          <ServiceCard
+            heading="Mobile & Web App Development"
+            subheading="I create responsive and user-friendly mobile and web applications that help you engage with your customers and streamline your operations."
+          />
+          <ServiceCard
+            heading="Technical Architecture & Consulting"
+            subheading="I help you design scalable and maintainable software architectures that align with your business goals."
+          />
+          <ServiceCard
+            heading="Ongoing Development & Support"
+            subheading="I provide ongoing maintenance, feature additions, and technical support to keep your systems running smoothly as your business evolves."
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about" class="py-16">
+      <div class="container mx-auto px-6 max-w-2xl text-center">
+        <div class="p-12 rounded shadow flex flex-col gap-8 bg-primary-400/5">
+          <SectionHeader
+            header="Your Local Technical Partner"
+            subheader="Proudly based in Cohoes, NY 🏡"
+          />
+
+          <p>
+            I'm a NYC-born software engineer and current Director of Engineering
+            at a healthcare technology company, with deep experience building
+            systems that businesses depend on every day. Now I'm bringing that
+            expertise directly to local businesses in our community.
+          </p>
+          <p>
+            Having worked in everything from startups to highly regulated
+            industries, I understand that every business has unique challenges.
+            I take the time to really understand your operations, then design
+            software that makes your work easier, not harder.
+          </p>
+          <p>
+            As a NY Capital Region resident for the past 7 years, I'm invested
+            in seeing our local businesses thrive. When you work with me, you're
+            not just hiring a developer—you're partnering with someone who cares
+            about your success and is right here in the community when you need
+            support.
+          </p>
+
+          <p>
+            When I'm not working on your next big project, you'll find me
+            coworking in downtown Troy with an iced chai latte, slipping away to
+            the Catskills to recharge at a nice, old bed and breakfast, hiking
+            with my more-athletic friends in the Adirondacks, or stopping by the
+            many farmers' markets of the Hudson Valley.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" class="py-32 bg-primary-400/5 flex flex-col gap-28">
+      <SectionHeader
+        header="Featured Projects"
+        subheader="Showcasing some of my favorite recent work."
+      />
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row gap-8 items-center"
+      >
+        <div class="flex flex-col gap-6">
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
+              Preston Center of Compassion
+            </h3>
+            <p>
+              Preston Center of Compassion's <span
+                class="text-primary font-semibold">August Fundraiser</span
+              > allows local residents in the Bronx, NYC to make realtime donations,
+              purchase raffle tickets, and place dinner reservations for PCC's major
+              summer fundraising event every year.
+            </p>
+          </div>
+
+          <p>
+            Locals can login via desktop or mobile to access the platform and
+            participate in the fundraiser. Participants securely checkout with
+            Stripe, never revealing their payment information. PCC
+            administrators can manage the event, track donations, and download
+            Excel reports at any time.
+          </p>
+
+          <p>
+            Built on Google's Firebase platform, the administrators can change
+            event details, turn on and off purchasing based on availability, and
+            manage the event in realtime. This virtual platform complements the
+            in-person experience by providing a seamless way for locals to
+            engage with the fundraiser from anywhere.
+          </p>
+        </div>
+
+        <video
+          src="/videos/pcc.mp4"
+          muted
+          autoplay
+          controls
+          class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row-reverse gap-8 items-center"
+      >
+        <div class="flex flex-col gap-6">
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
+              Soapbox Hosting
+            </h3>
+            <p>
+              <span class="text-primary font-semibold">Soapbox</span> is my own podcast
+              technology Software-as-a-Service (SaaS) platform that simplifies the
+              process of launching and managing a podcast. With Soapbox, users can
+              easily record, edit, and publish their episodes, all from a user-friendly
+              web interface.
+            </p>
+          </div>
+          <p>
+            Built with modern web technologies, Soapbox is designed to be fast,
+            reliable, and easy to use. Whether you're a seasoned podcaster or
+            just getting started, Soapbox has everything you need to create and
+            share your podcast with the world.
+          </p>
+        </div>
+
+        <video
+          src="/videos/soapbox.webm"
+          muted
+          autoplay
+          controls
+          class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row gap-8 items-center"
+      >
+        <div class="flex flex-col gap-6">
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
+              Rensselaer Center for Open Source (pro bono)
+            </h3>
+            <p>
+              <span class="text-primary font-semibold">RCOS</span> is is a community
+              of motivated students at Rensselaer Polytechnic Institute who develop
+              open source projects under the guidance of experienced instructors
+              and student mentors.
+            </p>
+          </div>
+          <p>
+            When it scaled up to hundreds of students enrolled every semester,
+            and dozens of projects always in active development, RCOS required a
+            more robust solution for managing its operations. That's where my
+            expertise came in.
+          </p>
+          <p>
+            I created and currently maintain RCOS.io, the central hub for all
+            RCOS activity. It tracks enrolled students, faculty advisors,
+            projects, project teams across semesters, meetings, event
+            attendance, and more. The web application is built with Django and
+            hosted extremely inexpensively. Since I was a part of RCOS during my
+            RPI days and owe much of my development and leadership skills to the
+            experience, I am committed to giving back to the community by
+            maintaining this platform for free.
+          </p>
+        </div>
+
+        <video
+          src="/videos/rcos.mp4"
+          muted
+          autoplay
+          controls
+          class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section id="contact" class="py-32 bg-primary-400/5">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row gap-8">
+        <div class="flex-1 flex flex-col gap-4">
+          <h2 class="font-semibold text-2xl md:text-4xl section-header">
+            Interested in working together? Reach out now for a free
+            consultation to see how I can help you.
+          </h2>
+          <p>
+            I'll hop on a call or meet in person to get to know you, your
+            organization, and its needs. Free of charge. <em
+              >What business processes take up the most time? What would you
+              automate if you could? What software frustrations do you have?</em
+            > These are the questions I want to explore with you.
+          </p>
+          <ul class="list-disc pl-6">
+            <li>
+              <strong>Initial Consultation:</strong> I'll discuss your project goals,
+              challenges, and timeline.
+            </li>
+            <li>
+              <strong>Proposal:</strong> Based on our conversation, I'll provide
+              a detailed proposal outlining my approach and pricing.
+            </li>
+            <li>
+              <strong>Kickoff:</strong> Once you approve the proposal, I'll schedule
+              a kickoff meeting to start the project.
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <div class="bg-white p-8 rounded shadow">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              class="flex flex-col gap-8"
+            >
+              <div class="flex flex-col gap-1">
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700">Name</label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
+                  placeholder="Jane Doe"
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700">Email</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="jane.doe@example.com"
+                  required
+                  class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label
+                  for="company"
+                  class="block text-sm font-medium text-gray-700">Company</label
+                >
+                <input
+                  type="text"
+                  name="company"
+                  id="company"
+                  placeholder="ACME Corp"
+                  required
+                  class="block w-full border border-gray-300 rounded-md shadow-sm p-3"
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700"
+                  >How can I help?</label
+                >
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="4"
+                  required
+                  class="block w-full border border-gray-300 rounded-md shadow-sm p-3 min-h-12 max-h-64"
+                  placeholder="I'm looking for..."></textarea>
+              </div>
+              <Button variant="secondary">Get in Touch</Button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-32">
+      <div class="container px-6 mx-auto max-w-2xl flex flex-col gap-8">
+        <h2
+          class="section-header font-semibold text-2xl md:text-4xl text-center"
+        >
+          Frequently Asked Questions
+        </h2>
+
+        <div class="flex flex-col gap-8">
+          {
+            faq.map(({ question, answer }) => (
+              <details>
+                <summary class="block font-semibold text-xl md:text-2xl text-primary-900">
+                  <div class="border-b-2 border-primary py-2 cursor-pointer flex justify-between">
+                    <span>{question}</span>
+                    <span class="text-primary-500">
+                      <CaretDownBold class="caret w-8 h-8 fill-primary-500" />
+                    </span>
+                  </div>
+                </summary>
+                <p class="py-2">{answer}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-primary text-white py-8">
+    <div
+      class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+    >
+      <div class="text-center md:text-left flex-1">
+        <h3 class="text-xl font-medium mb-2">
+          Matranga Code<span class="text-primary-400">works</span>
+        </h3>
+        <p class="mb-1">
+          <a class="underline" href={"mailto:" + CONTACT_EMAIL}>
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+        <p>{COMPANY_LOCATION}</p>
+      </div>
+      <nav
+        class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 justify-center"
+      >
+        <a href="#" class="hover:underline">Back to Top</a>
+      </nav>
+      <div class="flex-1 text-center md:text-right text-sm text-white/80">
+        &copy; {new Date().getFullYear()}
+        {COMPANY_LEGAL_NAME}. All rights reserved.
+      </div>
+    </div>
+  </footer>
 </html>
 
 <style scoped>
@@ -479,4 +554,10 @@ const faq = [
       { duration: 0.5, easing: "ease-out", delay: 0.15 }
     );
   });
+
+  animate(
+    "#heading h1 span:not(.period)",
+    { opacity: [0, 1], y: [20, 0] },
+    { delay: stagger(0.05) }
+  );
 </script>
