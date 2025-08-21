@@ -7,12 +7,12 @@ const { heading, subheading } = Astro.props;
 ---
 
 <article
-  class="service p-8 bg-white rounded shadow-md flex flex-col gap-4 relative hover:translate-y-[-8px] hover:shadow-lg transition-all"
+  class="service bg-white rounded-lg overflow-hidden shadow-md flex flex-col relative hover:translate-y-[-8px] hover:shadow-lg transition-all"
 >
-  <h3 class="text-2xl font-semibold text-primary-400 z-10">
+  <h3 class="text-2xl font-semibold bg-primary-400 text-white px-8 py-4">
     {heading}
   </h3>
-  <p class="z-10">
+  <p class="px-8 py-6">
     {subheading}
   </p>
 </article>

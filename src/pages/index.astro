@@ -215,22 +215,31 @@ const faq = [
         </div>
       </section>
 
-      <section id="testimonials" class="hidden">
+      <section id="testimonials">
         <div class="container mx-auto px-6 py-16 flex flex-col gap-8">
           <SectionHeader header="What My Clients Say" />
-          <div class="flex flex-col md:flex-row gap-8">
-            <div
-              class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
-            >
-              <p class="text-gray-700 mb-4">
-                "Matranga Codeworks transformed our product idea into reality.
-                Their attention to detail and commitment to quality is
-                unmatched!"
-              </p>
-              <p class="font-semibold">- Preston Center of Compassion</p>
+          <div class="flex flex-col justify-center md:flex-row gap-8">
+            <div class="max-w-[700px] flex-1 flex flex-row items-center gap-4">
+              <div>
+                <p class="text-gray-700 mb-4 italic">
+                  <span class="text-primary">“</span>We’ve worked with Frank for
+                  years and he’s been amazing. He helped us take our fundraisers
+                  online during the pandemic so we could keep supporting the
+                  Bronx community when in-person events weren’t possible. He
+                  really understands what we’re trying to do, and thanks to his
+                  help, everything from our fundraising events to summer camp
+                  and afterschool programs runs more smoothly and reaches more
+                  families than ever before.<span class="text-primary">”</span>
+                </p>
+                <a
+                  target="_blank"
+                  href="https://www.prestoncenterofcompassion.org"
+                  class="font-semibold">- Preston Center of Compassion</a
+                >
+              </div>
             </div>
             <div
-              class="flex-1 bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
+              class="flex-1 hidden bg-white p-6 rounded-lg shadow border-l-6 border-secondary"
             >
               <p class="text-gray-700 mb-4">
                 "The team at Matranga Codeworks is incredibly skilled and easy
@@ -246,14 +255,14 @@ const faq = [
         <div class="container mx-auto px-6 flex flex-col gap-8">
           <SectionHeader header="How I Help Your Local Organization Grow" />
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 service-cards">
             <ServiceCard
               heading="Custom Business Software"
-              subheading="I build software systems designed around your specific workflows and business processes. From inventory management, to fundraising software, to customer portals, I create solutions that actually fit how your business operates."
+              subheading="You can only get so far with off-the-shelf software. I build software systems designed around your specific workflows and business processes. From inventory management, to fundraising software, to customer portals, I create solutions that actually fit how your business operates."
             />
             <ServiceCard
               heading="Mobile & Web App Development"
-              subheading="I create responsive and user-friendly mobile and web applications that help you engage with your customers and streamline your operations."
+              subheading="I create responsive and user-friendly mobile and web applications that help you engage with your customers and streamline your operations. These can be internal applications for your organization to use or applications meant for your customers."
             />
             <ServiceCard
               heading="Technical Architecture & Consulting"
@@ -666,11 +675,11 @@ const faq = [
     );
   });
 
-  inView(".service", (element) => {
+  inView(".service-cards", (element) => {
     animate(
-      element,
+      ".service-cards .service",
       { opacity: [0, 1], y: [20, 0] },
-      { duration: 0.5, easing: "ease-out" }
+      { delay: stagger(0.25), duration: 0.5, easing: "ease-out" }
     );
   });
 
