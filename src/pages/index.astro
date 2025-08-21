@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { Image } from "astro:assets";
 
 import {
   CONTACT_EMAIL,
@@ -16,9 +17,10 @@ import ServiceCard from "@components/ServiceCard.astro";
 import CaretDownBold from "@assets/icons/caret-down-bold.svg";
 import Gear from "@assets/gear.svg";
 import HeadshotImg from "@assets/Frank_Headshot.jpg";
+import PCCWordmark from "@assets/organizations/pcc_wordmark.png";
+import RCOSLockup from "@assets/organizations/rcos_lockup.png";
 
 import "../styles/global.css";
-import { Image } from "astro:assets";
 
 const faq = [
   {
@@ -319,7 +321,7 @@ const faq = [
         <div
           class="container mx-auto flex flex-col md:flex-row gap-8 items-center"
         >
-          <div class="flex flex-col gap-6">
+          <div class="flex-1 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
               <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
                 Preston Center of Compassion
@@ -350,20 +352,27 @@ const faq = [
             </p>
           </div>
 
-          <video
-            src="/videos/pcc.mp4"
-            muted
-            controls
-            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <div class="flex-1 flex flex-col items-center gap-4">
+            <Image
+              src={PCCWordmark}
+              alt="Preston Center of Compassion"
+              height={150}
+            />
+            <video
+              src="/videos/pcc.mp4"
+              muted
+              controls
+              class="self-stretch w-full rounded-lg shadow-lg"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
 
         <div
           class="container mx-auto flex flex-col md:flex-row-reverse gap-8 items-center"
         >
-          <div class="flex flex-col gap-6">
+          <div class="flex-1 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
               <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
                 Soapbox Hosting
@@ -383,21 +392,22 @@ const faq = [
               to create and share your podcast with the world.
             </p>
           </div>
-
-          <video
-            src="/videos/soapbox.webm"
-            muted
-            controls
-            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <div class="flex-1 flex flex-col items-center gap-4">
+            <video
+              src="/videos/soapbox.webm"
+              muted
+              controls
+              class="w-full h-fit rounded-lg shadow-lg"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
 
         <div
           class="container mx-auto flex flex-col md:flex-row gap-8 items-center"
         >
-          <div class="flex flex-col gap-6">
+          <div class="flex-1 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
               <h3 class="text-xl md:text-2xl font-semibold text-primary-800">
                 Rensselaer Center for Open Source (pro bono)
@@ -427,14 +437,22 @@ const faq = [
             </p>
           </div>
 
-          <video
-            src="/videos/rcos.mp4"
-            muted
-            controls
-            class="w-full h-fit md:w-1/2 rounded-lg shadow-lg"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <div class="flex-1 flex flex-col items-center gap-4">
+            <Image
+              src={RCOSLockup}
+              alt="Rensselaer Center for Open Source"
+              height={100}
+            />
+
+            <video
+              src="/videos/rcos.mp4"
+              muted
+              controls
+              class="w-full h-fit rounded-lg shadow-lg"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </section>
 
