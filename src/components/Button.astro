@@ -1,21 +1,27 @@
 ---
-type Props = astroHTML.JSX.ButtonHTMLAttributes & {
-  variant?: "primary" | "secondary";
-  href?: string;
-};
+type Props = {
+  variant?: "primary" | "secondary" | "outline";
+} & (
+  | ({
+      href: string;
+    } & astroHTML.JSX.AnchorHTMLAttributes)
+  | astroHTML.JSX.ButtonHTMLAttributes
+);
 
 const { variant = "primary", ...props } = Astro.props;
 
-const Element = props.href ? "a" : "button";
+const Element = "href" in props ? "a" : "button";
 ---
 
 <Element
   {...props}
   class:list={[
     `cursor-pointer font-medium text-white px-12 py-4 uppercase rounded shadow transition`,
-    variant === "primary"
-      ? "bg-primary-600 hover:bg-primary-700"
-      : "bg-secondary hover:bg-secondary-700",
+    variant === "primary" && "bg-primary-600 hover:bg-primary-700",
+    variant === "secondary" && "bg-secondary hover:bg-secondary-700",
+    variant === "outline"
+      ? "border border-white text-primary-600 hover:bg-primary-600 hover:text-white"
+      : null,
     props["class"],
     props["class:list"],
   ]}
