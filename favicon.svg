@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Frank Matranga">
+  <rect width="32" height="32" fill="#1A1917"/>
+  <!-- Geometric "F" — drawn as rects so it never depends on a font -->
+  <rect x="8"  y="7"  width="5"  height="18" fill="#E8E6DD"/>
+  <rect x="8"  y="7"  width="15" height="5"  fill="#E8E6DD"/>
+  <rect x="8"  y="14" width="11" height="5"  fill="#E8E6DD"/>
+  <!-- the accent period from the wordmark -->
+  <rect x="20" y="21" width="4"  height="4"  fill="#6FB894"/>
+</svg>
