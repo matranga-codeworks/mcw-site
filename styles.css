@@ -274,6 +274,8 @@ body[data-grain] .grain { display: block; }
   text-transform: uppercase;
 }
 .footer span:first-child { color: var(--on-dark-2); }
+.footer a { color: var(--muted-2); border-bottom: 1px solid var(--rule-dark-2); padding-bottom: 2px; }
+.footer a:hover { color: var(--acc3); border-bottom-color: var(--acc3); }
 
 /* ---------------------------------------------------------- typography --- */
 
