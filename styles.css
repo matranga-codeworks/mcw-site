@@ -31,7 +31,11 @@
   --ink:        #1A1917;
   --ink-2:      #3B382F;
   --ink-3:      #56534A;
-  --muted:      #6B685E;
+  /* --muted is the quietest warm gray that still clears WCAG AA (4.5:1) on
+     --paper; it measures 4.59 there and 4.90 on --paper-2. Don't lighten it.
+     --muted-2 is ON-DARK ONLY (4.77:1 on --ink) — it manages just 2.94:1 on
+     paper, so on-paper quiet text uses --muted instead. */
+  --muted:      #69665C;
   --muted-2:    #8A8578;
   --rule:       #C7C4B8;
   --rule-2:     #D8D4C7;
@@ -353,7 +357,7 @@ body[data-grain] .grain { display: block; }
   font-family: var(--mono);
   font-size: .7rem;
   line-height: 1.5;
-  color: var(--muted-2);
+  color: var(--muted);
 }
 
 /* Measure utilities — kept as explicit steps so the design's line lengths survive. */
@@ -629,7 +633,7 @@ body[data-grain] .grain { display: block; }
   font-size: .66rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  color: var(--muted);
   margin-bottom: .9rem;
 }
 .card--feature .card__kicker { color: var(--acc2); }
@@ -742,7 +746,9 @@ body[data-grain] .grain { display: block; }
   line-height: 1.5;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--muted);
+  /* --ink-3, not --muted: this label sits on the hatch, whose darker stripe
+     (#D5D1C4) drops --muted to 3.76:1. --ink-3 holds 5.03:1 there. */
+  color: var(--ink-3);
 }
 
 .photo-cap {
@@ -867,7 +873,7 @@ body[data-grain] .grain { display: block; }
   font-size: .7rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  color: var(--muted);
   display: flex;
   flex-wrap: wrap;
   gap: .4rem 1.1rem;
@@ -937,4 +943,209 @@ body[data-grain] .grain { display: block; }
   max-width: 32ch;
   font-weight: 500;
   letter-spacing: -.01em;
+}
+
+/* -------------------------------------------------------- testimonials --- */
+
+/* The feature quote takes the full row; the rest flow beside each other. Both
+   are real client words — see the note in README before adding any. */
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.4rem;
+}
+
+.quote {
+  margin: 0;
+  background: var(--paper-2);
+  border: 2px solid var(--rule);
+  border-top: 4px solid var(--acc);
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  display: flex;
+  flex-direction: column;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.quote:hover { transform: translateY(-5px); box-shadow: 8px 8px 0 var(--acc); }
+
+.quote--feature {
+  grid-column: 1 / -1;
+  background: rgba(46, 93, 70, .05);
+  border-color: var(--acc);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.quote--feature:hover { box-shadow: 9px 9px 0 var(--ink); }
+
+.quote blockquote {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  flex: 1;
+}
+.quote--feature blockquote {
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  line-height: 1.45;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -.015em;
+  max-width: 54ch;
+}
+
+/* The opening mark is decorative — the real quote marks live in the text. */
+.quote__mark {
+  font-weight: 800;
+  font-size: 3.2rem;
+  line-height: .4;
+  color: var(--acc);
+  opacity: .28;
+  margin-bottom: 1.1rem;
+}
+.quote--feature .quote__mark { font-size: clamp(4rem, 7vw, 5.5rem); margin-bottom: 1.5rem; }
+
+.quote figcaption {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: .74rem;
+  line-height: 1.5;
+  letter-spacing: .04em;
+}
+.quote__who   { display: block; color: var(--acc2); text-transform: uppercase; letter-spacing: .1em; }
+.quote__where { display: block; margin-top: .3rem; color: var(--muted); }
+/* The feature card's tinted ground costs ~0.6:1 — --muted lands at 4.28 there,
+   so the citation steps darker to stay over the AA floor. */
+.quote--feature .quote__where { color: var(--ink-3); }
+
+/* --------------------------------------------------------- client names --- */
+
+.clients {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .9rem clamp(1.4rem, 3vw, 2.6rem);
+  border-block: 1px solid var(--rule);
+  padding-block: 1.3rem;
+}
+.clients__label {
+  font-family: var(--mono);
+  font-size: .66rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex: none;
+}
+.clients__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem clamp(1.2rem, 2.5vw, 2.2rem);
+}
+.clients__list li {
+  font-weight: 600;
+  font-size: clamp(.95rem, 1.3vw, 1.1rem);
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------- booking embed --- */
+
+/* The Google scheduler, inline. Only the /calendar/appointments/schedules/…
+   ?gv=true form is frameable — the calendar.app.google short link sends
+   X-Frame-Options: SAMEORIGIN and renders blank in an iframe. */
+.booking {
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--acc);
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.booking iframe {
+  display: block;
+  width: 100%;
+  height: 620px;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .booking iframe { height: 560px; }
+  .booking { box-shadow: 5px 5px 0 var(--acc); }
+}
+/* Shown when the frame is blocked or JS/third-party cookies are off. */
+.booking__fallback {
+  margin: 1rem 0 0;
+  font-family: var(--mono);
+  font-size: .78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ----------------------------------------------------------------- faq --- */
+
+.faq { border-top: 1px solid var(--rule); }
+.faq details { border-bottom: 1px solid var(--rule); }
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding: 1.3rem 2.8rem 1.3rem 0;
+  font-weight: 600;
+  font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+  line-height: 1.35;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  transition: color .2s ease;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--acc); }
+.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--acc);
+}
+.faq details[open] summary::after { content: '–'; }
+.faq details[open] summary { color: var(--acc2); }
+
+.faq__a {
+  margin: 0 0 1.5rem;
+  max-width: 62ch;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.faq__a + .faq__a { margin-top: -.7rem; }
+
+/* --------------------------------------------------------- screenshots --- */
+
+/* Same degrade-to-placeholder contract as .photo (see site.js) — a missing
+   file shows the hatched frame and its label, never a broken-image icon. */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+.photo--wide { aspect-ratio: 16 / 10; }
+.photo--wide img { object-fit: cover; object-position: top center; }
+
+/* ------------------------------------------------- secondary action ------ */
+
+/* Paper-ground counterpart to .btn — same silhouette, no accent fill, so the
+   primary (booking) always reads first and this reads clearly second. */
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--btn-ink);
+  box-shadow: 1px 1px 0 var(--ink);
 }

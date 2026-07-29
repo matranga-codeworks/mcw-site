@@ -14,8 +14,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Spline+Sans+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
+<script src="/analytics.js" defer></script>
 </head>
-<body>
+<body data-grain>
 
 <div class="topbar" aria-hidden="true"><i></i><b></b></div>
 
@@ -26,7 +28,7 @@
       <a href="/work.html">Work</a>
       <a href="/services.html">Services</a>
       <a href="/about.html">About</a>
-      <a class="nav__cta" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener">Book a free consultation</a>
+      <a class="nav__cta" href="/index.html#consult" data-cta="book-nav">Book a free consultation</a>
     </nav>
   </div>
 </header>
@@ -51,7 +53,7 @@
     <span>Frank Matranga · Matranga Codeworks LLC</span>
     <span>Cohoes, New York · Capital Region</span>
     <span><a href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>© 2026</span>
+    <span>© <span data-year>2026</span></span>
   </div>
 </footer>
 

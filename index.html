@@ -29,28 +29,46 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Spline+Sans+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="site.js" defer></script>
+<script src="analytics.js" defer></script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": ["ProfessionalService", "LocalBusiness"],
       "@id": "https://matrangacode.works/#business",
       "name": "Matranga Codeworks",
       "legalName": "Matranga Codeworks LLC",
       "url": "https://matrangacode.works/",
       "email": "frank@matrangacode.works",
+      "telephone": "+1-518-217-8298",
       "image": "https://matrangacode.works/images/og.png",
+      "logo": "https://matrangacode.works/apple-touch-icon.png",
       "description": "Independent technical advisory and custom software development for nonprofits, associations, and family-run companies that have no software person of their own.",
       "founder": { "@id": "https://matrangacode.works/#frank" },
       "employee": { "@id": "https://matrangacode.works/#frank" },
+      "sameAs": [ "https://www.linkedin.com/in/frank-matranga/", "https://matranga.dev/" ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Cohoes",
         "addressRegion": "NY",
+        "postalCode": "12047",
         "addressCountry": "US"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.7742,
+        "longitude": -73.7001
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
       "areaServed": [
         { "@type": "Place", "name": "Capital Region, New York" },
         { "@type": "Country", "name": "United States" }
@@ -115,7 +133,7 @@
 }
 </script>
 </head>
-<body>
+<body data-grain>
 
 <a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
@@ -130,7 +148,7 @@
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="about.html">About</a>
-      <a class="nav__cta" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener">Book a free consultation</a>
+      <a class="nav__cta" href="#consult" data-cta="book-nav">Book a free consultation</a>
     </nav>
   </div>
 </header>
@@ -145,12 +163,12 @@
         <h1 class="t-hero rise rise-1" id="hero-h">I'm the software person for organizations that don't have one.</h1>
         <p class="lead mw-40 rise rise-2">I help nonprofits, associations, and family-run companies make expensive software decisions — the six-figure vendor quote, the system you'll depend on for the next decade, whether to build it or buy it — when there's no one inside qualified to evaluate it.</p>
         <div class="cta-row rise rise-3" style="margin-top:2.6rem;">
-          <a class="btn" href="#consult">Book a free consultation →</a>
+          <a class="btn" href="#consult" data-cta="book-hero">Book a free consultation →</a>
           <a class="link-quiet" href="about.html">How I work</a>
         </div>
         <div class="status rise rise-4" style="margin-top:2.2rem;">
           <span class="status__dot" aria-hidden="true"></span>
-          <span class="status__text"><b>Currently</b> &nbsp;Taking new assessment clients for Q3 2026</span>
+          <span class="status__text"><b>Currently</b> &nbsp;Taking new assessment clients for <span data-quarter>Q3 2026</span></span>
         </div>
       </div>
 
@@ -162,6 +180,22 @@
         </div>
         <figcaption><span>Frank Matranga</span><i>Cohoes, NY</i></figcaption>
       </figure>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section aria-label="Selected clients">
+    <div class="wrap" style="padding-block:0;">
+      <div class="clients">
+        <span class="clients__label">Trusted by</span>
+        <ul class="clients__list">
+          <li>Preston Center of Compassion</li>
+          <li>Candle House Collective</li>
+          <li>Miirror Health</li>
+          <li>Inside Outside Health</li>
+          <li>Rensselaer Center for Open Source</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -179,15 +213,16 @@
   <section id="consult" aria-labelledby="consult-h">
     <div class="wrap pad-l">
       <div class="eyebrow eyebrow--sm">Start with a conversation</div>
-      <div class="split split--end split--apart" style="gap:1.6rem 3rem;">
-        <div class="flex-5">
-          <h2 class="t-md mw-20" id="consult-h">Book a free consultation.</h2>
-          <p class="lead mw-52" style="margin-top:1.4rem;">No technical experience required or expected. We talk through what technical challenges you're facing, I walk you through how I work, and together we figure out which service — if any — actually fits. Pick a time that works for you.</p>
-        </div>
-        <div class="flex-none">
-          <a class="btn" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener">Book a free consultation →</a>
-        </div>
+      <h2 class="t-md mw-20" id="consult-h">Book a free consultation.</h2>
+      <p class="lead mw-52">No technical experience required or expected. We talk through what technical challenges you're facing, I walk you through how I work, and together we figure out which service — if any — actually fits. Pick a time below.</p>
+
+      <div class="booking" style="margin-top:clamp(2rem,4vw,2.8rem);">
+        <iframe
+          src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3DBhhRZXJ__cGrtBIRQXx2kd4SGwY7rFf8HJyMRR2bChWPmZPpo-o2_Yv2ehqaJ_VcjHrEgRqL?gv=true"
+          title="Book a free consultation with Frank Matranga"
+          loading="lazy"></iframe>
       </div>
+      <p class="booking__fallback">Calendar not loading? <a class="link-hair" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener" data-cta="book-fallback">Open the scheduler in a new tab →</a></p>
     </div>
   </section>
 
@@ -262,8 +297,9 @@
             <dd>No surprises</dd>
           </div>
         </dl>
-        <div style="margin-top:2.4rem;">
-          <a class="btn btn--onDark" href="#contact">Book an assessment →</a>
+        <div class="cta-row" style="margin-top:2.4rem;">
+          <a class="btn btn--onDark" href="#consult" data-cta="book-assessment">Book a free consultation →</a>
+          <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-assessment">Or email me directly</a>
         </div>
       </div>
     </div>
@@ -343,6 +379,52 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <!-- Real client words only. To add another, copy one .quote figure below and
+       fill it in — no CSS changes needed. The grid reflows on its own. -->
+  <section id="testimonials" aria-labelledby="say-h">
+    <div class="wrap pad-l">
+      <div class="eyebrow eyebrow--md">In their words</div>
+      <h2 class="t-md2 mw-22" id="say-h">What clients say.</h2>
+
+      <div class="quotes" style="margin-top:clamp(2rem,4vw,2.8rem);">
+        <figure class="quote quote--feature">
+          <div class="quote__mark" aria-hidden="true">“</div>
+          <blockquote>We've worked with Frank for years and he's been amazing. He helped us take our fundraisers online during the pandemic so we could keep supporting the Bronx community when in-person events weren't possible. He really understands what we're trying to do, and thanks to his help, everything from our fundraising events to summer camp and afterschool programs runs more smoothly and reaches more families than ever before.</blockquote>
+          <figcaption>
+            <span class="quote__who">Preston Center of Compassion</span>
+            <span class="quote__where">Bronx, NY · client since 2020</span>
+          </figcaption>
+        </figure>
+
+        <!-- <figure class="quote">
+          <div class="quote__mark" aria-hidden="true">“</div>
+          <blockquote>The team at Matranga Codeworks is incredibly skilled and easy to work with. They delivered on time and exceeded our expectations.</blockquote>
+          <figcaption>
+            <span class="quote__who">Rensselaer Center for Open Source</span>
+            <span class="quote__where">Troy, NY · RCOS.io, maintained pro bono</span>
+          </figcaption>
+        </figure> -->
+
+        <!-- Slot for another testimonial. Uncomment and replace with real words.
+        <figure class="quote">
+          <div class="quote__mark" aria-hidden="true">“</div>
+          <blockquote>QUOTE GOES HERE.</blockquote>
+          <figcaption>
+            <span class="quote__who">CLIENT NAME</span>
+            <span class="quote__where">CITY · CONTEXT</span>
+          </figcaption>
+        </figure>
+        -->
+      </div>
+
+      <div class="cta-row" style="margin-top:clamp(2rem,4vw,2.6rem);">
+        <a class="btn" href="#consult" data-cta="book-testimonials">Book a free consultation →</a>
+        <a class="link-quiet" href="work.html">Read the case studies</a>
+      </div>
+    </div>
+  </section>
+
   <!-- LOCAL -->
   <section aria-labelledby="local-h">
     <div class="wrap pad-m">
@@ -358,11 +440,13 @@
   <section id="contact" class="band-dark" aria-labelledby="contact-h">
     <div class="wrap pad-xxl">
       <div class="eyebrow eyebrow--onDark">Get in touch</div>
-      <h2 class="t-xl mw-18" id="contact-h">The best way to reach me is email.</h2>
-      <p class="on-dark-lead mw-48">No separate sales person! Email me and you'll get me. Tell me what technical decision you're facing and I'll tell you whether I'm the right person for it.</p>
-      <a class="mail-lg" href="mailto:frank@matrangacode.works">frank@matrangacode.works</a>
-      <p style="margin:2.4rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Prefer to talk first? <a class="mail-sm" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener" style="border-bottom-color:var(--acc3);">Book a free call →</a></p>
-      <p style="margin:1.1rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Or find me on <a class="mail-sm" href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener" style="border-bottom-color:var(--acc3);">LinkedIn →</a></p>
+      <h2 class="t-xl mw-18" id="contact-h">Book a time and you'll get me.</h2>
+      <p class="on-dark-lead mw-48">No separate sales person, no form, no one in between. Pick a slot and tell me what technical decision you're facing — I'll tell you honestly whether I'm the right person for it.</p>
+      <div class="cta-row">
+        <a class="btn btn--onDark" href="#consult" data-cta="book-contact">Book a free consultation →</a>
+      </div>
+      <p style="margin:2.4rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Prefer to write? <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-contact" style="border-bottom-color:var(--acc3);">frank@matrangacode.works</a></p>
+      <p style="margin:1.1rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Or call <a class="mail-sm" href="tel:+15182178298" data-cta="phone-contact" style="border-bottom-color:var(--acc3);">(518) 217-8298</a> · find me on <a class="mail-sm" href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener" style="border-bottom-color:var(--acc3);">LinkedIn →</a></p>
     </div>
   </section>
 
@@ -373,7 +457,7 @@
     <span>Frank Matranga · Matranga Codeworks LLC</span>
     <span>Cohoes, New York · Capital Region</span>
     <span><a href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>© 2026</span>
+    <span>© <span data-year>2026</span></span>
   </div>
 </footer>
 

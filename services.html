@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Spline+Sans+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="site.js" defer></script>
+<script src="analytics.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -114,12 +115,77 @@
           "minPrice": 20000
         }
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://matrangacode.works/services.html#faq",
+      "url": "https://matrangacode.works/services.html#faq",
+      "isPartOf": { "@id": "https://matrangacode.works/#website" },
+      "inLanguage": "en-US",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What if the answer is “don't build”?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then that's what the assessment says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than take on a build I don't believe in. The recommendation is the deliverable; a build only happens if the recommendation turns out to be “build.”"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What exactly do I get for $6,000?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A written assessment of where you stand, in plain English, and a roadmap with real costs and a sensible order of operations. Alongside that: a read on any vendor quotes already on the table, and a build-or-buy recommendation with the reasoning shown so you can argue with it. It's a document you own and can take anywhere, including to a different consultant. The fee is fixed and agreed before we start — where it lands above $6,000 depends only on how much ground there is to cover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from my IT company?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your IT company keeps the computers on — networks, laptops, email, backups, the help desk. Judging whether a six-figure quote is fair, or whether a platform will still fit you in five years, is a different job. Most IT firms don't build software and don't price it, so they aren't equipped to evaluate it. I'm not a replacement for them. I'm the person who reads the contract before you sign it, and who can oversee them on your behalf when the work gets technical."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I own what you produce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — all of it. Code, designs, documents, and the intellectual property, plus documentation so you're never locked into working only with me. I don't resell software or take vendor commissions either, so nothing I hand you is quietly steering you toward a product that pays me."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do payments work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The assessment is a fixed fee, agreed up front. Builds are a fixed bid paid against milestones you can actually see — typically around 25% to start, 50% across milestones, and 25% on completion — so you're never paying for work that hasn't been delivered, and never signing a blank check. Advisory is month to month, and you can stop whenever it stops being worth it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I talk to a reference first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and I'd encourage it. I'll put you in touch with clients who've been through this, including the ones named on this site. Some engagements are covered by confidentiality and can't be discussed publicly, but I'm glad to talk specifics privately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you discount for nonprofits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often, yes — for nonprofits, educational institutions, and churches. A good share of my work is with them, and the pricing on this page isn't the end of the conversation. Tell me your situation on the call."
+          }
+        }
+      ]
     }
   ]
 }
 </script>
 </head>
-<body>
+<body data-grain>
 
 <a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
@@ -134,7 +200,7 @@
       <a href="work.html">Work</a>
       <a href="services.html" aria-current="page">Services</a>
       <a href="about.html">About</a>
-      <a class="nav__cta" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener">Book a free consultation</a>
+      <a class="nav__cta" href="#book" data-cta="book-nav">Book a free consultation</a>
     </nav>
   </div>
 </header>
@@ -152,6 +218,8 @@
         <a href="#advisory">ii · Advisory</a>
         <a href="#advisoryplus">iii · Advisory Plus</a>
         <a href="#build">iv · Custom software</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book">Book a call</a>
       </nav>
     </div>
   </section>
@@ -211,8 +279,27 @@
           </div>
         </dl>
 
-        <div style="margin-top:2.4rem;">
-          <a class="btn btn--onDark" href="index.html#contact">Book an assessment →</a>
+        <div class="cta-row" style="margin-top:2.4rem;">
+          <a class="btn btn--onDark" href="#book" data-cta="book-assessment">Book a free consultation →</a>
+          <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-assessment">Or email me directly</a>
+        </div>
+      </div>
+
+      <!-- WHAT THE DOCUMENT CONTAINS -->
+      <div style="margin-top:clamp(2.5rem,5vw,3.5rem);">
+        <div class="eyebrow eyebrow--sm">Inside the assessment</div>
+        <div class="split">
+          <h3 class="t-xs flex-2 mw-18">What the document actually contains.</h3>
+          <div class="flex-4 mw-58">
+            <p class="copy-l" style="margin:0 0 1.6rem;">Not a slide deck and not a sales proposal. A working document, written in plain English, structured like this:</p>
+            <ol class="local-list" style="counter-reset:none;">
+              <li>Where you stand today<small>Your systems, what they cost you, and what's actually at risk — written so your board can follow it.</small></li>
+              <li>What you're being sold<small>A line-by-line read on any vendor quotes or proposals already on the table, and whether they're fair.</small></li>
+              <li>Build or buy<small>The recommendation, with the reasoning shown so you can argue with it rather than take it on faith.</small></li>
+              <li>What it will really cost<small>Real numbers and a sensible order of operations — what to do first, and what can wait.</small></li>
+              <li>What happens if you do nothing<small>The honest version, including the cases where doing nothing is the right call.</small></li>
+            </ol>
+          </div>
         </div>
       </div>
     </div>
@@ -264,7 +351,7 @@
         <div class="flex-1">
           <div class="kicker-row" style="margin-bottom:1.2rem;">
             <span class="num">iv</span>
-            <span class="txt">The credential</span>
+            <span class="txt">The work behind the advice</span>
           </div>
           <h2 class="t-md3 mw-14" id="b-h" style="line-height:1.02;">Custom software development</h2>
           <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">Fixed price, paid in stages</div>
@@ -288,7 +375,28 @@
             </div>
           </div>
 
-          <p class="aside-note">Advice and building are separate engagements — and part of the job is telling you when you shouldn't build at all.</p>
+          <p class="aside-note">Advice and building are separate engagements. You're never buying one to get the other.</p>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS/VIDEOS -->
+      <div style="margin-top:clamp(2.5rem,5vw,3.5rem);">
+        <div class="label" style="margin-bottom:1.2rem;">Software I've shipped</div>
+        <div class="shots">
+          <figure style="margin:0;">
+            <div class="photo photo--wide hatch" data-placeholder="Screenshot — Preston Center of Compassion fundraiser">
+              <video width="100%"  src="/videos/pcc_august_fundraiser.mov" autoplay muted loop></video>
+              <!-- <img src="images/shot-preston-raffle.png" alt="The Preston Center of Compassion realtime fundraising app, showing raffle ticket purchase and donation totals" data-slot> -->
+            </div>
+            <figcaption class="photo-cap">Preston Center of Compassion — realtime raffle and donation platform.</figcaption>
+          </figure>
+          <figure style="margin:0;">
+            <!-- <div class="photo photo--wide hatch" data-placeholder="Screenshot — Candle House Collective production scheduling">
+              <img src="images/shot-candle-house.png" alt="The Candle House Collective web application, showing show scheduling and actor assignments in one view" data-slot>
+            </div> -->
+            <!-- <figcaption class="photo-cap">Candle House Collective — shows, actors, and scheduling in one system.</figcaption> -->
+          </figure>
+          
         </div>
       </div>
     </div>
@@ -311,18 +419,115 @@
         <p class="copy-l flex-4 mw-56" style="margin:0;">It's the cleanest way to find out what you're actually dealing with, and it points to whatever comes next — ongoing Advisory, a build, or nothing at all. If you already know what you need, skip ahead and email me directly. Either way, the first step is a conversation, not a contract.</p>
       </div>
       <div class="cta-row" style="margin-top:2.4rem;">
-        <a class="btn" href="index.html#contact">Email me →</a>
+        <a class="btn" href="#book" data-cta="book-fit">Book a free consultation →</a>
         <a class="link-quiet" href="about.html">How I work</a>
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="ruled" aria-labelledby="svc-say-h">
+    <div class="wrap pad-m">
+      <div class="eyebrow eyebrow--md">In their words</div>
+      <h2 class="t-sm mw-22" id="svc-say-h">What clients say.</h2>
+
+      <div class="quotes" style="margin-top:clamp(1.8rem,4vw,2.6rem);">
+        <figure class="quote quote--feature">
+          <div class="quote__mark" aria-hidden="true">“</div>
+          <blockquote>We've worked with Frank for years and he's been amazing. He helped us take our fundraisers online during the pandemic so we could keep supporting the Bronx community when in-person events weren't possible. He really understands what we're trying to do, and thanks to his help, everything from our fundraising events to summer camp and afterschool programs runs more smoothly and reaches more families than ever before.</blockquote>
+          <figcaption>
+            <span class="quote__who">Preston Center of Compassion</span>
+            <span class="quote__where">Bronx, NY · client since 2020</span>
+          </figcaption>
+        </figure>
+
+        <!-- <figure class="quote">
+          <div class="quote__mark" aria-hidden="true">“</div>
+          <blockquote>The team at Matranga Codeworks is incredibly skilled and easy to work with. They delivered on time and exceeded our expectations.</blockquote>
+          <figcaption>
+            <span class="quote__who">Rensselaer Center for Open Source</span>
+            <span class="quote__where">Troy, NY · RCOS.io, maintained pro bono</span>
+          </figcaption>
+        </figure> -->
+      </div>
+
+      <div class="clients" style="margin-top:clamp(1.8rem,4vw,2.4rem);">
+        <span class="clients__label">Trusted by</span>
+        <ul class="clients__list">
+          <li>Preston Center of Compassion</li>
+          <li>Candle House Collective</li>
+          <li>Miirror Health</li>
+          <li>Inside Outside Health</li>
+          <li>Rensselaer Center for Open Source</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="ruled" aria-labelledby="faq-h">
+    <div class="wrap pad-m">
+      <div class="eyebrow eyebrow--md">Before you commit</div>
+      <h2 class="t-sm mw-20" id="faq-h">Questions people ask before spending $6,000.</h2>
+
+      <div class="faq" style="margin-top:clamp(1.8rem,4vw,2.4rem);">
+        <details>
+          <summary>What if the answer is “don't build”?</summary>
+          <p class="faq__a">Then that's what the assessment says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than take on a build I don't believe in. The recommendation <em>is</em> the deliverable; a build only happens if the recommendation turns out to be “build.”</p>
+        </details>
+        <details>
+          <summary>What exactly do I get for $6,000?</summary>
+          <p class="faq__a">A written assessment of where you stand, in plain English, and a roadmap with real costs and a sensible order of operations. Alongside that: a read on any vendor quotes already on the table, and a build-or-buy recommendation with the reasoning shown so you can argue with it. It's a document you own and can take anywhere, including to a different consultant. The fee is fixed and agreed before we start — where it lands above $6,000 depends only on how much ground there is to cover.</p>
+        </details>
+        <details>
+          <summary>How is this different from my IT company?</summary>
+          <p class="faq__a">Your IT company keeps the computers on — networks, laptops, email, backups, the help desk. Judging whether a six-figure quote is fair, or whether a platform will still fit you in five years, is a different job. Most IT firms don't build software and don't price it, so they aren't equipped to evaluate it.</p>
+          <p class="faq__a">I'm not a replacement for them. I'm the person who reads the contract before you sign it, and who can oversee them on your behalf when the work gets technical.</p>
+        </details>
+        <details>
+          <summary>Will I own what you produce?</summary>
+          <p class="faq__a">Yes — all of it. Code, designs, documents, and the intellectual property, plus documentation so you're never locked into working only with me. I don't resell software or take vendor commissions either, so nothing I hand you is quietly steering you toward a product that pays me.</p>
+        </details>
+        <details>
+          <summary>How do payments work?</summary>
+          <p class="faq__a">The assessment is a fixed fee, agreed up front. Builds are a fixed bid paid against milestones you can actually see — typically around 25% to start, 50% across milestones, and 25% on completion — so you're never paying for work that hasn't been delivered, and never signing a blank check. Advisory is month to month, and you can stop whenever it stops being worth it.</p>
+        </details>
+        <details>
+          <summary>Can I talk to a reference first?</summary>
+          <p class="faq__a">Yes, and I'd encourage it. I'll put you in touch with clients who've been through this, including the ones named on this site. Some engagements are covered by confidentiality and can't be discussed publicly, but I'm glad to talk specifics privately.</p>
+        </details>
+        <details>
+          <summary>Do you discount for nonprofits?</summary>
+          <p class="faq__a">Often, yes — for nonprofits, educational institutions, and churches. A good share of my work is with them, and the pricing on this page isn't the end of the conversation. Tell me your situation on the call.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book" class="ruled" aria-labelledby="book-h">
+    <div class="wrap pad-m">
+      <div class="eyebrow eyebrow--sm">Start with a conversation</div>
+      <h2 class="t-md mw-20" id="book-h">Book a free consultation.</h2>
+      <p class="lead mw-52">No technical experience required or expected. We talk through what you're facing, I walk you through how I work, and together we figure out which of these — if any — actually fits. Pick a time below.</p>
+
+      <div class="booking" style="margin-top:clamp(2rem,4vw,2.8rem);">
+        <iframe
+          src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3DBhhRZXJ__cGrtBIRQXx2kd4SGwY7rFf8HJyMRR2bChWPmZPpo-o2_Yv2ehqaJ_VcjHrEgRqL?gv=true"
+          title="Book a free consultation with Frank Matranga"
+          loading="lazy"></iframe>
+      </div>
+      <p class="booking__fallback">Calendar not loading? <a class="link-hair" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener" data-cta="book-fallback">Open the scheduler in a new tab →</a></p>
     </div>
   </section>
 
   <!-- CONTACT CTA -->
   <section class="band-dark" aria-labelledby="cc-h">
     <div class="wrap pad-xl">
-      <h2 class="t-lg2 mw-20" id="cc-h">Tell me what decision you're facing.</h2>
-      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">Email me and you'll get me — no form, no one in between. I'll tell you honestly which of these fits, or whether none of them does.</p>
-      <a class="mail-lg mail-md" href="mailto:frank@matrangacode.works">frank@matrangacode.works</a>
+      <h2 class="t-lg2 mw-20" id="cc-h">Rather write than talk?</h2>
+      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">Email me and you'll still get me — no form, no one in between. Tell me what decision you're facing and I'll tell you honestly which of these fits, or whether none of them does.</p>
+      <a class="mail-lg mail-md" href="mailto:frank@matrangacode.works" data-cta="email-services">frank@matrangacode.works</a>
+      <p style="margin:1.8rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Or call <a class="mail-sm" href="tel:+15182178298" data-cta="phone-services" style="border-bottom-color:var(--acc3);">(518) 217-8298</a></p>
     </div>
   </section>
 
@@ -333,7 +538,7 @@
     <span>Frank Matranga · Matranga Codeworks LLC</span>
     <span>Cohoes, New York · Capital Region</span>
     <span><a href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>© 2026</span>
+    <span>© <span data-year>2026</span></span>
   </div>
 </footer>
 

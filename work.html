@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Spline+Sans+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="site.js" defer></script>
+<script src="analytics.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -84,7 +85,7 @@
 }
 </script>
 </head>
-<body>
+<body data-grain>
 
 <a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
@@ -99,7 +100,7 @@
       <a href="work.html" aria-current="page">Work</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
-      <a class="nav__cta" href="https://calendar.app.google/74qf83qTXzoawDXF9" target="_blank" rel="noopener">Book a free consultation</a>
+      <a class="nav__cta" href="index.html#consult" data-cta="book-nav">Book a free consultation</a>
     </nav>
   </div>
 </header>
@@ -176,6 +177,14 @@
               <p>That first app raised tens of thousands of dollars and kept them in operation through the worst of it. Five years on, I'm still their software person — I build and maintain their fundraising apps, run their email marketing, and manage their summer-camp registration platform and their entire donor CRM.</p>
             </div>
           </div>
+          <figure class="quote quote--feature" style="margin-top:1.4rem;">
+            <div class="quote__mark" aria-hidden="true">“</div>
+            <blockquote>We've worked with Frank for years and he's been amazing. He helped us take our fundraisers online during the pandemic so we could keep supporting the Bronx community when in-person events weren't possible. He really understands what we're trying to do, and thanks to his help, everything from our fundraising events to summer camp and afterschool programs runs more smoothly and reaches more families than ever before.</blockquote>
+            <figcaption>
+              <span class="quote__who">Preston Center of Compassion</span>
+              <span class="quote__where">Bronx, NY · client since 2020</span>
+            </figcaption>
+          </figure>
           <p class="note" style="margin:1rem 0 0;">Preston Center of Compassion — Bronx, NY · client since 2020.</p>
           <p class="case__related">
             <span>Related</span>
@@ -237,10 +246,10 @@
   <section class="band-dark" aria-labelledby="wc-h">
     <div class="wrap pad-xl">
       <h2 class="t-lg2 mw-20" id="wc-h">Facing a decision like these?</h2>
-      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">The assessment is the cleanest way to find out what you're dealing with. Or just email me and tell me what's on the table.</p>
+      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">A free call is the cleanest way to find out what you're dealing with. Pick a time, or write and tell me what's on the table.</p>
       <div class="cta-row">
-        <a class="btn btn--onDark" href="services.html#assessment">Start with an assessment →</a>
-        <a class="mail-sm" href="mailto:frank@matrangacode.works">frank@matrangacode.works</a>
+        <a class="btn btn--onDark" href="index.html#consult" data-cta="book-work">Book a free consultation →</a>
+        <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-work">frank@matrangacode.works</a>
       </div>
     </div>
   </section>
@@ -252,7 +261,7 @@
     <span>Frank Matranga · Matranga Codeworks LLC</span>
     <span>Cohoes, New York · Capital Region</span>
     <span><a href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>© 2026</span>
+    <span>© <span data-year>2026</span></span>
   </div>
 </footer>
 

@@ -50,7 +50,40 @@
     });
   }
 
-  function init() { reveal(); slots(); }
+  /* --- Self-updating dateline -------------------------------------------
+     The copyright year and the "taking clients for Qn YYYY" status used to be
+     hard-coded, which is how a site starts looking abandoned. Both are now
+     computed. The markup still ships a correct literal value, so with JS
+     blocked the page reads fine — it just stops advancing. */
+  function dateline() {
+    var now = new Date();
+
+    var years = document.querySelectorAll('[data-year]');
+    Array.prototype.forEach.call(years, function (el) {
+      el.textContent = now.getFullYear();
+    });
+
+    var quarters = document.querySelectorAll('[data-quarter]');
+    if (!quarters.length) return;
+
+    var year = now.getFullYear();
+    var q = Math.floor(now.getMonth() / 3);           /* 0-3 */
+
+    /* Roll to the next quarter once the current one is nearly over — "booking
+       for Q3" three days before Q3 ends reads worse than saying nothing. */
+    var endOfQuarter = new Date(year, q * 3 + 3, 1);
+    if ((endOfQuarter - now) / 86400000 < 21) {
+      q += 1;
+      if (q > 3) { q = 0; year += 1; }
+    }
+
+    var text = 'Q' + (q + 1) + ' ' + year;
+    Array.prototype.forEach.call(quarters, function (el) {
+      el.textContent = text;
+    });
+  }
+
+  function init() { reveal(); slots(); dateline(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
