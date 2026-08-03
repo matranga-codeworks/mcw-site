@@ -1,6 +1,6 @@
 # Matranga Codeworks — site
 
-Static site for Frank Matranga / Matranga Codeworks LLC. Four pages, no build
+Static site for Frank Matranga / Matranga Codeworks LLC. Five pages, no build
 step, no dependencies. Open `index.html` or serve the directory with anything.
 
 ```
@@ -15,6 +15,7 @@ python3 -m http.server 8000
 | `about.html`    | About — background, beliefs, locally + event photos |
 | `services.html` | Services & pricing — assessment, two advisory tiers, custom software |
 | `work.html`     | Work — three case studies |
+| `startups.html` | Segment landing page for early-stage founders — own hero, own booking embed, own FAQ. Reframes the same three offers (build / assessment / advisory) build-first instead of assessment-first |
 | `404.html`      | Custom not-found page. GitHub Pages serves this automatically |
 | `styles.css`    | The whole design system: tokens, layout, components |
 | `site.js`       | Scroll reveal, image-slot fallback, self-updating dateline. Progressive enhancement — every page reads fine with JS off |
@@ -38,6 +39,10 @@ Each page carries a full Open Graph block, a canonical link, and JSON-LD:
 - **Services** — one `Service` per offering, with the real prices as
   `PriceSpecification` / `UnitPriceSpecification`
 - **Work** — `CollectionPage` with an `ItemList` of the three case studies
+- **Startups** — `WebPage` with an `audience` node, plus its own `FAQPage`. It
+  deliberately declares no `Service` nodes: the offers are the same ones
+  Services already describes, and duplicating them would compete with the
+  canonical definitions there
 
 The home page's business node is typed `["ProfessionalService", "LocalBusiness"]`
 and carries the full NAP set — name, address, `telephone`, `geo`, and
@@ -45,9 +50,10 @@ and carries the full NAP set — name, address, `telephone`, `geo`, and
 both want the site to agree with the profile exactly. If you change the phone
 number or hours anywhere, change them in **both** places.
 
-Services also carries a `FAQPage` node. **Its `text` must stay byte-identical to
-the visible `<summary>` / `.faq__a` copy** — Google treats a mismatch as
-cloaking. There's a checker for this; see **Verifying** below.
+Services and Startups each carry a `FAQPage` node. **Its `text` must stay
+byte-identical to that page's visible `<summary>` / `.faq__a` copy** — Google
+treats a mismatch as cloaking. There's a checker for this; see **Verifying**
+below. If you add an FAQ to a third page, add it to `FAQ_PAGES` in that script.
 
 Update `<lastmod>` in `sitemap.xml` when the content changes materially.
 
@@ -93,12 +99,24 @@ button, just add the attribute — no JS change:
   block; the grid reflows on its own and needs no CSS.
 - **One primary CTA.** Booking is the single primary action sitewide; email and
   phone are always visibly secondary. The Google scheduler is embedded inline at
-  `index.html#consult` and `services.html#book`.
+  `index.html#consult`, `services.html#book`, and `startups.html#book`. Startups
+  gets its own embed rather than linking home on purpose — a founder sent to
+  `index.html` to book lands on "the software person for organizations that
+  don't have one," which is the wrong first sentence for them.
   - Gotcha: only the `calendar.google.com/calendar/appointments/schedules/…?gv=true`
     form is frameable. The `calendar.app.google/…` short link sends
     `X-Frame-Options: SAMEORIGIN` and renders an empty box. Each embed has a
     visible "open in a new tab" fallback beneath it.
-- **FAQ** lives on Services and exists to de-risk the $6,000 decision.
+- **Segment router.** The `#who` cards on the home page are `<a class="route">`
+  links, one per segment, each pointing at whatever that reader should see next
+  (nonprofits → Work, associations → Advisory, mid-market → the assessment,
+  startups → `startups.html`). Each carries `data-cta="who-…"`, so PostHog
+  reports which segment actually clicks — that's the signal for whether any
+  other segment deserves its own page. Add a segment by copying one `<a>`; the
+  grid reflows and needs no CSS.
+- **FAQ** lives on Services, where it de-risks the $6,000 decision, and on
+  Startups, where it answers the founder-specific questions instead — equity,
+  IP ownership at diligence time, and what happens at the first in-house hire.
 - **Screenshot slots** in Services → Custom software are empty placeholders
   until you add files. See `images/README.md` — get client sign-off and scrub
   real donor/patient data first.
@@ -162,22 +180,34 @@ for f in sorted(glob.glob('*.html')):
         try: json.loads(b); print('ok  ', f, i)
         except Exception as e: print('FAIL', f, i, e)"
 
-# FAQ JSON-LD still matches the visible questions
-python3 -c "
+# FAQ JSON-LD still matches the visible questions and answers
+python3 - <<'PY'
 import re, json, html
-s = open('services.html', encoding='utf-8').read()
-d = json.loads(re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>', s, re.S)[0])
-ld = [q['name'] for q in [n for n in d['@graph'] if n['@type'] == 'FAQPage'][0]['mainEntity']]
-vis = [html.unescape(x).strip() for x in re.findall(r'<summary>(.*?)</summary>', s, re.S)]
-print('MATCH' if ld == vis else 'MISMATCH', len(ld), 'questions')"
+FAQ_PAGES = ['services.html', 'startups.html']
+strip = lambda t: html.unescape(re.sub(r'<[^>]+>', '', t)).strip()
+for f in FAQ_PAGES:
+    s = open(f, encoding='utf-8').read()
+    d = json.loads(re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)[0])
+    faq = [n for n in d['@graph'] if n['@type'] == 'FAQPage'][0]['mainEntity']
+    ld_q = [q['name'] for q in faq]
+    ld_a = [q['acceptedAnswer']['text'] for q in faq]
+    vis_q = [strip(x) for x in re.findall(r'<summary>(.*?)</summary>', s, re.S)]
+    # answers: one <details> may hold several .faq__a paragraphs — join them
+    vis_a = [' '.join(strip(p) for p in re.findall(r'<p class="faq__a">(.*?)</p>', block, re.S))
+             for block in re.findall(r'<details>(.*?)</details>', s, re.S)]
+    ok = ld_q == vis_q and ld_a == vis_a
+    print('MATCH' if ok else 'MISMATCH', f, len(ld_q), 'questions')
+    for i, (a, b) in enumerate(zip(ld_q, vis_q)):
+        if a != b: print(f'  Q{i} ld={a!r} vis={b!r}')
+    for i, (a, b) in enumerate(zip(ld_a, vis_a)):
+        if a != b: print(f'  A{i} ld={a!r}\n     vis={b!r}')
+PY
 ```
 
 ## Still on you
 
 Things that can't be done from this repo:
 
-- [ ] Submit `sitemap.xml` in Google Search Console and confirm the property is
-      verified for the canonical host.
 - [ ] Collect 1–3 more testimonials (Candle House, Miirror, Inside Outside
       Health) — there's a commented slot ready on the home page.
 

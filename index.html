@@ -231,19 +231,31 @@
     <div class="wrap pad-l">
       <div class="eyebrow">Who this is for</div>
       <h2 class="t-md mw-22" id="who-h">You're about to spend real money on software, and the person who should be checking the work isn't on your org chart.</h2>
+
+      <!-- Segment router. Each card is a link to whatever that reader should see
+           next, and each carries its own data-cta so PostHog reports which
+           segment is actually clicking. Add a segment by copying one <a>. -->
       <div class="grid" style="margin-top:clamp(2rem,5vw,3rem);">
-        <div>
-          <h3 style="font-size:1.35rem;letter-spacing:-.02em;margin-bottom:.7rem;">Nonprofits</h3>
+        <a class="route" href="work.html" data-cta="who-nonprofits">
+          <h3 class="route__title">Nonprofits</h3>
           <p class="copy">An executive director, COO, or CFO whose programs, billing, and funder reporting live in four systems that don't talk to each other.</p>
-        </div>
-        <div>
-          <h3 style="font-size:1.35rem;letter-spacing:-.02em;margin-bottom:.7rem;">Associations</h3>
+          <span class="route__go">See the nonprofit work →</span>
+        </a>
+        <a class="route" href="services.html#advisory" data-cta="who-associations">
+          <h3 class="route__title">Associations</h3>
           <p class="copy">A director weighing a new member platform who's getting very different answers from every vendor in the room.</p>
-        </div>
-        <div>
-          <h3 style="font-size:1.35rem;letter-spacing:-.02em;margin-bottom:.7rem;">Manufacturers &amp; distributors</h3>
+          <span class="route__go">How advisory works →</span>
+        </a>
+        <a class="route" href="services.html#assessment" data-cta="who-midmarket">
+          <h3 class="route__title">Manufacturers &amp; distributors</h3>
           <p class="copy">An owner or operations lead replacing the system that runs the business, with an outside IT company that keeps the computers on but can't judge a decision like this.</p>
-        </div>
+          <span class="route__go">Start with an assessment →</span>
+        </a>
+        <a class="route" href="startups.html" data-cta="who-startups">
+          <h3 class="route__title">Startups</h3>
+          <p class="copy">A founder with no engineer yet — building a first product, or holding a codebase someone else left behind and no way to judge whether it's worth keeping.</p>
+          <span class="route__go">Read the founder page →</span>
+        </a>
       </div>
     </div>
   </section>

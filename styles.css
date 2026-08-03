@@ -1149,3 +1149,43 @@ body[data-grain] .grain { display: block; }
   color: var(--btn-ink);
   box-shadow: 1px 1px 0 var(--ink);
 }
+
+/* -------------------------------------------------------- segment router --- */
+
+/* The "who this is for" cards on the home page double as a router: each one is
+   a link to wherever that reader should go next. Kept visually bare on purpose
+   — the bordered .card look is already spoken for by Selected work further
+   down the same page, and two card grids on one page read as a template. */
+/* Flex column so the arrow link pins to the bottom of the row — otherwise a
+   segment whose title wraps to two lines pushes its link out of alignment
+   with the rest. */
+.route {
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  border-top: 2px solid var(--rule);
+  padding-top: 1.1rem;
+  transition: border-color .22s ease;
+}
+.route:hover { color: var(--ink); border-top-color: var(--acc); }
+.route__title {
+  margin: 0 0 .7rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  transition: color .22s ease;
+}
+.route:hover .route__title { color: var(--acc2); }
+.route__go {
+  display: block;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .22s ease, transform .22s ease;
+}
+.route:hover .route__go { color: var(--acc2); transform: translateX(4px); }
