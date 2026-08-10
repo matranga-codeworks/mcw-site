@@ -730,7 +730,8 @@ body[data-grain] .grain { display: block; }
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .photo:hover { transform: translateY(-5px); box-shadow: 8px 8px 0 var(--acc); }
-.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo img,
+.photo video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .photo--empty::after,
 .slot--empty::after {
   content: attr(data-placeholder);
@@ -1133,7 +1134,8 @@ body[data-grain] .grain { display: block; }
   gap: clamp(1rem, 2.5vw, 1.6rem);
 }
 .photo--wide { aspect-ratio: 16 / 10; }
-.photo--wide img { object-fit: cover; object-position: top center; }
+.photo--wide img,
+.photo--wide video { object-fit: cover; object-position: top center; }
 
 /* ------------------------------------------------- secondary action ------ */
 

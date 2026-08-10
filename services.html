@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Services &amp; Pricing — Frank Matranga, Matranga Codeworks</title>
+<title>Custom software services &amp; pricing — Frank Matranga</title>
 <meta name="description" content="One process, three stages, real prices: Definition for $5,000, first builds starting at $35,000, and Support retainers from $2,500 a month.">
 <meta name="author" content="Frank Matranga">
 <meta name="theme-color" content="#2E5D46">
@@ -44,7 +44,16 @@
       "inLanguage": "en-US"
     },
     {
+      "@type": "BreadcrumbList",
+      "@id": "https://matrangacode.works/services.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://matrangacode.works/" },
+        { "@type": "ListItem", "position": 2, "name": "Services & pricing" }
+      ]
+    },
+    {
       "@type": "Service",
+      "@id": "https://matrangacode.works/services.html#definition",
       "name": "Product and Technical Definition",
       "serviceType": "Software product definition and scoping",
       "provider": { "@id": "https://matrangacode.works/#business" },
@@ -63,6 +72,7 @@
     },
     {
       "@type": "Service",
+      "@id": "https://matrangacode.works/services.html#build",
       "name": "Build",
       "serviceType": "Custom software development",
       "provider": { "@id": "https://matrangacode.works/#business" },
@@ -80,6 +90,7 @@
     },
     {
       "@type": "Service",
+      "@id": "https://matrangacode.works/services.html#support",
       "name": "Support",
       "serviceType": "Software maintenance and support",
       "provider": { "@id": "https://matrangacode.works/#business" },
@@ -332,6 +343,7 @@
             <div>
               <div class="label" style="margin-bottom:.8rem;">Who it's for</div>
               <p class="copy" style="line-height:1.5;font-size:1.02rem;">Funded startups with a first product to get right, and established organizations that need real software built with no technical team in-house.</p>
+              <p style="margin:.7rem 0 0;"><a class="link-hair" href="startups.html">How this works for funded founders →</a></p>
             </div>
             <div>
               <div class="label" style="margin-bottom:.8rem;">Not included</div>
@@ -353,18 +365,21 @@
         <div class="shots">
           <figure style="margin:0;">
             <div class="photo photo--wide hatch" data-placeholder="Screenshot — Preston Center of Compassion fundraiser">
-              <video width="100%"  src="/videos/pcc_august_fundraiser.mov" autoplay muted loop></video>
-              <!-- <img src="images/shot-preston-raffle.png" alt="The Preston Center of Compassion realtime fundraising app, showing raffle ticket purchase and donation totals" data-slot> -->
+              <video src="images/pcc_august_fundraiser.mp4"
+                     aria-label="Screen recording of the Preston Center of Compassion fundraising app: donors buying raffle tickets while the donation total updates in real time"
+                     autoplay muted loop playsinline preload="metadata"></video>
             </div>
             <figcaption class="photo-cap">Preston Center of Compassion — realtime raffle and donation platform.</figcaption>
           </figure>
+          <!-- Second shot. Uncomment once images/shot-candle-house.png exists; an
+               empty <figure> here would otherwise hold open a blank grid column.
           <figure style="margin:0;">
-            <!-- <div class="photo photo--wide hatch" data-placeholder="Screenshot — Candle House Collective production scheduling">
+            <div class="photo photo--wide hatch" data-placeholder="Screenshot — Candle House Collective production scheduling">
               <img src="images/shot-candle-house.png" alt="The Candle House Collective web application, showing show scheduling and actor assignments in one view" data-slot>
-            </div> -->
-            <!-- <figcaption class="photo-cap">Candle House Collective — shows, actors, and scheduling in one system.</figcaption> -->
+            </div>
+            <figcaption class="photo-cap">Candle House Collective — shows, actors, and scheduling in one system.</figcaption>
           </figure>
-
+          -->
         </div>
       </div>
     </div>

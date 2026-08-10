@@ -44,6 +44,17 @@ Each page carries a full Open Graph block, a canonical link, and JSON-LD:
   Services already describes, and duplicating them would compete with the
   canonical definitions there
 
+Every page except Home also carries a two-level `BreadcrumbList` (Home → this
+page). The final `ListItem` intentionally has no `item` — Google's spec wants
+the current page unlinked.
+
+The three `Service` nodes are addressed by `@id`
+(`…/services.html#definition`, `#build`, `#support`) and the home page's
+`hasOfferCatalog` references those same `@id`s. That's what keeps one
+definition of each service in the graph instead of two competing ones — the
+same rule that keeps Startups from declaring its own. If you rename a stage,
+the `@id` is what has to stay put.
+
 The home page's business node is typed `["ProfessionalService", "LocalBusiness"]`
 and carries the full NAP set — name, address, `telephone`, `geo`, and
 `openingHoursSpecification` — because local search and Google Business Profile
