@@ -1055,7 +1055,7 @@ body[data-grain] .grain { display: block; }
 /* The Google scheduler, inline. Only the /calendar/appointments/schedules/…
    ?gv=true form is frameable — the calendar.app.google short link sends
    X-Frame-Options: SAMEORIGIN and renders blank in an iframe. */
-.booking {
+/* .booking {
   border: 2px solid var(--ink);
   box-shadow: 8px 8px 0 var(--acc);
   background: var(--paper-2);
@@ -1078,7 +1078,7 @@ body[data-grain] .grain { display: block; }
   font-size: .78rem;
   line-height: 1.6;
   color: var(--muted);
-}
+} */
 
 /* ----------------------------------------------------------------- faq --- */
 

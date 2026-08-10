@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services &amp; Pricing — Frank Matranga, Matranga Codeworks</title>
-<meta name="description" content="Four ways to work together, with real prices: a fixed-fee technical assessment, two advisory tiers, and custom software development.">
+<meta name="description" content="One process, three stages, real prices: Definition for $5,000, first builds starting at $35,000, and Support retainers from $2,500 a month.">
 <meta name="author" content="Frank Matranga">
 <meta name="theme-color" content="#2E5D46">
 <link rel="canonical" href="https://matrangacode.works/services.html">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Matranga Codeworks">
 <meta property="og:url" content="https://matrangacode.works/services.html">
 <meta property="og:title" content="Services &amp; Pricing — Frank Matranga">
-<meta property="og:description" content="Real prices, no 'contact for pricing.' Start with a fixed-fee technical assessment.">
+<meta property="og:description" content="Real prices, no 'contact for pricing.' Definition is $5,000; first builds start at $35,000.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://matrangacode.works/images/og.png">
 <meta property="og:image:width" content="1200">
@@ -45,74 +45,55 @@
     },
     {
       "@type": "Service",
-      "name": "Technical assessment",
-      "serviceType": "Technical assessment",
+      "name": "Product and Technical Definition",
+      "serviceType": "Software product definition and scoping",
       "provider": { "@id": "https://matrangacode.works/#business" },
-      "url": "https://matrangacode.works/services.html#assessment",
-      "description": "A two- to three-week fixed-fee review ending in a written assessment and a roadmap with real costs attached, in plain English and tied to no vendor.",
+      "url": "https://matrangacode.works/services.html#definition",
+      "description": "A two-week fixed-fee phase before any code: what the product needs to do, what gets cut from the first version, the technical approach, how it will reach users — the App Store or the web — and any compliance requirements — ending in a written specification, a build plan with milestones, and a fixed price for the build.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
+        "price": 5000,
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "USD",
-          "minPrice": 6000,
-          "maxPrice": 15000
+          "price": 5000
         }
       }
     },
     {
       "@type": "Service",
-      "name": "Advisory",
-      "serviceType": "Technical advisory retainer",
-      "provider": { "@id": "https://matrangacode.works/#business" },
-      "url": "https://matrangacode.works/services.html#advisory",
-      "description": "A standing monthly call, email access with a one-business-day response, and vendor quote, proposal, and contract review. Month to month.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "priceCurrency": "USD",
-          "price": 1500,
-          "minPrice": 1500,
-          "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" }
-        }
-      }
-    },
-    {
-      "@type": "Service",
-      "name": "Advisory Plus",
-      "serviceType": "Technical advisory retainer",
-      "provider": { "@id": "https://matrangacode.works/#business" },
-      "url": "https://matrangacode.works/services.html#advisoryplus",
-      "description": "Everything in Advisory, plus joining vendor calls, board and funder translation, technical hiring and MSP oversight, and a quarterly written summary.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "priceCurrency": "USD",
-          "price": 4000,
-          "minPrice": 4000,
-          "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" }
-        }
-      }
-    },
-    {
-      "@type": "Service",
-      "name": "Custom software development",
+      "name": "Build",
       "serviceType": "Custom software development",
       "provider": { "@id": "https://matrangacode.works/#business" },
       "url": "https://matrangacode.works/services.html#build",
-      "description": "Custom software built and shipped personally, priced as a fixed bid and paid against milestones. Minimum engagement $20,000.",
+      "description": "Mobile apps, web apps, and admin dashboards designed, built, and launched by one person — through App Store approval and going live. A fixed bid priced from the specification, paid in three stages against milestones. First builds start at $35,000; most real products land between $45,000 and $60,000.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "USD",
-          "minPrice": 20000
+          "minPrice": 35000
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Support",
+      "serviceType": "Software maintenance and support",
+      "provider": { "@id": "https://matrangacode.works/#business" },
+      "url": "https://matrangacode.works/services.html#support",
+      "description": "Availability after launch: defined response windows and priority access on a month-to-month retainer, with maintenance, monitoring, and fixes included — and substantial new work scoped and billed separately at $200 per hour.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "priceCurrency": "USD",
+          "minPrice": 2500,
+          "maxPrice": 4000,
+          "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" }
         }
       }
     },
@@ -128,23 +109,31 @@
           "name": "What if the answer is “don't build”?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Then that's what the assessment says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than take on a build I don't believe in. The recommendation is the deliverable; a build only happens if the recommendation turns out to be “build.”"
+            "text": "Then that's what the specification says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than start a build I don't believe in. A build only happens if the specification says “build” — and the document is yours either way."
           }
         },
         {
           "@type": "Question",
-          "name": "What exactly do I get for $6,000?",
+          "name": "What exactly do I get for $5,000?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A written assessment of where you stand, in plain English, and a roadmap with real costs and a sensible order of operations. Alongside that: a read on any vendor quotes already on the table, and a build-or-buy recommendation with the reasoning shown so you can argue with it. It's a document you own and can take anywhere, including to a different consultant. The fee is fixed and agreed before we start — where it lands above $6,000 depends only on how much ground there is to cover."
+            "text": "A written specification you own: the product argued down to what version one actually needs, the technical approach in plain English, how it will reach users, any compliance requirements, a milestone schedule, and a fixed price for the build — a real number, not a range. You can take it to any builder, including one who isn't me. The fee is fixed, agreed before we start, and isn't credited against the build — the specification is worth having whether or not I'm the one who builds from it."
           }
         },
         {
           "@type": "Question",
-          "name": "How is this different from my IT company?",
+          "name": "Can we skip Definition and go straight to a build?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Your IT company keeps the computers on — networks, laptops, email, backups, the help desk. Judging whether a six-figure quote is fair, or whether a platform will still fit you in five years, is a different job. Most IT firms don't build software and don't price it, so they aren't equipped to evaluate it. I'm not a replacement for them. I'm the person who reads the contract before you sign it, and who can oversee them on your behalf when the work gets technical."
+            "text": "No — Definition is the only way in. A build can't be priced honestly before the definition work is done; skipping it means bidding on a guess, and a fixed bid built on a guess punishes us both. If you already have notes, sketches, or a document from another developer, bring them — good input makes Definition faster and sharper, not unnecessary."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from hiring an agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agency puts a salesperson on discovery, a project manager in the middle, and junior developers on the actual building — the product that ships is three translations away from what you described. I write the code myself, so there's no handoff to hide. The trade is honest: I'm one person, I can't throw five engineers at a deadline, and I'll tell you when a project is bigger than I should take on. What you get instead is the same brain from decision to App Store — and the same person telling you when a feature isn't worth building."
           }
         },
         {
@@ -157,10 +146,18 @@
         },
         {
           "@type": "Question",
+          "name": "What's not included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two things clients often assume are included, and aren't: ongoing feature development after launch — that's a new engagement, or new work under Support billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How do payments work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The assessment is a fixed fee, agreed up front. Builds are a fixed bid paid against milestones you can actually see — typically around 25% to start, 50% across milestones, and 25% on completion — so you're never paying for work that hasn't been delivered, and never signing a blank check. Advisory is month to month, and you can stop whenever it stops being worth it."
+            "text": "Definition is a fixed $5,000, agreed up front. Builds are a fixed bid priced from the specification — first builds start at $35,000, and most real products land between $45,000 and $60,000 — paid 35% to start, 30% mid-build, and 35% on completion, against milestones you can actually see. Anything added mid-build is a change order at my hourly rate, agreed in writing before the work happens. Support is a monthly retainer between $2,500 and $4,000, month to month — stop whenever it stops being worth it."
           }
         },
         {
@@ -211,67 +208,67 @@
   <section class="ruled" aria-labelledby="svc-h" data-no-reveal>
     <div class="wrap pad-s">
       <div class="eyebrow eyebrow--xs eyebrow--rule rise">Services &amp; pricing</div>
-      <h1 class="t-page mw-18 rise rise-1" id="svc-h">Four ways to work together.</h1>
-      <p class="lead mw-52 rise rise-2">Most people start with the assessment and go from there. You don't have to. But whatever you pick, you'll know the price before we begin — every number is on this page, on purpose.</p>
-      <nav class="chipnav" aria-label="Jump to a service">
-        <a href="#assessment">i · Assessment</a>
-        <a href="#advisory">ii · Advisory</a>
-        <a href="#advisoryplus">iii · Advisory Plus</a>
-        <a href="#build">iv · Custom software</a>
+      <h1 class="t-page mw-18 rise rise-1" id="svc-h">One process. Three stages.</h1>
+      <p class="lead mw-52 rise rise-2">I build custom software, and every engagement runs the same ladder: Definition, then Build, then Support. It's a sequence — each stage exists to earn the next. And you'll know the price before we begin; every number is on this page, on purpose.</p>
+      <nav class="chipnav" aria-label="Jump to a stage">
+        <a href="#definition">1 · Definition</a>
+        <a href="#build">2 · Build</a>
+        <a href="#support">3 · Support</a>
         <a href="#faq">FAQ</a>
         <a href="#book">Book a call</a>
       </nav>
     </div>
   </section>
 
-  <!-- i · ASSESSMENT -->
-  <section id="assessment" class="ruled" aria-labelledby="a-h">
+  <!-- 1 · DEFINITION -->
+  <section id="definition" class="ruled" aria-labelledby="d-h">
     <div class="wrap pad-mm">
       <div class="kicker-row" style="margin-bottom:clamp(1.6rem,3vw,2.2rem);">
-        <span class="num">i</span>
-        <span class="txt">The place to start</span>
+        <span class="num">1</span>
+        <span class="txt">The front door — and the only way in</span>
       </div>
       <div class="spec">
         <div class="spec__head">
-          <h2 class="t-lg mw-14" id="a-h">The technical assessment</h2>
+          <h2 class="t-lg mw-14" id="d-h">Product &amp; technical definition</h2>
           <div style="text-align:right;">
             <div class="label label--onDark" style="margin-bottom:.3rem;">Fixed fee</div>
-            <div class="spec__price">$6,000+</div>
+            <div class="spec__price">$5,000</div>
           </div>
         </div>
-        <p class="spec__lede">You're facing a real decision and there's no one inside to check the work. Over two to three weeks I look hard at what you have, what you're being sold, and what you actually need — then hand you a plan you can act on. Where the fee lands depends on how much ground there is to cover; you'll know the exact number before we start.</p>
+        <p class="spec__lede">Two weeks, before any code. We settle what the product actually needs to do, what gets cut from the first version, the technical approach, how it will reach users — the App Store or the web — and any compliance requirements your product carries. I'll push back on scope — most first versions are three times bigger than they need to be — and you leave with a written specification, a build plan with milestones, and a fixed price for the build.</p>
 
         <div class="grid--cols" style="margin-top:2.6rem;">
           <div>
-            <div class="label label--onDark">What you get</div>
+            <div class="label label--onDark">What we settle</div>
             <ul class="marks">
-              <li>A written assessment of where you stand, in plain English</li>
-              <li>A roadmap with real costs and a sensible order of operations</li>
-              <li>A read on any vendor quotes already on the table</li>
-              <li>A clear build-or-buy recommendation, with the reasoning</li>
+              <li>The product, argued down to what version one actually needs</li>
+              <li>The technical approach, explained in plain English</li>
+              <li>How it reaches users — the App Store or the web — and any compliance requirements</li>
+              <li>A milestone schedule and a fixed price for the build</li>
+              <li>What waits for version two — written down, not forgotten</li>
             </ul>
           </div>
           <div>
             <div class="label label--onDark">It answers questions like</div>
             <ul class="marks marks--q marks--soft">
-              <li>Is this quote fair — and are we buying the right thing?</li>
-              <li>Should we build this ourselves, or buy off the shelf?</li>
-              <li>What will it really cost, and how long will it really take?</li>
-              <li>What breaks if we do nothing?</li>
+              <li>What's the smallest version worth shipping?</li>
+              <li>What will it really cost — a number, not a range?</li>
+              <li>Keep, fix, or replace what we already have?</li>
+              <li>Should we build this at all?</li>
             </ul>
           </div>
         </div>
 
-        <p class="spec__pledge mw-58" style="margin-top:2.4rem;">The assessment is yours to keep and take anywhere — including to someone other than me. I don't resell software or take vendor commissions, so the advice serves you and no one else.</p>
+        <p class="spec__pledge mw-58" style="margin-top:2.4rem;">The specification is yours to keep and take to any builder — including one who isn't me. And if the honest answer is that you shouldn't build at all, that's what it says.</p>
 
         <dl class="spec-dl">
           <div>
             <dt>Duration</dt>
-            <dd>2–3 weeks</dd>
+            <dd>2 weeks</dd>
           </div>
           <div>
             <dt>You keep</dt>
-            <dd>Assessment + roadmap</dd>
+            <dd>The specification + a fixed build price</dd>
           </div>
           <div>
             <dt>Terms</dt>
@@ -280,24 +277,25 @@
         </dl>
 
         <div class="cta-row" style="margin-top:2.4rem;">
-          <a class="btn btn--onDark" href="#book" data-cta="book-assessment">Book a free consultation →</a>
-          <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-assessment">Or email me directly</a>
+          <a class="btn btn--onDark" href="#book" data-cta="book-definition">Book a free consultation →</a>
+          <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-definition">Or email me directly</a>
         </div>
       </div>
 
       <!-- WHAT THE DOCUMENT CONTAINS -->
       <div style="margin-top:clamp(2.5rem,5vw,3.5rem);">
-        <div class="eyebrow eyebrow--sm">Inside the assessment</div>
+        <div class="eyebrow eyebrow--sm">Inside the specification</div>
         <div class="split">
           <h3 class="t-xs flex-2 mw-18">What the document actually contains.</h3>
           <div class="flex-4 mw-58">
             <p class="copy-l" style="margin:0 0 1.6rem;">Not a slide deck and not a sales proposal. A working document, written in plain English, structured like this:</p>
             <ol class="local-list" style="counter-reset:none;">
-              <li>Where you stand today<small>Your systems, what they cost you, and what's actually at risk — written so your board can follow it.</small></li>
-              <li>What you're being sold<small>A line-by-line read on any vendor quotes or proposals already on the table, and whether they're fair.</small></li>
-              <li>Build or buy<small>The recommendation, with the reasoning shown so you can argue with it rather than take it on faith.</small></li>
-              <li>What it will really cost<small>Real numbers and a sensible order of operations — what to do first, and what can wait.</small></li>
-              <li>What happens if you do nothing<small>The honest version, including the cases where doing nothing is the right call.</small></li>
+              <li>What we're building<small>The product argued down to what version one actually needs — with the reasoning shown, so you can push back.</small></li>
+              <li>The technical approach<small>The tools, the hosting, and what it costs to run each month, in plain English.</small></li>
+              <li>How it reaches users<small>The App Store or the web — and any compliance requirements that come with your field: HIPAA, payments, data privacy.</small></li>
+              <li>The build plan<small>Milestones in a sensible order, with what each one puts in your hands.</small></li>
+              <li>The price<small>A fixed number for the build — not an estimate that grows.</small></li>
+              <li>What waits<small>Everything cut from the first version, set aside where it can't inflate the budget.</small></li>
             </ol>
           </div>
         </div>
@@ -305,77 +303,47 @@
     </div>
   </section>
 
-  <!-- ii / iii · ADVISORY -->
-  <section id="advisory" class="ruled" aria-labelledby="adv-h">
-    <div class="wrap pad-m">
-      <div class="kicker-row" style="margin-bottom:1.4rem;">
-        <span class="num">ii – iii</span>
-        <span class="txt">Ongoing advice</span>
-      </div>
-      <h2 class="t-md4 mw-24" id="adv-h">Before you sign anything with a software vendor, you send it to me first.</h2>
-      <p class="copy-l mw-58" style="margin:1.4rem 0 clamp(2.2rem,4vw,3rem);">A standing technical person in your corner on a simple month-to-month retainer — for when you don't want, or don't yet need, a full-time hire. Two levels, depending on how visible you need me to be.</p>
-
-      <div class="grid--tiers">
-        <div class="tier">
-          <div class="tier__head"><span class="tier__num">ii</span><h3>Advisory</h3></div>
-          <div class="tier__price">From $1,500/mo</div>
-          <p>The essentials: a technical read on what crosses your desk, on a standing rhythm.</p>
-          <div class="label">What you get</div>
-          <ul class="marks marks--onPaper">
-            <li>A standing monthly call</li>
-            <li>Email access between calls, with a one-business-day response</li>
-            <li>Vendor quote, proposal, and contract review</li>
-          </ul>
-        </div>
-
-        <div class="tier tier--feature" id="advisoryplus">
-          <div class="tier__head"><span class="tier__num">iii</span><h3>Advisory Plus</h3></div>
-          <div class="tier__price">From $4,000/mo</div>
-          <p>When you need me <em>in the room</em> — across the table from vendors and in front of your board, not just on a call with you.</p>
-          <div class="label">Everything in Advisory, plus</div>
-          <ul class="marks marks--plus marks--onPaper">
-            <li>Joining vendor calls as your technical person</li>
-            <li>Board and funder translation</li>
-            <li>Technical hiring and MSP oversight</li>
-            <li>A quarterly written summary of decisions and recommendations</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- iv · CUSTOM SOFTWARE -->
+  <!-- 2 · BUILD -->
   <section id="build" class="ruled" aria-labelledby="b-h">
     <div class="wrap pad-m">
       <div class="split">
         <div class="flex-1">
           <div class="kicker-row" style="margin-bottom:1.2rem;">
-            <span class="num">iv</span>
-            <span class="txt">The work behind the advice</span>
+            <span class="num">2</span>
+            <span class="txt">The reason this company exists</span>
           </div>
-          <h2 class="t-md3 mw-14" id="b-h" style="line-height:1.02;">Custom software development</h2>
-          <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">Fixed price, paid in stages</div>
-          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">Minimum engagement $20,000</div>
+          <h2 class="t-md3 mw-14" id="b-h" style="line-height:1.02;">Build</h2>
+          <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">First builds start at $35,000</div>
+          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">Most real products land between $45,000 and $60,000</div>
         </div>
         <div class="flex-5 mw-62">
-          <p class="copy-l" style="margin:0 0 1.6rem;">When building is the right call, I build it myself — the same kind of software you'd otherwise hire a firm to make. This is the work that backs up everything else on this page: I can tell you what something costs because I still quote and ship it. Priced as a fixed bid, paid against milestones, so you're never signing a blank check.</p>
+          <p class="copy-l" style="margin:0 0 1.6rem;">The product itself, designed, built, and delivered by me: the mobile app, the web app, the admin dashboard, and the unglamorous last mile of App Store approval and going live. The same person who made the product decisions in Definition designs the architecture, writes the code, and delivers it — nothing is lost in a handoff, and the estimate comes from the person who has to meet it.</p>
 
           <div class="rule-top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem 2.5rem;">
             <div>
               <div class="label" style="margin-bottom:.8rem;">How it works</div>
               <ul class="marks marks--compact marks--onPaper">
-                <li>A fixed bid, agreed before work starts</li>
-                <li>Payment tied to milestones you can see</li>
+                <li>A fixed bid, priced from the specification — not a guess</li>
+                <li>Paid in three stages — 35%, 30%, 35% — as milestones are delivered</li>
+                <li>Mid-build additions are change orders, agreed in writing</li>
                 <li>Built and shipped by me, not handed off</li>
               </ul>
             </div>
             <div>
-              <div class="label" style="margin-bottom:.8rem;">Best when</div>
-              <p class="copy" style="line-height:1.5;font-size:1.02rem;">The honest answer to “build or buy” turned out to be build — and you want it done by the person who told you so.</p>
+              <div class="label" style="margin-bottom:.8rem;">Who it's for</div>
+              <p class="copy" style="line-height:1.5;font-size:1.02rem;">Funded startups with a first product to get right, and established organizations that need real software built with no technical team in-house.</p>
+            </div>
+            <div>
+              <div class="label" style="margin-bottom:.8rem;">Not included</div>
+              <ul class="marks marks--compact marks--onPaper">
+                <li>Your marketing site</li>
+                <li>Feature development after launch — that's new work</li>
+                <li>Your App Store account, business entity, terms of service, and regulatory sign-off</li>
+              </ul>
             </div>
           </div>
 
-          <p class="aside-note">Advice and building are separate engagements. You're never buying one to get the other.</p>
+          <p class="aside-note">The bid comes out of Definition, so it's a real number — I'm pricing a specification I wrote, not a guess.</p>
         </div>
       </div>
 
@@ -396,7 +364,44 @@
             </div> -->
             <!-- <figcaption class="photo-cap">Candle House Collective — shows, actors, and scheduling in one system.</figcaption> -->
           </figure>
-          
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · SUPPORT -->
+  <section id="support" class="ruled" aria-labelledby="s-h">
+    <div class="wrap pad-m">
+      <div class="split">
+        <div class="flex-1">
+          <div class="kicker-row" style="margin-bottom:1.2rem;">
+            <span class="num">3</span>
+            <span class="txt">After launch</span>
+          </div>
+          <h2 class="t-md3 mw-14" id="s-h" style="line-height:1.02;">Support</h2>
+          <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">$2,500–$4,000/mo</div>
+          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">Month to month</div>
+        </div>
+        <div class="flex-5 mw-62">
+          <p class="copy-l" style="margin:0 0 1.6rem;">Software isn't finished when it ships — but what you're buying after launch is availability, which is scarcer than hours. Support is a monthly retainer with defined response windows and priority access: when something breaks, you're at the front of the line, and when a technical question crosses your desk, you have somewhere to send it. Anything substantial — a new feature, a new integration — is scoped and billed as new work at $200/hour, so the retainer never quietly turns into a bucket of discounted hours.</p>
+
+          <div class="rule-top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem 2.5rem;">
+            <div>
+              <div class="label" style="margin-bottom:.8rem;">What you get</div>
+              <ul class="marks marks--compact marks--onPaper">
+                <li>Defined response windows and priority access</li>
+                <li>Maintenance, monitoring, and fixes</li>
+                <li>A standing technical person for what crosses your desk</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label" style="margin-bottom:.8rem;">Proof it lasts</div>
+              <p class="copy" style="line-height:1.5;font-size:1.02rem;">Preston Center of Compassion has been on Support since 2020 — five years on, I still run their fundraising apps, email, and donor CRM.</p>
+            </div>
+          </div>
+
+          <p class="aside-note">Substantial new work is billed separately at $200/hour. Month to month, no lock-in — stop whenever it stops being worth it.</p>
         </div>
       </div>
     </div>
@@ -410,13 +415,13 @@
     </div>
   </section>
 
-  <!-- HOW THEY FIT -->
+  <!-- THE SEQUENCE -->
   <section class="ruled" aria-labelledby="fit-h">
     <div class="wrap pad-m">
-      <div class="eyebrow eyebrow--md">Not sure which you need?</div>
+      <div class="eyebrow eyebrow--md">How to start</div>
       <div class="split">
-        <h2 class="t-sm flex-2 mw-18" id="fit-h">Most people start with the assessment.</h2>
-        <p class="copy-l flex-4 mw-56" style="margin:0;">It's the cleanest way to find out what you're actually dealing with, and it points to whatever comes next — ongoing Advisory, a build, or nothing at all. If you already know what you need, skip ahead and email me directly. Either way, the first step is a conversation, not a contract.</p>
+        <h2 class="t-sm flex-2 mw-18" id="fit-h">Everything starts with Definition.</h2>
+        <p class="copy-l flex-4 mw-56" style="margin:0;">That's not a preference — it's the only way in. A build can't be priced honestly before the definition work is done, so the two-week, $5,000 phase comes first: it prices the build before you've committed to it, filters out the projects that shouldn't happen, and hands you a specification you own either way. The first step is a conversation, not a contract.</p>
       </div>
       <div class="cta-row" style="margin-top:2.4rem;">
         <a class="btn" href="#book" data-cta="book-fit">Book a free consultation →</a>
@@ -468,29 +473,36 @@
   <section id="faq" class="ruled" aria-labelledby="faq-h">
     <div class="wrap pad-m">
       <div class="eyebrow eyebrow--md">Before you commit</div>
-      <h2 class="t-sm mw-20" id="faq-h">Questions people ask before spending $6,000.</h2>
+      <h2 class="t-sm mw-20" id="faq-h">Questions people ask before spending $5,000.</h2>
 
       <div class="faq" style="margin-top:clamp(1.8rem,4vw,2.4rem);">
         <details>
           <summary>What if the answer is “don't build”?</summary>
-          <p class="faq__a">Then that's what the assessment says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than take on a build I don't believe in. The recommendation <em>is</em> the deliverable; a build only happens if the recommendation turns out to be “build.”</p>
+          <p class="faq__a">Then that's what the specification says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than start a build I don't believe in. A build only happens if the specification says “build” — and the document is yours either way.</p>
         </details>
         <details>
-          <summary>What exactly do I get for $6,000?</summary>
-          <p class="faq__a">A written assessment of where you stand, in plain English, and a roadmap with real costs and a sensible order of operations. Alongside that: a read on any vendor quotes already on the table, and a build-or-buy recommendation with the reasoning shown so you can argue with it. It's a document you own and can take anywhere, including to a different consultant. The fee is fixed and agreed before we start — where it lands above $6,000 depends only on how much ground there is to cover.</p>
+          <summary>What exactly do I get for $5,000?</summary>
+          <p class="faq__a">A written specification you own: the product argued down to what version one actually needs, the technical approach in plain English, how it will reach users, any compliance requirements, a milestone schedule, and a fixed price for the build — a real number, not a range. You can take it to any builder, including one who isn't me. The fee is fixed, agreed before we start, and isn't credited against the build — the specification is worth having whether or not I'm the one who builds from it.</p>
         </details>
         <details>
-          <summary>How is this different from my IT company?</summary>
-          <p class="faq__a">Your IT company keeps the computers on — networks, laptops, email, backups, the help desk. Judging whether a six-figure quote is fair, or whether a platform will still fit you in five years, is a different job. Most IT firms don't build software and don't price it, so they aren't equipped to evaluate it.</p>
-          <p class="faq__a">I'm not a replacement for them. I'm the person who reads the contract before you sign it, and who can oversee them on your behalf when the work gets technical.</p>
+          <summary>Can we skip Definition and go straight to a build?</summary>
+          <p class="faq__a">No — Definition is the only way in. A build can't be priced honestly before the definition work is done; skipping it means bidding on a guess, and a fixed bid built on a guess punishes us both. If you already have notes, sketches, or a document from another developer, bring them — good input makes Definition faster and sharper, not unnecessary.</p>
+        </details>
+        <details>
+          <summary>How is this different from hiring an agency?</summary>
+          <p class="faq__a">An agency puts a salesperson on discovery, a project manager in the middle, and junior developers on the actual building — the product that ships is three translations away from what you described. I write the code myself, so there's no handoff to hide. The trade is honest: I'm one person, I can't throw five engineers at a deadline, and I'll tell you when a project is bigger than I should take on. What you get instead is the same brain from decision to App Store — and the same person telling you when a feature isn't worth building.</p>
         </details>
         <details>
           <summary>Will I own what you produce?</summary>
           <p class="faq__a">Yes — all of it. Code, designs, documents, and the intellectual property, plus documentation so you're never locked into working only with me. I don't resell software or take vendor commissions either, so nothing I hand you is quietly steering you toward a product that pays me.</p>
         </details>
         <details>
+          <summary>What's not included?</summary>
+          <p class="faq__a">Two things clients often assume are included, and aren't: ongoing feature development after launch — that's a new engagement, or new work under Support billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly.</p>
+        </details>
+        <details>
           <summary>How do payments work?</summary>
-          <p class="faq__a">The assessment is a fixed fee, agreed up front. Builds are a fixed bid paid against milestones you can actually see — typically around 25% to start, 50% across milestones, and 25% on completion — so you're never paying for work that hasn't been delivered, and never signing a blank check. Advisory is month to month, and you can stop whenever it stops being worth it.</p>
+          <p class="faq__a">Definition is a fixed $5,000, agreed up front. Builds are a fixed bid priced from the specification — first builds start at $35,000, and most real products land between $45,000 and $60,000 — paid 35% to start, 30% mid-build, and 35% on completion, against milestones you can actually see. Anything added mid-build is a change order at my hourly rate, agreed in writing before the work happens. Support is a monthly retainer between $2,500 and $4,000, month to month — stop whenever it stops being worth it.</p>
         </details>
         <details>
           <summary>Can I talk to a reference first?</summary>
@@ -509,7 +521,7 @@
     <div class="wrap pad-m">
       <div class="eyebrow eyebrow--sm">Start with a conversation</div>
       <h2 class="t-md mw-20" id="book-h">Book a free consultation.</h2>
-      <p class="lead mw-52">No technical experience required or expected. We talk through what you're facing, I walk you through how I work, and together we figure out which of these — if any — actually fits. Pick a time below.</p>
+      <p class="lead mw-52">No technical experience required or expected. We talk through what you're looking to build, I walk you through how the process works, and together we figure out whether — and where — to start. Pick a time below.</p>
 
       <div class="booking" style="margin-top:clamp(2rem,4vw,2.8rem);">
         <iframe
@@ -525,7 +537,7 @@
   <section class="band-dark" aria-labelledby="cc-h">
     <div class="wrap pad-xl">
       <h2 class="t-lg2 mw-20" id="cc-h">Rather write than talk?</h2>
-      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">Email me and you'll still get me — no form, no one in between. Tell me what decision you're facing and I'll tell you honestly which of these fits, or whether none of them does.</p>
+      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">Email me and you'll still get me — no form, no one in between. Tell me what you want built and I'll tell you honestly whether I'm the right person to build it — or whether you shouldn't build at all.</p>
       <a class="mail-lg mail-md" href="mailto:frank@matrangacode.works" data-cta="email-services">frank@matrangacode.works</a>
       <p style="margin:1.8rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Or call <a class="mail-sm" href="tel:+15182178298" data-cta="phone-services" style="border-bottom-color:var(--acc3);">(518) 217-8298</a></p>
     </div>
@@ -536,7 +548,7 @@
 <footer class="footer">
   <div class="wrap">
     <span>Frank Matranga · Matranga Codeworks LLC</span>
-    <span>Cohoes, New York · Capital Region</span>
+    <span>Cohoes, New York</span>
     <span><a href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener">LinkedIn</a></span>
     <span>© <span data-year>2026</span></span>
   </div>

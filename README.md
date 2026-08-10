@@ -11,11 +11,11 @@ python3 -m http.server 8000
 
 | File            | What it is |
 | --------------- | ---------- |
-| `index.html`    | Home — hero, pull quote, consultation, who it's for, why me, assessment, services ledger, work, locally, contact |
-| `about.html`    | About — background, beliefs, locally + event photos |
-| `services.html` | Services & pricing — assessment, two advisory tiers, custom software |
-| `work.html`     | Work — three case studies |
-| `startups.html` | Segment landing page for early-stage founders — own hero, own booking embed, own FAQ. Reframes the same three offers (build / assessment / advisory) build-first instead of assessment-first |
+| `index.html`    | Home — hero, pull quote, consultation, who it's for, why me, build, three-stage ladder, work, contact |
+| `about.html`    | About — background, beliefs, locally + event photos. The only page that carries the Capital Region material — it's who Frank is, not who MCW serves |
+| `services.html` | Services & pricing — the three-stage ladder (Definition → Build → Support), presented as a sequence, not a menu |
+| `work.html`     | Work — three case studies, Miirror Health first as the primary proof asset |
+| `startups.html` | Segment landing page for founders — own hero, own booking embed, own FAQ. Presents the same three stages (Definition / Build / Support) from the founder's angle |
 | `404.html`      | Custom not-found page. GitHub Pages serves this automatically |
 | `styles.css`    | The whole design system: tokens, layout, components |
 | `site.js`       | Scroll reveal, image-slot fallback, self-updating dateline. Progressive enhancement — every page reads fine with JS off |
@@ -36,8 +36,8 @@ Each page carries a full Open Graph block, a canonical link, and JSON-LD:
 - **Home** — `ProfessionalService` + `Person` + `WebSite`, the shared entities
   the other pages reference by `@id`
 - **About** — `AboutPage` + the detailed `Person`
-- **Services** — one `Service` per offering, with the real prices as
-  `PriceSpecification` / `UnitPriceSpecification`
+- **Services** — one `Service` per stage (Definition, Build, Support), with the
+  real prices as `PriceSpecification` / `UnitPriceSpecification`
 - **Work** — `CollectionPage` with an `ItemList` of the three case studies
 - **Startups** — `WebPage` with an `audience` node, plus its own `FAQPage`. It
   deliberately declares no `Service` nodes: the offers are the same ones
@@ -100,23 +100,23 @@ button, just add the attribute — no JS change:
 - **One primary CTA.** Booking is the single primary action sitewide; email and
   phone are always visibly secondary. The Google scheduler is embedded inline at
   `index.html#consult`, `services.html#book`, and `startups.html#book`. Startups
-  gets its own embed rather than linking home on purpose — a founder sent to
-  `index.html` to book lands on "the software person for organizations that
-  don't have one," which is the wrong first sentence for them.
+  gets its own embed rather than linking home on purpose — a founder ready to
+  book shouldn't be bounced to a different page to do it.
   - Gotcha: only the `calendar.google.com/calendar/appointments/schedules/…?gv=true`
     form is frameable. The `calendar.app.google/…` short link sends
     `X-Frame-Options: SAMEORIGIN` and renders an empty box. Each embed has a
     visible "open in a new tab" fallback beneath it.
 - **Segment router.** The `#who` cards on the home page are `<a class="route">`
   links, one per segment, each pointing at whatever that reader should see next
-  (nonprofits → Work, associations → Advisory, mid-market → the assessment,
-  startups → `startups.html`). Each carries `data-cta="who-…"`, so PostHog
-  reports which segment actually clicks — that's the signal for whether any
-  other segment deserves its own page. Add a segment by copying one `<a>`; the
-  grid reflows and needs no CSS.
-- **FAQ** lives on Services, where it de-risks the $6,000 decision, and on
-  Startups, where it answers the founder-specific questions instead — equity,
-  IP ownership at diligence time, and what happens at the first in-house hire.
+  (funded startups → `startups.html`, established organizations →
+  `services.html`). Each carries `data-cta="who-…"`, so PostHog reports which
+  segment actually clicks — that's the signal for whether any other segment
+  deserves its own page. Add a segment by copying one `<a>`; the grid reflows
+  and needs no CSS.
+- **FAQ** lives on Services, where it de-risks the $5,000 Definition decision,
+  and on Startups, where it answers the founder-specific questions instead —
+  equity, IP ownership at diligence time, and what happens at the first
+  in-house hire.
 - **Screenshot slots** in Services → Custom software are empty placeholders
   until you add files. See `images/README.md` — get client sign-off and scrub
   real donor/patient data first.
@@ -208,6 +208,11 @@ PY
 
 Things that can't be done from this repo:
 
+- [ ] Get Haley's sign-off on the Miirror Health case study copy (work.html,
+      startups.html, and the home-page card) **before pushing** — it now leads
+      with the clinical stakes and states the product shipped to the App Store.
+- [ ] Regenerate `images/og.png` — the social card still carries the old
+      advisory tagline, and every page's `og:image:alt` describes it.
 - [ ] Collect 1–3 more testimonials (Candle House, Miirror, Inside Outside
       Health) — there's a commented slot ready on the home page.
 
