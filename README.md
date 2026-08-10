@@ -257,5 +257,4 @@ worth knowing about:
   is missing, `site.js` drops the image and the frame shows its placeholder
   label instead of a broken-image icon.
 
-Fonts (Bricolage Grotesque, Spline Sans Mono) load from Google Fonts, as in the
-design.
+Fonts (Bricolage Grotesque, Spline Sans Mono) were downloaded from Google Fonts and are hosted locally in `fonts/`
