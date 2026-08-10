@@ -10,8 +10,8 @@
 
 @font-face {
     font-family: 'Bricolage Grotesque';
-    src: url('/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf') format('truetype-variations');
-    src: url('/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf') format('truetype') tech('variations');
+    src: url('/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.woff2') format('woff2-variations');
+    src: url('/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.woff2') format('woff2') tech('variations');
     font-weight: 100 1000;
     font-stretch: 25% 151%;
     font-style: normal;
@@ -20,10 +20,19 @@
 
 @font-face {
     font-family: 'Spline Sans Mono';
-    src: url('/fonts/Spline_Sans_Mono/SplineSansMono-VariableFont_wght.ttf') format('truetype-variations');
-    src: url('/fonts/Spline_Sans_Mono/SplineSansMono-VariableFont_wght.ttf') format('truetype') tech('variations');
+    src: url('/fonts/Spline_Sans_Mono/SplineSansMono-VariableFont_wght.woff2') format('woff2-variations');
+    src: url('/fonts/Spline_Sans_Mono/SplineSansMono-VariableFont_wght.woff2') format('woff2') tech('variations');
     font-weight: 100 1000;
     font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Spline Sans Mono';
+    src: url('/fonts/Spline_Sans_Mono/SplineSansMono-Italic-VariableFont_wght.woff2') format('woff2-variations');
+    src: url('/fonts/Spline_Sans_Mono/SplineSansMono-Italic-VariableFont_wght.woff2') format('woff2') tech('variations');
+    font-weight: 100 1000;
+    font-style: italic;
     font-display: swap;
 }
 
