@@ -1084,21 +1084,11 @@ body[data-grain] .grain { display: block; }
 /* The Google scheduler, inline. Only the /calendar/appointments/schedules/…
    ?gv=true form is frameable — the calendar.app.google short link sends
    X-Frame-Options: SAMEORIGIN and renders blank in an iframe. */
-/* .booking {
+.booking {
   border: 2px solid var(--ink);
   box-shadow: 8px 8px 0 var(--acc);
-  background: var(--paper-2);
+  background: white;
   overflow: hidden;
-}
-.booking iframe {
-  display: block;
-  width: 100%;
-  height: 620px;
-  border: 0;
-}
-@media (max-width: 640px) {
-  .booking iframe { height: 560px; }
-  .booking { box-shadow: 5px 5px 0 var(--acc); }
 }
 /* Shown when the frame is blocked or JS/third-party cookies are off. */
 .booking__fallback {
