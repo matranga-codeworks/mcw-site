@@ -1,0 +1,48 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Matranga Codeworks LLC//frank-matranga.vcf//EN
+N:Matranga;Frank;;;
+FN:Frank Matranga
+ORG:Matranga Codeworks LLC
+TITLE:Software engineer
+EMAIL;TYPE=INTERNET,WORK,PREF:frank@matrangacode.works
+TEL;TYPE=WORK,VOICE,PREF:+1-518-217-8298
+ADR;TYPE=WORK:;;;Cohoes;NY;12047;United States
+LABEL;TYPE=WORK:Cohoes\, NY 12047\nUnited States
+GEO:42.7742;-73.7001
+URL;TYPE=WORK:https://matrangacode.works/
+item1.URL:https://www.linkedin.com/in/frank-matranga/
+item1.X-ABLabel:LinkedIn
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/frank-matranga/
+item2.URL:https://matranga.dev/
+item2.X-ABLabel:Blog
+item3.URL:https://calendar.app.google/74qf83qTXzoawDXF9
+item3.X-ABLabel:Book a consult
+CATEGORIES:Software development,Custom software,Mobile apps,Web apps
+NOTE:Custom software built end to end by one person — mobile apps\, web a
+ pps\, and admin dashboards for funded startups and established organizatio
+ ns without in-house technical leadership.
+LOGO;ENCODING=b;TYPE=PNG:iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEY0
+ lEQVR42u3dPW8cRRjA8Zln1vt6YF8SKdgVbXqUCr5BQhEpHwMaKKCmIEU+gpGgIRKRqPgCQaAo
+ pExiR5aQU1BiKT7fi2/3Zh4KJ0KKAsXl9m727v/rbfl2/96dWe3M2b3dqwZ4G+EQgDhAHCAOEA
+ eIA8QB4gBxgDhAHABxgDhAHCAOEAeIA8QB4gBxgDgA4gBxgDhAHCAOEAeIA8QB4gBxAMQB4gBx
+ gDhAHFipJJK/wzm3secghKCqxPF2qvry5amqGmuMblAW1pqgWhZFmqYR9pGs+uhY731VlV9/9W
+ VVld4Ha+1GXTPKqrx376eHD/+oqjKEQBxvHCBN0/T27VuXL19qmmaj4vDe997vP3r0+MGD33q9
+ iivHf95WRGzTzDYtDmNMXddxfuqIBqTOuRB0o+K4+ODRfmSmsiAOEAeIA8QB4gBxgDhAHCAOEA
+ dAHCAOEAeIA8QB4gBxgDhAHCAOgDhgOrM0wbSzKkTVxLzUwXs/m/k4F8queRw7O9vOuWgP/UUc
+ 1Xv9LEtZSL1s+9/9cPL3SbKVRNuHBs2L/OnTgzzPWUi9xONuzP7+9wcHh2UZ3QLlN5aClmWZ51
+ mEf+Sa31auXLmU50XMcVhrvGd/jhUN97z3McfBVBbEAeIAcYA4gA2crYiIcyIi7c1CVc0aT4XW
+ OY7RaDQYnDWND8G30YYxKiJFURBH91y//tHu7gdZmgUNbTyCFSfj8fjJk2fE0THWmDvffiMi5m
+ Lv20ULPhRleXj4/MaNW0ocnTM5PzetPZYOIQTVyfk5A9JuDkitbfVtDhGRtd4Yk6ksiAPEAeIA
+ cYA4QBwgDhAHiAPEARAHiAPEAeIAcYA4QBwgDhAHiAMgDpiNXpqgqtrqupUQYt6qkDj+T5ZlIr
+ al0xdCKMsiyzLi6KTj4xd1XYtIG//fqppl2fHxC+Lo5FaTn33+xdHRUZ4X2sIuCfp6Cwbi6O6w
+ 49WJbO+XM1sBU1mAOEAcIA4QB4gDxAHigOEJKayT+mx87dNPrt38uD6b2Hl2TlbrpB5Ofr37Yz
+ 0c28St9ikscZjFfmdbsd3rf7g3PR1aJ3M8kLeJm56OrFiuHGsozPxsWs+mzZxx+DCrG24r63p3
+ +dfcP82AFMxWQBwgDhAHQBwgDhAHiAPEAeIAcYA4QBwgDhAHYOJ92ce/tqhXXXSF2wn5oCHM8x
+ 3pqibYNjaM6HAc1tqdne1+v980zQLjEJHlp5GkW9l2ZVTnfYc00aDG8g7pqy/9tnVd37//c1WV
+ 3ocFxjEYDJxzy9u2S1XS5OTPv57/8nszns71krBakWYyDc0shj7s3u5VE8HObsPhSFWNXeT9oN
+ erln3xsNbXja+b+U+tGmvNVpHFEEdEt5U2xjErua0kefqOiUcy7IhoQGrWZX9L45WpLHjOAeIA
+ iAPEAeIAcYA4QBwgDhAHiAPEARAHiAPEAeIAcYA4QBwgDhAHiAPEwSEAcYA4QBwgDhAHiAPEAe
+ IAcYA4AOIAceDd/QPG85OwbCcDcQAAAABJRU5ErkJggg==
+REV:2026-08-12T00:00:00Z
+END:VCARD
