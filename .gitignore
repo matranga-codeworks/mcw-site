@@ -1,1 +1,5 @@
 .DS_Store
+
+# Local state from `npx wrangler pages dev .` — Miniflare caches, SQLite state,
+# and per-run bundle temp dirs. Regenerated on every run; never belongs in git.
+.wrangler/

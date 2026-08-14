@@ -1,0 +1,19 @@
+# Cloudflare Pages redirects. One rule per line: <from> <to> <status>
+#
+# Cloudflare already strips `.html` and redirects to the extensionless URL for
+# every file that still exists, so only the paths whose file moved or was
+# removed need a rule here. Adding rules for files that DO still exist would
+# shadow that built-in handling for no gain.
+
+# services.html was rewritten as the organizations engagement model (Aug 2026).
+/services       /organizations   301
+/services.html  /organizations   301
+
+# work.html became work/index.html so the case studies can have child pages.
+/work.html      /work            301
+
+# TEMPORARY — the Miirror Health case study is on hold and not ready to publish.
+# 302 (not 301) so no cache or index treats it as permanent. Delete this line to
+# bring the page live; the file itself is still in the repo at
+# work/miirror-health.html.
+/work/miirror-health  /work      302

@@ -7,28 +7,28 @@
 <meta name="description" content="Engineer on a mobile banking app used by tens of millions at OnePay, then lead engineer at Huml Health — now building custom software solo for startups and nonprofits. Based in New York's Capital Region.">
 <meta name="author" content="Frank Matranga">
 <meta name="theme-color" content="#2E5D46">
-<link rel="canonical" href="https://matrangacode.works/about.html">
+<link rel="canonical" href="https://matrangacode.works/about">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Matranga Codeworks">
-<meta property="og:url" content="https://matrangacode.works/about.html">
+<meta property="og:url" content="https://matrangacode.works/about">
 <meta property="og:title" content="About Frank Matranga">
 <meta property="og:description" content="I build custom software — all of it, myself. Here's why I work the way I do.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://matrangacode.works/images/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Frank Matranga — the software person for organizations that don't have one.">
+<meta property="og:image:alt" content="Frank Matranga — custom software built end to end by one person.">
 <meta property="profile:first_name" content="Frank">
 <meta property="profile:last_name" content="Matranga">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="styles.css">
-<script src="site.js" defer></script>
-<script src="analytics.js" defer></script>
+<link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
+<script src="/analytics.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -36,7 +36,7 @@
   "@graph": [
     {
       "@type": "BreadcrumbList",
-      "@id": "https://matrangacode.works/about.html#breadcrumb",
+      "@id": "https://matrangacode.works/about#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://matrangacode.works/" },
         { "@type": "ListItem", "position": 2, "name": "About" }
@@ -44,7 +44,7 @@
     },
     {
       "@type": "AboutPage",
-      "url": "https://matrangacode.works/about.html",
+      "url": "https://matrangacode.works/about",
       "name": "About Frank Matranga",
       "isPartOf": { "@id": "https://matrangacode.works/#website" },
       "mainEntity": { "@id": "https://matrangacode.works/#frank" },
@@ -55,8 +55,9 @@
       "@id": "https://matrangacode.works/#frank",
       "name": "Frank Matranga",
       "jobTitle": "Software engineer",
-      "description": "Independent software engineer who designs, builds, and ships custom software — mobile apps, backends, and admin dashboards — for funded startups and established organizations without in-house technical leadership.",
-      "url": "https://matrangacode.works/about.html",
+      "description": "Independent software engineer who builds products end to end — product decisions through App Store launch — for funded startups and organizations without in-house technical leadership.",
+      "url": "https://matrangacode.works/about",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Rensselaer Polytechnic Institute" },
       "email": "frank@matrangacode.works",
       "worksFor": { "@id": "https://matrangacode.works/#business" },
       "homeLocation": {
@@ -74,6 +75,10 @@
         "Mobile app development",
         "Web application development",
         "Software architecture",
+        "Django",
+        "PostgreSQL",
+        "React Native",
+        "HubSpot",
         "HIPAA compliance",
         "Nonprofit technology"
       ],
@@ -96,12 +101,13 @@
 <!-- MASTHEAD / NAV -->
 <header class="masthead">
   <div class="masthead__inner">
-    <a class="wordmark" href="index.html">Frank Matranga<i>.</i></a>
+    <a class="wordmark" href="/">Frank Matranga<i>.</i></a>
     <nav class="nav" aria-label="Primary">
-      <a href="work.html">Work</a>
-      <a href="services.html">Services</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a class="nav__cta" href="index.html#consult" data-cta="book-nav">Book a free consultation</a>
+      <a href="/startups">For startups</a>
+      <a href="/organizations">For organizations</a>
+      <a href="/work">Work</a>
+      <a href="/about" aria-current="page">About</a>
+      <a class="nav__cta" href="/#consult" data-cta="book-nav">Book a free consultation</a>
     </nav>
   </div>
 </header>
@@ -125,7 +131,7 @@
            attribute and add images/frank-portrait-large.jpg to bring it back. -->
       <!-- <figure class="portrait portrait--tall hatch" hidden>
         <div class="slot" data-placeholder="Large photograph of Frank">
-          <img src="images/frank-portrait-large.jpg" alt="Frank Matranga" data-slot>
+          <img src="/images/frank-portrait-large.jpg" alt="Frank Matranga" data-slot>
         </div>
         <figcaption><span>Frank Matranga</span><i>Cohoes, NY</i></figcaption>
       </figure> -->
@@ -140,20 +146,23 @@
         <h2 class="t-md3 flex-2 mw-16" id="bg-h">A career spent building, at every scale.</h2>
         <div class="flex-4 mw-60">
           <div class="prose">
-            <p>I learned the trade at scale. At OnePay, a venture-backed fintech, I was an engineer on a mobile banking app used by tens of millions of people — software that moves tens of billions of dollars a year. When the software you build is holding someone's money, you learn fast what “ready” really means, and what it costs to get there.</p>
+            <p>I came out of RPI in Troy, and learned the trade at scale after it. At OnePay, a venture-backed fintech, I was an engineer on a mobile banking app used by tens of millions of people — software that moves tens of billions of dollars a year. When the software you build is holding someone's money, you learn fast what “ready” really means, and what it costs to get there.</p>
             <p>Then I led the engineering team at Huml Health, a healthtech startup building wearable devices for patients going through substance-abuse detox and recovery. Going from one engineer among many at a billion-dollar company to the lead at a tiny startup taught me the other half of the job: making the call, owning the roadmap, and answering for the outcome when there's no one above you to escalate to.</p>
             <p>Alongside all of that, I spent five years building software for Preston Center of Compassion, a nonprofit in the Bronx. That's what showed me what I actually wanted to do. Working with a local, nontechnical organization, you see exactly who your work helps and how much it matters — the impact is right in front of you in a way it never is when you're one engineer among hundreds at a company moving billions.</p>
             <p>What I kept noticing was that the people who most needed software built — founders without an engineer, organizations without technical leadership — were the least likely to have anyone who could build it well, or tell them what not to build. They didn't need a big agency, and they didn't need an order-taker. They needed one person who could make the product decisions, design the architecture, write the code, and ship it — and push back along the way. So that's what I do now, and nothing gets lost in a handoff, because there isn't one.</p>
           </div>
 
           <div class="chips">
+            <span class="chip">Rensselaer Polytechnic Institute</span>
             <span class="chip">OnePay — software engineer</span>
             <span class="chip">Huml Health — lead engineer</span>
+            <span class="chip">Django · PostgreSQL · React Native</span>
+            <span class="chip">HubSpot Solutions Partner</span>
           </div>
 
           <figure style="margin:2rem 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;">
             <div class="slot signature" data-placeholder="Signature">
-              <img src="images/signature.png" alt="Frank Matranga's signature" width="818" height="198" loading="lazy" decoding="async" data-slot>
+              <img src="/images/signature.png" alt="Frank Matranga's signature" width="818" height="198" loading="lazy" decoding="async" data-slot>
             </div>
             <figcaption class="signature-cap">Frank Matranga · Cohoes, NY</figcaption>
           </figure>
@@ -194,7 +203,7 @@
       <div class="split" style="margin-bottom:clamp(2.8rem,6vw,4rem);">
         <div class="flex-3">
           <h2 class="t-xs mw-22" id="al-h">Based in New York's Capital Region — and helping build its tech and entrepreneurship community.</h2>
-          <p class="copy mw-46" style="margin-top:1.3rem;line-height:1.55;">My clients are anywhere; home is Albany, Troy, Schenectady, Saratoga. I put real time into the local ecosystem — organizing events, convening technical people, backing early founders, and showing up for the organizations that keep this region's economy moving.</p>
+          <p class="copy mw-46" style="margin-top:1.3rem;line-height:1.55;">I work with clients anywhere. I'm invested in Albany specifically — that's a fact about me, not a limit on who I build for. I put real time into the local ecosystem: organizing events, convening technical people, backing early founders, and showing up for the organizations that keep this region's economy moving.</p>
         </div>
         <ul class="local-list flex-2">
           <li>Co-founder, 518.codes<small>A community for technical people in the Capital Region — from happy hours and indoor climbing to game jams, hackathons, and tech talks.</small></li>
@@ -208,19 +217,19 @@
       <div class="grid--tight">
         <figure style="margin:0;">
           <div class="photo hatch" data-placeholder="Good Neighbor Fund ribbon cutting">
-            <img src="images/event-good-neighbor-fund.png" alt="Ribbon cutting at the Good Neighbor Fund Capital Region launch party" width="960" height="640" loading="lazy" decoding="async" data-slot>
+            <img src="/images/event-good-neighbor-fund.png" alt="Ribbon cutting at the Good Neighbor Fund Capital Region launch party" width="960" height="640" loading="lazy" decoding="async" data-slot>
           </div>
           <figcaption class="photo-cap">Ribbon cutting at the Good Neighbor Fund Capital Region launch party.</figcaption>
         </figure>
         <figure style="margin:0;">
           <div class="photo hatch" data-placeholder="Shaker High School visit">
-            <img src="images/event-shaker-high-school.jpg" alt="Touring Shaker High School after their entrepreneurship capstone presentations" width="2048" height="1536" loading="lazy" decoding="async" data-slot>
+            <img src="/images/event-shaker-high-school.jpg" alt="Touring Shaker High School after their entrepreneurship capstone presentations" width="2048" height="1536" loading="lazy" decoding="async" data-slot>
           </div>
           <figcaption class="photo-cap">Getting a tour of Shaker High School after visiting their entrepreneurship capstone class presentations.</figcaption>
         </figure>
         <figure style="margin:0;">
           <div class="photo hatch" data-placeholder="1 Million Cups meeting">
-            <img src="images/event-1-million-cups.jpg" alt="Running a 1 Million Cups Capital Region morning meeting" width="800" height="528" loading="lazy" decoding="async" data-slot>
+            <img src="/images/event-1-million-cups.jpg" alt="Running a 1 Million Cups Capital Region morning meeting" width="800" height="528" loading="lazy" decoding="async" data-slot>
           </div>
           <figcaption class="photo-cap">Running a 1 Million Cups Wednesday morning meeting.</figcaption>
         </figure>
@@ -234,7 +243,7 @@
       <h2 class="t-lg2 mw-20" id="ac-h">If you're weighing a build, tell me about it.</h2>
       <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">Book a free call and you'll get me — no form, no one in between. I'll tell you honestly whether I'm the right person for what you're facing.</p>
       <div class="cta-row">
-        <a class="btn btn--onDark" href="index.html#consult" data-cta="book-about">Book a free consultation →</a>
+        <a class="btn btn--onDark" href="/#consult" data-cta="book-about">Book a free consultation →</a>
       </div>
       <p style="margin:2.4rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Prefer to write? <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-about" style="border-bottom-color:var(--acc3);">frank@matrangacode.works</a></p>
       <p style="margin:1.1rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--on-dark-2);">Or call <a class="mail-sm" href="tel:+15182178298" data-cta="phone-about" style="border-bottom-color:var(--acc3);">(518) 217-8298</a> · find me on <a class="mail-sm" href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener" style="border-bottom-color:var(--acc3);">LinkedIn →</a></p>

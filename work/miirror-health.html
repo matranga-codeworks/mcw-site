@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miirror Health case study — a clinically-governed mental health product — Frank Matranga</title>
+<meta name="description" content="An inherited prototype rebuilt as a working product for eating-disorder recovery: patient app, backend, clinician dashboard, and per-user content safety controls built to a clinician-approved feature set. Shipped to the App Store for beta.">
+<meta name="author" content="Frank Matranga">
+<meta name="theme-color" content="#2E5D46">
+
+<!-- ON HOLD — this case study is not ready to publish (Aug 2026).
+     Nothing links here, it's out of sitemap.xml, and `_redirects` 302s the URL
+     back to /work. To bring it live: delete the robots line below, delete the
+     /work/miirror-health rule from `_redirects`, restore the sitemap entry, and
+     restore the links listed in README § Still on you. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://matrangacode.works/work/miirror-health">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Matranga Codeworks">
+<meta property="og:url" content="https://matrangacode.works/work/miirror-health">
+<meta property="og:title" content="Miirror Health — a clinically-governed mental health product">
+<meta property="og:description" content="A vulnerable user population, clinical safety requirements, and no existing product. Built end to end by one person and shipped to the App Store for beta.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://matrangacode.works/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Frank Matranga — custom software built end to end by one person.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
+<script src="/analytics.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://matrangacode.works/work/miirror-health#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://matrangacode.works/" },
+        { "@type": "ListItem", "position": 2, "name": "Case studies", "item": "https://matrangacode.works/work" },
+        { "@type": "ListItem", "position": 3, "name": "Miirror Health" }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://matrangacode.works/work/miirror-health",
+      "name": "Miirror Health case study — Frank Matranga",
+      "isPartOf": { "@id": "https://matrangacode.works/#website" },
+      "about": { "@id": "https://matrangacode.works/#business" },
+      "inLanguage": "en-US",
+      "mainEntity": { "@id": "https://matrangacode.works/work/miirror-health#case" }
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://matrangacode.works/work/miirror-health#case",
+      "name": "A clinically-governed mental health product, shipped to the App Store.",
+      "url": "https://matrangacode.works/work/miirror-health",
+      "abstract": "An inherited, over-engineered eating-disorder recovery platform rebuilt lean for Miirror Health — a mobile app, backend, clinician dashboard, and admin interface with per-user content safety controls built to a clinician-approved feature set, shipped to the App Store for beta.",
+      "creator": { "@id": "https://matrangacode.works/#frank" },
+      "about": { "@type": "Organization", "name": "Miirror Health" },
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+</head>
+<body data-grain>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="topbar" aria-hidden="true"><i></i><b></b></div>
+
+<!-- MASTHEAD / NAV -->
+<header class="masthead">
+  <div class="masthead__inner">
+    <a class="wordmark" href="/">Frank Matranga<i>.</i></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/startups">For startups</a>
+      <a href="/organizations">For organizations</a>
+      <a href="/work" aria-current="page">Work</a>
+      <a href="/about">About</a>
+      <a class="nav__cta" href="/#consult" data-cta="book-nav">Book a free consultation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="ruled" aria-labelledby="mh-h" data-no-reveal>
+    <div class="wrap pad-s">
+      <div class="eyebrow eyebrow--xs eyebrow--rule rise">Case study · Startup · Digital health</div>
+      <h1 class="t-page mw-22 rise rise-1" id="mh-h">A clinically-governed mental health product, shipped to the App Store.</h1>
+      <p class="lead mw-52 rise rise-2">Miirror Health needed a real product for eating-disorder recovery, where the wrong content in front of the wrong patient is a clinical risk — not a UX complaint. There was nothing usable to build on. I built the whole thing.</p>
+      <nav class="chipnav" aria-label="Jump to a section">
+        <a href="#situation">The situation</a>
+        <a href="#hard">What made it hard</a>
+        <a href="#built">What I built</a>
+        <a href="#landed">Where it landed</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- THE CLIENT AND THE SITUATION -->
+  <section id="situation" class="ruled" aria-labelledby="sit-h">
+    <div class="wrap pad-m">
+      <div class="split">
+        <h2 class="t-xs flex-2 mw-18" id="sit-h">The client and the situation</h2>
+        <div class="flex-4 mw-60">
+          <p class="copy-l" style="margin:0 0 1.4rem;">Miirror Health is an early-stage digital health company building a platform for eating-disorder recovery — specifically the part of care that happens between appointments, when a patient is alone with an app instead of in a room with a clinician.</p>
+          <p class="copy-l" style="margin:0 0 1.4rem;">When the founder came to me there was no working product. There was an inherited prototype, built by a student team, that had been engineered into something nobody remaining could maintain, and that was already costing hundreds of dollars a month to run before it had a single user. The first question wasn't what to build. It was whether any of what existed was worth keeping.</p>
+          <p class="copy-l" style="margin:0;">My answer was no, and that was the whole first engagement: a written recommendation to start over with something deliberately simpler and cheaper to operate. It cost me the more comfortable, open-ended project of nursing the existing system along, which is generally how you can tell the recommendation was honest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MADE IT HARD -->
+  <section id="hard" class="ruled" aria-labelledby="hard-h">
+    <div class="wrap pad-m">
+      <div class="split">
+        <h2 class="t-xs flex-2 mw-18" id="hard-h">What made it hard</h2>
+        <div class="flex-4 mw-60">
+          <p class="copy-l" style="margin:0 0 1.4rem;">Three things, and none of them were about the technology.</p>
+          <p class="copy-l" style="margin:0 0 1.4rem;"><strong>The user population is vulnerable.</strong> In eating-disorder recovery, content is not neutral. Material that supports one patient's recovery can actively harm another's, and the difference is not something a product manager can eyeball. That meant per-user control over what each patient can see — and it meant those controls had to be operated by clinicians, in language clinicians use, not buried in an engineering console.</p>
+          <p class="copy-l" style="margin:0 0 1.4rem;"><strong>The safety rules weren't mine to write.</strong> Miirror Health's clinical advisory board defined and approved the feature set, including the rules governing which content is appropriate for which patient. I built to that specification. Keeping that boundary sharp matters for the patients first and for liability second: clinical judgment belongs to clinicians, and a developer improvising it — however well-intentioned — is exactly the failure mode this product could not have.</p>
+          <p class="copy-l" style="margin:0;"><strong>It was regulated health data from day one.</strong> HIPAA is cheap to design in and ruinous to bolt on afterward. Starting over turned out to be the one advantage here — there was no existing product to retrofit, so compliance shaped the architecture instead of fighting it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I BUILT -->
+  <section id="built" class="ruled" aria-labelledby="built-h">
+    <div class="wrap pad-m">
+      <div class="split">
+        <h2 class="t-xs flex-2 mw-18" id="built-h">What I built</h2>
+        <div class="flex-4 mw-60">
+          <p class="copy-l" style="margin:0 0 1.4rem;">The whole product, alone: a patient-facing mobile app; a backend holding the clinical content, the per-user safety rules, and the patient records; a dashboard where clinicians manage their own patients and control what each one sees; and an admin interface for the team behind it.</p>
+          <p class="copy-l" style="margin:0 0 1.4rem;">Plus the parts nobody demos — multi-factor authentication, audit logging, the data handling HIPAA requires, and App Store submission, which is its own project when the app is a health product being reviewed as one.</p>
+          <p class="copy-l" style="margin:0 0 1.4rem;">Every one of those decisions was made by the person who then had to implement it. No scoping document handed down to a developer, no estimate written by someone who wouldn't have to meet it.</p>
+          <p class="copy-l" style="margin:0;">Only now is the stack worth mentioning: Django on PostgreSQL, with React Native on the front end. Standard, boring, thoroughly documented tools — chosen so the engineer they eventually hire recognizes the codebase on day one, and so the monthly bill stays proportional to a company at their stage. That was the failure of the thing they'd inherited, and it wasn't going to be the failure of this one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE IT LANDED -->
+  <section id="landed" class="ruled" aria-labelledby="landed-h">
+    <div class="wrap pad-m">
+      <div class="split">
+        <h2 class="t-xs flex-2 mw-18" id="landed-h">Where it landed</h2>
+        <div class="flex-4 mw-60">
+          <p class="copy-l" style="margin:0 0 1.4rem;">Shipped to the App Store for beta, with the clinician dashboard and admin interface live alongside it — a working product where there had been a prototype nobody could safely run.</p>
+          <p class="copy-l" style="margin:0;">I still answer for it. The person who made the product decisions is the person who wrote the code, submitted it for review, and picks up the phone now that it's in patients' hands.</p>
+
+          <!-- Pull quote from Haley. Real client words only — paste her approved
+               wording in verbatim and delete this comment. Do not paraphrase.
+          <figure class="quote quote--feature" style="margin-top:1.6rem;">
+            <div class="quote__mark" aria-hidden="true">“</div>
+            <blockquote>QUOTE GOES HERE.</blockquote>
+            <figcaption>
+              <span class="quote__who">Haley — Miirror Health</span>
+              <span class="quote__where">Founder</span>
+            </figcaption>
+          </figure>
+          -->
+
+          <p class="note" style="margin:1.6rem 0 0;">Miirror Health — digital-health startup · shipped to the App Store for beta.</p>
+          <p class="case__related">
+            <span>Related</span>
+            <a class="link-hair" href="/startups">For startups →</a>
+            <a class="link-hair" href="/work">All case studies →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="band-dark" aria-labelledby="mhc-h">
+    <div class="wrap pad-xl">
+      <h2 class="t-lg2 mw-20" id="mhc-h">Building something with real stakes?</h2>
+      <p class="on-dark-lead mw-46" style="margin-top:1.5rem;">A free call is the cleanest way to find out what it would take — including whether you should build it at all. Pick a time, or write and tell me what's on the table.</p>
+      <div class="cta-row">
+        <a class="btn btn--onDark" href="/#consult" data-cta="book-case-miirror">Book a free consultation →</a>
+        <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-case-miirror">frank@matrangacode.works</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>Frank Matranga · Matranga Codeworks LLC</span>
+    <span>Cohoes, New York</span>
+    <span><a href="https://www.linkedin.com/in/frank-matranga/" target="_blank" rel="noopener">LinkedIn</a></span>
+    <span>© <span data-year>2026</span></span>
+  </div>
+</footer>
+
+</body>
+</html>
