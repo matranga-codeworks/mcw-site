@@ -976,8 +976,11 @@ body[data-grain] .grain { display: block; }
 
 /* -------------------------------------------------------- testimonials --- */
 
-/* The feature quote takes the full row; the rest flow beside each other. Both
-   are real client words — see the note in README before adding any. */
+/* The feature quote takes the full row; the rest flow beside each other. All
+   are real client words — see the note in README before adding any.
+   The quotation marks are generated (open-quote / close-quote) and the opening
+   one hangs into the margin by its own width, so the first line of text sits
+   flush with the lines beneath it. Nothing decorative lives in the markup. */
 .quotes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -989,59 +992,84 @@ body[data-grain] .grain { display: block; }
   background: var(--paper-2);
   border: 2px solid var(--rule);
   border-top: 4px solid var(--acc);
-  padding: clamp(1.5rem, 3vw, 2.1rem);
+  padding: clamp(1.6rem, 3.2vw, 2.4rem);
   display: flex;
   flex-direction: column;
+  quotes: '\201C' '\201D' '\2018' '\2019';
   transition: transform .22s ease, box-shadow .22s ease;
 }
 .quote:hover { transform: translateY(-5px); box-shadow: 8px 8px 0 var(--acc); }
 
+.quote blockquote {
+  margin: 0;
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-indent: -.31em;   /* the advance width of “ in Bricolage — hangs it in the margin */
+  text-wrap: pretty;
+}
+.quote blockquote::before { content: open-quote; }
+.quote blockquote::after  { content: close-quote; }
+
+/* Attribution: name in the text face, context in the mono label voice, under
+   a short accent rule instead of a full-width divider. */
+.quote figcaption { margin-top: 1.6rem; line-height: 1.4; }
+.quote figcaption::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--acc);
+  margin-bottom: .85rem;
+}
+.quote__who {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.quote__where {
+  display: block;
+  margin-top: .35rem;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Feature variant: display-size quote, attribution bottom-right beside it when
+   the card is wide enough for both, stacked beneath it when it isn't. Plain
+   flex-wrap does the switching, so it behaves inside any container. */
 .quote--feature {
   grid-column: 1 / -1;
   background: rgba(46, 93, 70, .05);
   border-color: var(--acc);
   box-shadow: 6px 6px 0 var(--ink);
+  padding: clamp(1.8rem, 3.6vw, 2.8rem) clamp(1.8rem, 4vw, 3.2rem);
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.8rem clamp(2rem, 4vw, 3.5rem);
 }
 .quote--feature:hover { box-shadow: 9px 9px 0 var(--ink); }
-
-.quote blockquote {
-  margin: 0;
-  font-size: 1.08rem;
-  line-height: 1.55;
-  color: var(--ink-2);
-  flex: 1;
-}
 .quote--feature blockquote {
-  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
-  line-height: 1.45;
-  color: var(--ink);
+  flex: 1 1 34rem;
+  min-width: 0;
+  max-width: 46ch;
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  line-height: 1.32;
   font-weight: 500;
-  letter-spacing: -.015em;
-  max-width: 54ch;
+  letter-spacing: -.022em;
+  color: var(--ink);
 }
-
-/* The opening mark is decorative — the real quote marks live in the text. */
-.quote__mark {
-  font-weight: 800;
-  font-size: 3.2rem;
-  line-height: .4;
-  color: var(--acc);
-  opacity: .28;
-  margin-bottom: 1.1rem;
+.quote--feature figcaption {
+  flex: 0 1 auto;
+  max-width: 18rem;
+  margin-top: 0;
 }
-.quote--feature .quote__mark { font-size: clamp(4rem, 7vw, 5.5rem); margin-bottom: 1.5rem; }
-
-.quote figcaption {
-  margin-top: 1.4rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--rule);
-  font-family: var(--mono);
-  font-size: .74rem;
-  line-height: 1.5;
-  letter-spacing: .04em;
-}
-.quote__who   { display: block; color: var(--acc2); text-transform: uppercase; letter-spacing: .1em; }
-.quote__where { display: block; margin-top: .3rem; color: var(--muted); }
 /* The feature card's tinted ground costs ~0.6:1 — --muted lands at 4.28 there,
    so the citation steps darker to stay over the AA floor. */
 .quote--feature .quote__where { color: var(--ink-3); }
