@@ -17,7 +17,7 @@ including `_redirects`.
 
 | File            | What it is |
 | --------------- | ---------- |
-| `index.html`    | Home — hero, differentiator, the two-audience split, one case study teaser, booking, contact |
+| `index.html`    | Home — hero, differentiator, the after-the-call timeline (`#path`), the two-audience split, case-study teasers, booking, contact |
 | `startups.html` | Engagement model for funded founders: Definition, then four-week build cycles. Own booking embed, own FAQ |
 | `organizations.html` | Engagement model for nonprofits, associations, and established organizations: Definition, then a fixed-fee build. Own booking embed, own FAQ |
 | `work/index.html` | Work — three case studies, Miirror Health first as the primary proof asset |
@@ -26,7 +26,7 @@ including `_redirects`.
 | `404.html`      | Custom not-found page. Cloudflare Pages serves this automatically |
 | `_redirects`    | Cloudflare Pages 301s. Only for paths whose file moved or was deleted |
 | `styles.css`    | The whole design system: tokens, layout, components |
-| `site.js`       | Scroll reveal, image-slot fallback, self-updating dateline. Progressive enhancement — every page reads fine with JS off |
+| `site.js`       | Scroll reveal, image-slot fallback, self-updating dateline, `[data-tip]` tooltips. Progressive enhancement — every page reads fine with JS off |
 | `analytics.js`  | PostHog. Live — see **Analytics** below |
 | `images/`       | `og.png` (social card) plus drop-in photos. See `images/README.md` |
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Site icons — a geometric "F" drawn as rects, so it never depends on a font |
@@ -179,6 +179,16 @@ button, just add the attribute — no JS change:
     form is frameable. The `calendar.app.google/…` short link sends
     `X-Frame-Options: SAMEORIGIN` and renders an empty box. Each embed has a
     visible "open in a new tab" fallback beneath it.
+- **After-the-call timeline** (`#path`, home). A week-by-week figure of the
+  shared opening of both models: the free call, Definition ($5,000, two weeks),
+  and the gate at week two where the plan and the number exist. The build bar
+  is deliberately unpriced and fades out — pricing it here would put the two
+  structures on one page — and the caption hands off to `#who`. Built from
+  HTML/CSS with the site's tokens; the gray is `--muted-2` because `--muted`
+  fails the colorblind and normal-vision separation checks against the pine
+  accent (numbers in the `styles.css` section comment). Every mark is directly
+  labeled and the `<details>` table below it holds the same values, which is
+  what makes the sub-3:1 gray legal. Tooltips come from `site.js`.
 - **Segment router.** The `#who` cards on the home page are `<a class="route">`
   links, one per audience, pointing at that reader's engagement model. Each
   carries `data-cta="who-…"`, so PostHog reports which segment actually clicks —

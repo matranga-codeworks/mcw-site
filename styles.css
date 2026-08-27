@@ -1209,3 +1209,270 @@ body[data-grain] .grain { display: block; }
   transition: color .22s ease, transform .22s ease;
 }
 .route:hover .route__go { color: var(--acc2); transform: translateX(4px); }
+
+/* ------------------------------------------------------ path timeline --- */
+/* Home-page figure (#path): the first weeks of an engagement, week by week.
+   Built from HTML/CSS rather than SVG so text stays at page sizes and wraps.
+   Every x position is a fraction of the track (--x / --w in 0–1). The name
+   column is --name-w wide and collapses to 0 on narrow screens, where each
+   name sits above its track. Emphasis form: Definition wears the accent; the
+   build is a de-emphasis gray that fades out because its length is set by
+   the plan, and it has no rounded end because it doesn't end on the chart.
+
+   Color, validated (dataviz validator, surface --paper):
+     --acc vs --muted-2 · CVD ΔE 15.8 (floor 8) · normal-vision ΔE 19.0
+     (floor 15) — both pass. --muted-2 on paper is 2.94:1, under the 3:1 mark
+     floor, which is why every mark carries a visible label and the <details>
+     table duplicates the figure. (The "--muted-2 is on-dark only" rule is
+     about text; this is a labeled fill.) --muted was tried and fails hard
+     against the accent (normal ΔE 9.4, CVD 5.3) — don't swap it in. */
+
+.timeline {
+  --name-w: 11rem;
+  --bar-h: 20px;
+  --gate-room: 2rem;               /* space under the rows for the gate label */
+  margin: 0;
+  max-width: 62rem;
+}
+
+.timeline__key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.6rem;
+  margin-bottom: 1.4rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.timeline__key span { display: inline-flex; align-items: center; gap: .55rem; }
+.timeline__swatch { display: inline-block; width: 16px; height: 10px; border-radius: 0 3px 3px 0; }
+.timeline__swatch--fixed { background: var(--acc); }
+.timeline__swatch--open  { background: var(--muted-2); border-radius: 0; }
+
+/* Shared x placement: the name column, then a fraction of what's left. */
+.timeline__tick,
+.timeline__line,
+.timeline__gate { position: absolute; left: calc(var(--name-w) + (100% - var(--name-w)) * var(--x)); }
+
+.timeline__axis {
+  position: relative;
+  height: 1.4rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.timeline__tick { top: 0; transform: translateX(-50%); white-space: nowrap; }
+.timeline__tick--start { transform: none; }
+.timeline__tick--end   { transform: translateX(-100%); }
+.timeline__tick--gate  { color: var(--ink); }
+
+.timeline__body { position: relative; padding-bottom: var(--gate-room); }
+.timeline__line {
+  top: 0;
+  bottom: var(--gate-room);
+  width: 1px;
+  background: var(--rule);          /* x = 0: the baseline the bars grow from */
+}
+.timeline__line--minor { background: var(--rule-2); }
+.timeline__gate { top: 0; bottom: var(--gate-room); width: 1px; background: var(--ink); }
+.timeline__gate span {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: .6rem;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.timeline__rows { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline__row {
+  display: grid;
+  grid-template-columns: var(--name-w) 1fr;
+  align-items: center;
+  min-height: 3.1rem;
+}
+.timeline__name {
+  position: relative;               /* paints over the gridlines */
+  justify-self: start;
+  padding-right: 1rem;
+  background: var(--paper);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.timeline__track { position: relative; height: 3.1rem; }
+
+.timeline__bar,
+.timeline__dot {
+  position: absolute;
+  top: 50%;
+  left: calc(100% * var(--x));
+  transform: translateY(-50%);
+  cursor: default;
+}
+.timeline__bar { height: var(--bar-h); width: calc(100% * var(--w)); }
+.timeline__bar--fixed { background: var(--acc); border-radius: 0 4px 4px 0; }   /* square at the baseline, rounded data end */
+.timeline__bar--open  { background: linear-gradient(90deg, var(--muted-2) 0 35%, rgba(138, 133, 120, 0) 100%); }
+.timeline__dot {
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--acc);
+  box-shadow: 0 0 0 2px var(--paper);   /* surface ring */
+}
+/* Hit targets are bigger than the marks. */
+.timeline__bar::before,
+.timeline__dot::before { content: ''; position: absolute; inset: -12px; }
+.timeline__bar:hover,
+.timeline__bar:focus-visible,
+.timeline__dot:hover,
+.timeline__dot:focus-visible { filter: brightness(1.14); }
+
+.timeline__val {
+  position: absolute;
+  top: 50%;
+  left: calc(100% * var(--x) + 12px);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: var(--ink);                /* on the gray fill: 4.9:1 */
+}
+.timeline__val--dot { left: calc(100% * var(--x) + 16px); }
+
+.timeline__cap {
+  margin: 1.5rem 0 0;
+  max-width: 58ch;
+  font-size: .98rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* The table twin. Same shape as the FAQ disclosure so it reads as one site. */
+.timeline__table {
+  margin-top: 1.4rem;
+  max-width: 62rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.timeline__table summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding: .95rem 2.4rem .95rem 0;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--acc2);
+}
+.timeline__table summary::-webkit-details-marker { display: none; }
+.timeline__table summary:hover { color: var(--acc); }
+.timeline__table summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--acc);
+}
+.timeline__table[open] summary::after { content: '–'; }
+.timeline__table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.2rem;
+  font-size: .98rem;
+  line-height: 1.45;
+}
+.timeline__table th,
+.timeline__table td {
+  text-align: left;
+  vertical-align: top;
+  padding: .7rem 1rem .7rem 0;
+  border-top: 1px solid var(--rule-2);
+}
+.timeline__table thead th {
+  border-top: 0;
+  font-family: var(--mono);
+  font-size: .66rem;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.timeline__table tbody th { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.timeline__table td { color: var(--ink-2); }
+.timeline__table td:nth-child(2),
+.timeline__table td:nth-child(3) { font-family: var(--mono); font-size: .86rem; white-space: nowrap; color: var(--ink); }
+
+@media (max-width: 640px) {
+  .timeline { --name-w: 0rem; }
+  .timeline__row { grid-template-columns: 1fr; min-height: 0; padding-top: .5rem; }
+  .timeline__name { padding: 0 .5rem .05rem 0; font-size: .95rem; }
+  .timeline__track { height: 2.5rem; }
+  .timeline__tick--odd,
+  .timeline__line--minor,
+  .timeline__cont { display: none; }
+  .timeline__table tbody th,
+  .timeline__table td { white-space: normal; font-size: .92rem; }
+  .timeline__table td:nth-child(2),
+  .timeline__table td:nth-child(3) { white-space: normal; font-size: .8rem; }
+}
+
+@media (forced-colors: active) {
+  .timeline__bar,
+  .timeline__dot,
+  .timeline__swatch,
+  .timeline__line,
+  .timeline__gate { forced-color-adjust: none; }
+  .timeline__bar--fixed,
+  .timeline__dot,
+  .timeline__swatch--fixed,
+  .timeline__gate { background: CanvasText; }
+  .timeline__bar--open,
+  .timeline__swatch--open { background: transparent; border: 1px solid CanvasText; }
+  .timeline__line { background: GrayText; }
+  .timeline__dot { box-shadow: 0 0 0 2px Canvas; }
+}
+
+/* ------------------------------------------------------------ tooltip --- */
+/* Hover / tap / focus readout for any [data-tip] element; site.js creates
+   and positions it. Fixed-position so it never moves the layout, and absent
+   with JS off (the timeline's <details> table carries the same values). */
+
+.tip {
+  position: fixed;
+  z-index: 70;
+  max-width: 30ch;
+  padding: .75rem .95rem .8rem;
+  background: var(--ink);
+  color: var(--on-dark-2);
+  font-family: var(--sans);
+  font-size: .92rem;
+  line-height: 1.45;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+.tip[hidden] { display: none; }
+.tip b {
+  display: block;
+  margin-bottom: .3rem;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: .84rem;
+  letter-spacing: .02em;
+  color: var(--on-dark);
+}

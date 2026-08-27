@@ -55,8 +55,8 @@ seven HTML files** (`index`, `about`, `organizations`, `startups`, `work/index`,
   Everything is driven by tokens in `:root`; six accent tokens at the top reskin the
   whole site.
 - `site.js` — progressive enhancement only; every page must still read correctly with
-  it blocked. Three behaviors: scroll reveal, image-slot fallback, self-updating
-  dateline.
+  it blocked. Four behaviors: scroll reveal, image-slot fallback, self-updating
+  dateline, and `[data-tip]` tooltips.
 - `analytics.js` — PostHog, live (real project key). No cookies, no autocapture, no
   session recording; honors Do Not Track.
 
@@ -72,6 +72,10 @@ seven HTML files** (`index`, `about`, `organizations`, `startups`, `work/index`,
 - **`img[data-slot]`** degrades: if the file is missing, `site.js` removes the `<img>`
   and the parent frame shows its `data-placeholder` label instead of a broken icon.
   Several slots in `images/` are intentionally still empty.
+- **`data-tip="…"`** (optional `data-tip-value="…"` for a bold first line) gets a
+  hover/tap/focus readout from `site.js`. Used by the home page's `#path` timeline;
+  the values must also be readable without it — that figure's `<details>` table is
+  the JS-off twin.
 - **`data-year` / `data-quarter`** are rewritten at runtime. Both ship a correct
   literal in the markup so JS-off readers see something sane — keep the literals
   current-ish when editing nearby copy.

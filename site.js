@@ -83,7 +83,75 @@
     });
   }
 
-  function init() { reveal(); slots(); dateline(); }
+  /* --- Tooltips ----------------------------------------------------------
+     Any element with data-tip gets a readout on hover, tap, and keyboard
+     focus — the home-page timeline uses it. data-tip-value, if present, is
+     the bold first line. Text goes in with textContent, never as markup. */
+  function tips() {
+    var marks = document.querySelectorAll('[data-tip]');
+    if (!marks.length) return;
+
+    var tip = document.createElement('div');
+    tip.className = 'tip';
+    tip.id = 'tip';
+    tip.setAttribute('role', 'tooltip');
+    tip.hidden = true;
+    document.body.appendChild(tip);
+
+    var current = null, pinned = false;
+
+    function place(el) {
+      var r = el.getBoundingClientRect();
+      var w = tip.offsetWidth, h = tip.offsetHeight, pad = 8;
+      var x = r.left + r.width / 2 - w / 2;
+      x = Math.max(pad, Math.min(x, window.innerWidth - w - pad));
+      var y = r.top - h - 10;
+      if (y < pad) y = r.bottom + 10;
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    }
+    function show(el) {
+      tip.textContent = '';
+      var value = el.getAttribute('data-tip-value');
+      if (value) {
+        var b = document.createElement('b');
+        b.textContent = value;
+        tip.appendChild(b);
+      }
+      tip.appendChild(document.createTextNode(el.getAttribute('data-tip')));
+      tip.hidden = false;
+      el.setAttribute('aria-describedby', 'tip');
+      current = el;
+      place(el);
+    }
+    function hide() {
+      if (current) current.removeAttribute('aria-describedby');
+      tip.hidden = true;
+      current = null;
+      pinned = false;
+    }
+
+    Array.prototype.forEach.call(marks, function (el) {
+      el.addEventListener('pointerenter', function (e) {
+        if (e.pointerType !== 'touch' && !pinned) show(el);
+      });
+      el.addEventListener('pointerleave', function () { if (!pinned) hide(); });
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (pinned && current === el) { hide(); return; }
+        show(el);
+        pinned = true;
+      });
+      el.addEventListener('focus', function () { show(el); });
+      el.addEventListener('blur', hide);
+    });
+    document.addEventListener('click', function () { if (pinned) hide(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+    window.addEventListener('scroll', function () { if (current) place(current); }, { passive: true });
+    window.addEventListener('resize', function () { if (current) place(current); });
+  }
+
+  function init() { reveal(); slots(); dateline(); tips(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
