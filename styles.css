@@ -929,6 +929,167 @@ body[data-grain] .grain { display: block; }
 }
 .hero__copy--about { flex-basis: 520px; padding-block: clamp(3rem, 7vw, 6rem); }
 
+/* ----------------------------------------------------------- hero art ---- */
+
+/* The home hero's right-hand panel: a desktop app and a mobile app, drawn in
+   the site's own language (2px ink frames, hard offset shadows, mono tags).
+   Their interfaces build themselves on a 10s loop. Everything is sized in
+   container-query units of the .devices stage, so the scene scales as one
+   piece. The base styles ARE the finished state — every keyframe starts
+   hidden and ends here — so prefers-reduced-motion (animation: none, above)
+   and any browser that drops the animation show both apps complete. */
+.hero__art {
+  flex: 1 1 340px;
+  max-width: 640px;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 3.5rem) var(--gut) clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3.5vw, 3rem);
+  border-left: 2px solid var(--ink);
+}
+@media (max-width: 960px) {
+  .hero__art {
+    flex-basis: calc(100% + var(--gut));
+    max-width: none;
+    margin-left: calc(-1 * var(--gut));
+    border-left: 0;
+    border-top: 2px solid var(--ink);
+    padding: clamp(1.8rem, 5vw, 2.6rem) var(--gut);
+  }
+}
+
+.devices {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 5 / 4;
+}
+.dev {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-2);
+  border: 2px solid var(--ink);
+}
+.dev--desktop { left: 0; top: 5cqw; width: 84cqw; height: 66cqw; box-shadow: 1.4cqw 1.4cqw 0 var(--acc); }
+.dev--phone   { right: 2cqw; bottom: 0; width: 30cqw; height: 60cqw; border-radius: 4cqw; box-shadow: 1.2cqw 1.2cqw 0 var(--ink); }
+
+.dev__tag {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 2.4cqw;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: clamp(.56rem, 2.3cqw, .7rem);
+  line-height: 1;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: .35em .7em;
+}
+.dev--phone .dev__tag { left: 50%; transform: translate(-50%, -50%); }
+
+/* Desktop chrome */
+.dev__bar {
+  height: 6cqw;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 1.1cqw;
+  padding: 0 2.2cqw;
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+}
+.dev__bar i { width: 1.7cqw; height: 1.7cqw; border-radius: 50%; border: 1.5px solid var(--ink); }
+.dev__bar i:first-child { background: var(--acc); }
+.dev__body { flex: 1; display: flex; min-height: 0; }
+.dev__side {
+  width: 22cqw;
+  flex: none;
+  padding: 2.8cqw 2.2cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2cqw;
+  border-right: 2px solid var(--ink);
+}
+.dev__main { flex: 1; min-width: 0; padding: 3cqw; display: flex; flex-direction: column; gap: 2.2cqw; }
+
+/* Phone chrome */
+.dev__notch { height: 5cqw; flex: none; display: flex; align-items: center; justify-content: center; }
+.dev__notch i { width: 9cqw; height: 1.6cqw; border-radius: 1cqw; background: var(--ink); }
+.dev__screen { flex: 1; min-height: 0; padding: 1cqw 2.4cqw 2.4cqw; display: flex; flex-direction: column; gap: 2cqw; }
+.dev__tabs {
+  height: 6cqw;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 1cqw;
+  border-top: 2px solid var(--ink);
+  background: var(--paper);
+  border-radius: 0 0 calc(4cqw - 2px) calc(4cqw - 2px);   /* the phone can't clip (its tag straddles the top edge), so round the bar itself */
+}
+.dev__tabs i { width: 2.2cqw; height: 2.2cqw; border-radius: 50%; border: 1.5px solid var(--ink); }
+.dev__tabs i:first-child { background: var(--acc); }
+
+/* Interface pieces */
+.ui { display: block; flex: none; }
+.ui--nav   { height: 2.2cqw; width: 82%; background: var(--rule); transform-origin: left; }
+.ui--nav:nth-child(2) { width: 64%; }
+.ui--nav:nth-child(3) { width: 74%; }
+.ui--nav:nth-child(4) { width: 56%; }
+.ui--on    { background: var(--acc); }
+.ui--title { height: 3cqw; width: 48%; background: var(--ink); transform-origin: left; }
+.ui-chart  { height: 17cqw; display: flex; align-items: flex-end; gap: 1.6cqw; border-bottom: 2px solid var(--ink); }
+.ui--bar   { flex: 1; height: var(--h); background: var(--acc); transform-origin: bottom; }
+.ui--hi    { background: var(--acc-b); }
+.ui--row   { height: 2.2cqw; background: var(--rule); transform-origin: left; }
+.ui--row:nth-of-type(2) { width: 86%; }
+.ui--row:nth-of-type(3) { width: 68%; }
+.ui--btn   { height: 4.8cqw; width: 36%; margin-top: auto; background: var(--acc); box-shadow: .6cqw .6cqw 0 var(--ink); }
+.ui--card  { height: 8cqw; background: var(--paper); border: 1.5px solid var(--ink); border-left: .8cqw solid var(--acc); }
+.dev__screen .ui--title { height: 2.6cqw; width: 62%; }
+.dev__screen .ui--btn   { width: 100%; height: 5.2cqw; }
+
+/* The loop. One 10s cycle; each group has its own entrance window so the
+   scene rebuilds in order — sidebar, title, chart, rows, button, then the
+   phone — holds, and clears together. The two content areas fade out at the
+   end and stay dark through the first 5% of the next cycle, which hides the
+   jump from "finished" back to "hidden" (including the ≤.3s intra-group
+   stagger done with animation-delay). */
+.dev__body, .dev__screen { animation: mcClear 10s linear infinite; }
+.dev--desktop .ui--nav   { animation: mcDeskNav   10s var(--ease) infinite both; }
+.dev--desktop .ui--title { animation: mcDeskTitle 10s var(--ease) infinite both; }
+.ui--bar                 { animation: mcDeskBars  10s var(--ease) infinite both; }
+.ui--row                 { animation: mcDeskRows  10s var(--ease) infinite both; }
+.dev--desktop .ui--btn   { animation: mcDeskBtn   10s var(--ease) infinite both; }
+.dev--phone .ui--title   { animation: mcPhoneTitle 10s var(--ease) infinite both; }
+.ui--card                { animation: mcPhoneCards 10s var(--ease) infinite both; }
+.dev--phone .ui--btn     { animation: mcPhoneBtn  10s var(--ease) infinite both; }
+
+.ui--nav:nth-child(2), .ui--bar:nth-child(2), .ui--row:nth-of-type(2), .ui--card:nth-of-type(2) { animation-delay: .1s; }
+.ui--nav:nth-child(3), .ui--bar:nth-child(3), .ui--row:nth-of-type(3), .ui--card:nth-of-type(3) { animation-delay: .2s; }
+.ui--nav:nth-child(4), .ui--bar:nth-child(4) { animation-delay: .3s; }
+.ui--bar:nth-child(5) { animation-delay: .4s; }
+.ui--bar:nth-child(6) { animation-delay: .5s; }
+
+@keyframes mcClear      { 0%, 6%  { opacity: 0; } 10%, 91% { opacity: 1; } 95%, 100% { opacity: 0; } }
+@keyframes mcDeskNav    { 0%, 8%  { opacity: 0; transform: scaleX(0); } 13%, 100% { opacity: 1; transform: none; } }
+@keyframes mcDeskTitle  { 0%, 13% { opacity: 0; transform: scaleX(0); } 17%, 100% { opacity: 1; transform: none; } }
+@keyframes mcDeskBars   { 0%, 18% { transform: scaleY(0); }             24%, 100% { transform: none; } }
+@keyframes mcDeskRows   { 0%, 28% { opacity: 0; transform: scaleX(0); } 33%, 100% { opacity: 1; transform: none; } }
+@keyframes mcDeskBtn    { 0%, 35% { opacity: 0; transform: scale(.8); } 39%, 100% { opacity: 1; transform: none; } }
+@keyframes mcPhoneTitle { 0%, 44% { opacity: 0; transform: scaleX(0); } 48%, 100% { opacity: 1; transform: none; } }
+@keyframes mcPhoneCards { 0%, 49% { opacity: 0; transform: translateY(1.5rem); } 55%, 100% { opacity: 1; transform: none; } }
+@keyframes mcPhoneBtn   { 0%, 58% { opacity: 0; transform: scale(.8); } 62%, 100% { opacity: 1; transform: none; } }
+
 /* ----------------------------------------------------------- one-offs ---- */
 
 .kicker-row { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: baseline; }
