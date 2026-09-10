@@ -98,30 +98,37 @@ from that and are easy to undo by accident:
   The `LocalBusiness` address and phone are NAP data, not positioning — they stay.
 - Do not use the phrase **"small businesses"** anywhere.
 - Do not create a **"Fractional CTO"** page or named offering. The phrase may
-  appear once in body copy for search; the advisory retainer
-  ($8,000–$12,000/month, capped days, defined response window) is described in a
+  appear once in body copy for search; the advisory variant (the same $8,000
+  build-retainer month, spent on direction instead of code) is described in a
   sentence on `startups.html`, never productized.
 
 ## Invariants
 
 Breaking any of these is a real regression, not a style nit.
 
-- **Two audience pages, two different engagement models.** `startups.html` sells
-  four-week build cycles at $20,000 each; `organizations.html` sells a fixed-fee
-  build starting at $20,000. Both open with the same $3,000, two-week **Definition**
-  phase, and both use that word — never "Discovery." The prices on the two pages
-  are *supposed* to differ; don't "fix" one to match the other.
-- **A visitor must land on the page for their situation and see only that model.**
-  The home page routes to them through the `#who` split and never lists the two
-  price structures side by side. A nonprofit ED comparing cycle pricing to their
-  own fixed fee is the failure this IA exists to prevent.
+- **Two audience pages, one engagement model.** Both sell the same three
+  stages at the same prices: a $3,000, one-week **Discovery** phase (the same word
+  the knowledge base and proposals use — never "Definition", the site's old
+  name for it), a **build retainer at $8,000 per month**
+  (about six working days; three-month initial term, then month to month with
+  30 days' notice; no change orders), and a **maintenance retainer** at
+  $2,500/mo for up to 10 hours or $4,000/mo for up to 20. The pages differ in
+  framing and FAQ, never in price — if one page's number drifts, that's the bug.
+  The numbers are set in the `mcw` knowledge base
+  (`knowledge/pricing-and-service-structure.md`); change them there first.
+- **Fixed fee is an exception, not a model.** It appears only on
+  `organizations.html`, in one FAQ answer and the build aside: from $20,000,
+  35/30/35 milestones, change orders, and only when a grant, RFP, regulator, or
+  partner spec forces a fixed total. Don't promote it to a section or a hero.
+- **A visitor must land on the page for their situation.** The home page prices
+  the shared stages in `#path` but never a month count — that comes from
+  Discovery — and routes readers through the `#who` split.
 - **Both audience pages declare their own `Service` JSON-LD nodes**
-  (`/startups#definition`, `#cycles`, `#support` and `/organizations#definition`,
+  (`/startups#discovery`, `#cycles`, `#support` and `/organizations#discovery`,
   `#build`, `#support`), and the home page's `hasOfferCatalog` carries one
-  `OfferCatalog` per audience referencing those `@id`s. These are genuinely
-  different offers, so two definitions is correct here — but each offer must be
+  `OfferCatalog` per audience referencing those `@id`s. Each offer must be
   defined in exactly one place. If you rename a stage, the `@id` is what has to
-  stay put.
+  stay put — `/startups#cycles` is the build retainer, named for the cycle era.
 - **Canonical host `https://matrangacode.works` is hard-coded** in `canonical` +
   `og:url` per page, plus `robots.txt` and `sitemap.xml`. Those are the only
   absolute URLs in the project; everything else is root-relative.

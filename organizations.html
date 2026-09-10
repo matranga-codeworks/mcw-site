@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fixed-price custom software for organizations — Frank Matranga</title>
-<meta name="description" content="For nonprofits, associations, and established businesses that have outgrown spreadsheets and off-the-shelf tools, with no one technical on staff. Two weeks of Definition for $3,000, then a fixed price for the build, starting at $20,000.">
+<title>Custom software for organizations, at a monthly price — Frank Matranga</title>
+<meta name="description" content="For nonprofits, associations, and established businesses that have outgrown spreadsheets and off-the-shelf tools, with no one technical on staff. One week of Discovery for $3,000, then a build retainer at a flat $8,000 a month.">
 <meta name="author" content="Frank Matranga">
 <meta name="theme-color" content="#2E5D46">
 <link rel="canonical" href="https://matrangacode.works/organizations">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Matranga Codeworks">
 <meta property="og:url" content="https://matrangacode.works/organizations">
 <meta property="og:title" content="For organizations — Frank Matranga">
-<meta property="og:description" content="A number you can put in a budget and defend to a board. The requirements get pinned down before anyone writes code, then the build is a fixed price.">
+<meta property="og:description" content="A number you can put in a budget and defend to a board. The requirements get pinned down before anyone writes code, then the build is a flat monthly price.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://matrangacode.works/images/og.png">
 <meta property="og:image:width" content="1200">
@@ -55,49 +55,50 @@
     },
     {
       "@type": "Service",
-      "@id": "https://matrangacode.works/organizations#definition",
-      "name": "Product and Technical Definition",
-      "serviceType": "Software product definition and scoping",
+      "@id": "https://matrangacode.works/organizations#discovery",
+      "name": "Product and Technical Discovery",
+      "serviceType": "Software product discovery and scoping",
       "provider": { "@id": "https://matrangacode.works/#business" },
-      "url": "https://matrangacode.works/organizations#definition",
-      "description": "A two-week fixed-fee phase before any code: what the product needs to do, what gets cut from the first version, the technical approach, how it will reach users — the App Store or the web — and any compliance requirements — ending in a written specification, an implementation plan with milestones, and a fixed price for the build.",
+      "url": "https://matrangacode.works/organizations#discovery",
+      "description": "A one-week fixed-fee phase before any code: what the product needs to do, what gets cut from the first version, the technical approach, how it will reach users — the App Store or the web — and any compliance requirements — ending in a written specification, a month-by-month build plan, and an estimate of how many build months the first version takes.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
-        "price": 5000,
+        "price": 3000,
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "USD",
-          "price": 5000
+          "price": 3000
         }
       }
     },
     {
       "@type": "Service",
       "@id": "https://matrangacode.works/organizations#build",
-      "name": "Build",
+      "name": "Build retainer",
       "serviceType": "Custom software development",
       "provider": { "@id": "https://matrangacode.works/#business" },
       "url": "https://matrangacode.works/organizations#build",
-      "description": "Mobile apps, web apps, and staff dashboards built to the specification and delivered at the quoted price, through App Store approval and going live. A fixed fee quoted against the specification, paid in three stages against milestones. Builds start at $20,000; the typical range is $25,000 to $30,000.",
+      "description": "Mobile apps, web apps, and staff dashboards built to the specification on a monthly retainer at $8,000 per month, buying about six working days of focused time. Each month starts with a planning session and ends with something usable deployed and a written summary of what shipped. Three-month initial term, then month to month with 30 days' notice; billed monthly in advance. Where a grant, an RFP, or a regulator requires a fixed total, a fixed fee can be quoted against the specification, from $20,000, paid in three milestones.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
         "priceSpecification": {
-          "@type": "PriceSpecification",
+          "@type": "UnitPriceSpecification",
           "priceCurrency": "USD",
-          "minPrice": 35000
+          "price": 8000,
+          "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" }
         }
       }
     },
     {
       "@type": "Service",
       "@id": "https://matrangacode.works/organizations#support",
-      "name": "Ongoing support",
+      "name": "Maintenance retainer",
       "serviceType": "Software maintenance and support",
       "provider": { "@id": "https://matrangacode.works/#business" },
       "url": "https://matrangacode.works/organizations#support",
-      "description": "Availability after launch: defined response windows and priority access on a month-to-month retainer, with maintenance, monitoring, and fixes included — and as-needed work outside the retainer billed at $200 per hour.",
+      "description": "Keeps the product running once it is live: hosting and security updates, bug fixes, monitoring, and small changes, with requests acknowledged within one business day and outages worked the same day. $2,500 per month covers up to ten hours; $4,000 covers up to twenty. New features are a build month; as-needed work outside the retainer is billed at $200 per hour.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
@@ -122,7 +123,7 @@
           "name": "What if the answer is “don't build”?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Then that's what the specification says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than start a build I don't believe in. A build only happens if the specification says “build” — and the document is yours either way."
+            "text": "Then that's what the specification says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week one than start a build I don't believe in. A build only happens if the specification says “build” — and the document is yours either way."
           }
         },
         {
@@ -130,15 +131,31 @@
           "name": "What exactly do I get for $3,000?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A written specification you own: the product argued down to what version one needs, the technical approach in plain English, how it will reach users, any compliance requirements, an implementation plan with milestones, and a fixed price for the build — a number, not a range. You can take it to any builder, including one who isn't me. The fee is fixed, agreed before we start, and isn't credited against the build — the specification is worth having whether or not I'm the one who builds from it."
+            "text": "A written specification you own: the product argued down to what version one needs, the technical approach in plain English, how it will reach users, any compliance requirements, a month-by-month build plan, and an estimate of how many build months it takes — so the budget is $8,000 times a number you've seen the reasoning for. You can take it to any builder, including one who isn't me. The fee is fixed, agreed before we start, and isn't credited against the build — the specification is worth having whether or not I'm the one who builds from it."
           }
         },
         {
           "@type": "Question",
-          "name": "Can we skip Definition and go straight to a build?",
+          "name": "Can we skip Discovery and go straight to a build?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No — Definition is the only way in. A build can't be priced properly before the definition work is done; skipping it means bidding on a guess, and a fixed price built on a guess punishes us both. If you already have notes, sketches, board minutes, or a document from another developer, bring them — good input makes Definition faster and sharper, not unnecessary."
+            "text": "No — Discovery is the only way in. A build can't be estimated properly before the discovery work is done; skipping it means planning on a guess, and a month count built on a guess punishes us both. If you already have notes, sketches, board minutes, or a document from another developer, bring them — good input makes Discovery faster and sharper, not unnecessary."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why a monthly price instead of a fixed one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because a fixed price only works when the requirements hold still, and for most organizations they don't — priorities shift the moment staff see working software. A fixed-price contract turns every one of those shifts into a change order and a negotiation. The retainer fixes the two things you actually need fixed, the price and the pace, and leaves the contents of each month yours to set. For a budget, it also means a predictable line item rather than one large capital request, and you can stop at any month boundary holding working software."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We need a fixed total for a grant or an RFP. Can you do that?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when the fixed total is imposed from outside — a grant deliverable, an RFP, a regulatory requirement, or a partner integration with someone else's spec. In that case I quote a fixed fee against the Discovery specification, starting at $20,000, paid in three stages — 35% to start, 30% mid-build, and 35% on completion — with anything outside the specification priced as a change order before the work happens. It's the exception rather than the default, because a fixed price has to be padded against the unknowns a monthly arrangement simply absorbs."
           }
         },
         {
@@ -146,7 +163,7 @@
           "name": "How do payments work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Definition is a fixed $3,000, agreed up front. Builds are a fixed fee quoted against the specification — builds start at $20,000, and the typical range is $25,000 to $30,000 — paid 35% to start, 30% mid-build, and 35% on completion, against milestones you can see. Anything added outside the specification is a change order, priced when you request it and agreed in writing before the work happens. Support is a monthly retainer between $2,500 and $4,000, month to month — stop whenever it stops being worth it."
+            "text": "Discovery is a fixed $3,000, agreed up front. The build is $8,000 a month, invoiced at the start of each month; the first three months are a commitment on both sides, and after that it's month to month with 30 days' notice either way. There are no change orders: anything added beyond the plan goes on a later month's list, at a price you already know. Once the product is live, maintenance is $2,500 a month for up to ten hours or $4,000 for up to twenty, month to month — stop whenever it stops being worth it."
           }
         },
         {
@@ -170,7 +187,7 @@
           "name": "What's not included?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Two things clients often assume are included, and aren't: ongoing feature development after launch — that's a new engagement, or as-needed work under the retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly."
+            "text": "Two things clients often assume are included, and aren't: ongoing feature development after launch — that's a build month, or as-needed work outside the retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly."
           }
         },
         {
@@ -186,7 +203,7 @@
           "name": "Do you discount for nonprofits?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Often, yes — for nonprofits, educational institutions, and churches. A good share of my work is with them, and the pricing on this page isn't the end of the conversation. Tell me your situation on the call."
+            "text": "The rate is the rate, but the scope isn't. A good share of my work is with nonprofits, and the honest way to meet a smaller budget is a smaller first version or fewer months, not a cheaper month — I'll show you what comes out and what it costs you to leave it out. The price on this page is the one every client pays, which is what makes it a number you can trust when you carry it to a board. Tell me your situation on the call."
           }
         }
       ]
@@ -222,13 +239,13 @@
   <section class="ruled" aria-labelledby="org-h" data-no-reveal>
     <div class="wrap pad-s">
       <div class="eyebrow eyebrow--xs eyebrow--rule rise">For organizations</div>
-      <h1 class="t-page mw-18 rise rise-1" id="org-h">Software, built to a fixed price.</h1>
-      <p class="lead mw-52 rise rise-2">You need a number you can put in a budget and defend to a board. That means the requirements get pinned down before anyone writes code — which is what the first two weeks are for.</p>
+      <h1 class="t-page mw-18 rise rise-1" id="org-h">Software, built at a monthly price you can budget.</h1>
+      <p class="lead mw-52 rise rise-2">You need a number you can put in a budget and defend to a board. That means the requirements get pinned down before anyone writes code — which is what the first week is for — and then the build is a flat $8,000 a month, for as many months as the plan says.</p>
       <nav class="chipnav" aria-label="Jump to a section">
         <a href="#who">Who this is for</a>
-        <a href="#definition">1 · Definition</a>
+        <a href="#discovery">1 · Discovery</a>
         <a href="#build">2 · Build</a>
-        <a href="#support">3 · Support</a>
+        <a href="#support">3 · Maintenance</a>
         <a href="#faq">FAQ</a>
         <a href="#book">Book a call</a>
       </nav>
@@ -254,12 +271,12 @@
           <p class="copy">Established businesses: operations outgrew the off-the-shelf tools years ago, someone patched together a fix, and nobody left can explain how it works. It needs replacing with something that won't fall over.</p>
         </div>
       </div>
-      <p class="closer">What these have in common: a real budget, a real approval process, and no one internally who can tell you what a build should cost or whether the quote in front of you is fair. Pinning that down is the first two weeks of the job.</p>
+      <p class="closer">What these have in common: a real budget, a real approval process, and no one internally who can tell you what a build should cost or whether the quote in front of you is fair. Pinning that down is the first week of the job.</p>
     </div>
   </section>
 
-  <!-- 1 · DEFINITION -->
-  <section id="definition" class="ruled" aria-labelledby="d-h">
+  <!-- 1 · DISCOVERY -->
+  <section id="discovery" class="ruled" aria-labelledby="d-h">
     <div class="wrap pad-mm">
       <div class="kicker-row" style="margin-bottom:clamp(1.6rem,3vw,2.2rem);">
         <span class="num">1</span>
@@ -267,21 +284,21 @@
       </div>
       <div class="spec">
         <div class="spec__head">
-          <h2 class="t-lg mw-14" id="d-h">Definition</h2>
+          <h2 class="t-lg mw-14" id="d-h">Discovery</h2>
           <div style="text-align:right;">
-            <div class="label label--onDark" style="margin-bottom:.3rem;">Fixed fee · two weeks</div>
+            <div class="label label--onDark" style="margin-bottom:.3rem;">Fixed fee · one week</div>
             <div class="spec__price">$3,000</div>
           </div>
         </div>
-        <p class="spec__lede">Two weeks, before any code. We settle what the product needs to do, what gets cut from the first version, the technical approach, how it will reach users — the App Store or the web — and any compliance requirements your organization carries. I'll push back on scope; most first versions are three times bigger than they need to be, and cutting them is the cheapest work in the whole engagement.</p>
+        <p class="spec__lede">One week, before any code. We settle what the product needs to do, what gets cut from the first version, the technical approach, how it will reach users — the App Store or the web — and any compliance requirements your organization carries. I'll push back on scope; most first versions are three times bigger than they need to be, and cutting them is the cheapest work in the whole engagement.</p>
 
         <div class="grid--cols" style="margin-top:2.6rem;">
           <div>
             <div class="label label--onDark">What you leave with</div>
             <ul class="marks">
               <li>A written specification, in plain English</li>
-              <li>An implementation plan with milestones</li>
-              <li>A fixed price for the build — a number, not a range</li>
+              <li>A month-by-month build plan, in priority order</li>
+              <li>An estimate of how many build months it takes — so the budget is arithmetic</li>
               <li>What waits for version two, written down rather than forgotten</li>
             </ul>
           </div>
@@ -301,11 +318,11 @@
         <dl class="spec-dl">
           <div>
             <dt>Duration</dt>
-            <dd>2 weeks</dd>
+            <dd>1 week</dd>
           </div>
           <div>
             <dt>You keep</dt>
-            <dd>The specification + a fixed build price</dd>
+            <dd>The specification + a month-by-month plan</dd>
           </div>
           <div>
             <dt>Terms</dt>
@@ -314,8 +331,8 @@
         </dl>
 
         <div class="cta-row" style="margin-top:2.4rem;">
-          <a class="btn btn--onDark" href="#book" data-cta="book-definition">Book a free consultation →</a>
-          <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-definition">Or email me directly</a>
+          <a class="btn btn--onDark" href="#book" data-cta="book-discovery">Book a free consultation →</a>
+          <a class="mail-sm" href="mailto:frank@matrangacode.works" data-cta="email-discovery">Or email me directly</a>
         </div>
       </div>
 
@@ -330,8 +347,8 @@
               <li>What we're building<small>The product argued down to what version one needs, with the reasoning shown, so you can push back.</small></li>
               <li>The technical approach<small>The tools, the hosting, and what it costs to run each month, in plain English.</small></li>
               <li>How it reaches users<small>The App Store or the web — and any compliance requirements that come with your field: HIPAA, payments, data privacy.</small></li>
-              <li>The implementation plan<small>Milestones in a sensible order, with what each one puts in your hands.</small></li>
-              <li>The price<small>A fixed number for the build — not an estimate that grows.</small></li>
+              <li>The build plan<small>What ships in month one, month two, and so on, in priority order, with what each month puts in your hands.</small></li>
+              <li>The budget<small>How many months at $8,000, with the reasoning shown — a number you can defend, not a total that grows.</small></li>
               <li>What waits<small>Everything cut from the first version, set aside where it can't inflate the budget.</small></li>
             </ol>
           </div>
@@ -350,20 +367,20 @@
             <span class="txt">The reason this company exists</span>
           </div>
           <h2 class="t-md3 mw-14" id="b-h" style="line-height:1.02;">Build</h2>
-          <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">Builds start at $20,000</div>
-          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">Typical range $25,000–$30,000</div>
+          <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">$8,000 per month</div>
+          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">About six working days a month · three-month initial term</div>
         </div>
         <div class="flex-5 mw-62">
-          <p class="copy-l" style="margin:0 0 1.6rem;">The thing your staff will use every day, built to the specification you approved and delivered at the price you were quoted: the app, the site your users log into, the screens your staff use to run it, and the unglamorous last mile of App Store approval and going live. The price came from the person doing the work, so it's a number I have to meet, not one I handed to someone else.</p>
+          <p class="copy-l" style="margin:0 0 1.6rem;">The thing your staff will use every day, built to the specification you approved: the app, the site your users log into, the screens your staff use to run it, and the unglamorous last mile of App Store approval and going live. A month buys about a third of my working time on your product, and never more than three products at once. Each month starts with a planning session that sets the list from your priority order, and ends with something usable deployed and a written summary of what shipped. The estimate came from the person doing the work, so it's a number I have to live with, not one I handed to someone else.</p>
 
           <div class="rule-top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem 2.5rem;">
             <div>
               <div class="label" style="margin-bottom:.8rem;">How it works</div>
               <ul class="marks marks--compact marks--onPaper">
-                <li>A fixed fee, quoted against the specification — not a guess</li>
-                <li>Paid in three stages — 35%, 30%, 35% — as milestones are delivered</li>
-                <li>Anything outside the specification is priced separately, in writing, before the work happens</li>
-                <li>Quoted, built, and delivered by the same person</li>
+                <li>A flat $8,000 a month, invoiced in advance — the same price every month</li>
+                <li>You own the priority order; I ship what fits, in that order, every month</li>
+                <li>No change orders — anything added goes on a later month's list, at a price you already know</li>
+                <li>Three months to start, then month to month with 30 days' notice either way</li>
               </ul>
             </div>
             <div>
@@ -374,13 +391,13 @@
               <div class="label" style="margin-bottom:.8rem;">Not included</div>
               <ul class="marks marks--compact marks--onPaper">
                 <li>Your marketing site</li>
-                <li>Feature development after launch — that's new work</li>
+                <li>Feature development after launch — that's a build month</li>
                 <li>Your App Store account, business entity, terms of service, and regulatory sign-off</li>
               </ul>
             </div>
           </div>
 
-          <p class="aside-note">The price comes out of Definition, so it's a number I can stand behind: I'm quoting a specification I wrote, not guessing at one I haven't seen.</p>
+          <p class="aside-note">The month count comes out of Discovery, so it's an estimate I can stand behind: I'm planning from a specification I wrote, not guessing at one I haven't seen. If a grant, an RFP, or a regulator requires a fixed total instead, I can quote one against that specification, from $20,000 — the FAQ below explains when that applies.</p>
         </div>
       </div>
 
@@ -410,19 +427,19 @@
             <span class="num">3</span>
             <span class="txt">After launch</span>
           </div>
-          <h2 class="t-md3 mw-14" id="s-h" style="line-height:1.02;">Ongoing support</h2>
+          <h2 class="t-md3 mw-14" id="s-h" style="line-height:1.02;">Maintenance</h2>
           <div class="mono" style="font-size:clamp(1rem,1.6vw,1.25rem);color:var(--acc2);font-weight:500;margin-top:1rem;">$2,500–$4,000/mo</div>
-          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">Month to month</div>
+          <div class="mono" style="font-size:.82rem;color:var(--muted);margin-top:.5rem;">Up to 10 or 20 hours a month · month to month</div>
         </div>
         <div class="flex-5 mw-62">
-          <p class="copy-l" style="margin:0 0 1.6rem;">Software isn't finished when it ships — but what you're buying after launch is availability, which is scarcer than hours. Support is a monthly retainer with defined response windows and priority access: when something breaks, you're at the front of the line, and when a technical question crosses your desk, you have somewhere to send it. As-needed work outside the retainer is billed at $200/hour, so the retainer never quietly turns into a bucket of discounted hours.</p>
+          <p class="copy-l" style="margin:0 0 1.6rem;">Software isn't finished when it ships. Once the product is live and accepted, a maintenance retainer keeps it running: hosting and security updates, bug fixes, monitoring, small changes, and a standing technical person for whatever crosses your desk. Requests are acknowledged within a business day, and outages are worked the same day. It covers up to ten hours a month at $2,500 or twenty at $4,000; anything that needs a scope conversation is a build month, and as-needed work outside the retainer is billed at $200/hour, so the retainer never quietly turns into a bucket of discounted hours.</p>
 
           <div class="rule-top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem 2.5rem;">
             <div>
               <div class="label" style="margin-bottom:.8rem;">What you get</div>
               <ul class="marks marks--compact marks--onPaper">
-                <li>Defined response windows and priority access</li>
-                <li>Maintenance, monitoring, and fixes</li>
+                <li>Updates, monitoring, and fixes — problems caught before you notice, where possible</li>
+                <li>Requests acknowledged within one business day; outages worked the same day</li>
                 <li>A standing technical person for what crosses your desk</li>
               </ul>
             </div>
@@ -432,7 +449,7 @@
             </div>
           </div>
 
-          <p class="aside-note">As-needed work outside the retainer is billed at $200/hour. Month to month, no lock-in — stop whenever it stops being worth it.</p>
+          <p class="aside-note">Hours don't roll over, and I'll say so before a month runs past its allowance. Month to month, no lock-in — stop whenever it stops being worth it.</p>
         </div>
       </div>
     </div>
@@ -451,8 +468,8 @@
     <div class="wrap pad-m">
       <div class="eyebrow eyebrow--md">How to start</div>
       <div class="split">
-        <h2 class="t-sm flex-2 mw-18">Everything starts with Definition.</h2>
-        <p class="copy-l flex-4 mw-56" style="margin:0;" id="fit-h">It's the only way in. A build can't be priced properly before the definition work is done, so the two-week, $3,000 phase comes first. It prices the build before you've committed to it, weeds out the projects that shouldn't happen, and leaves you with a specification you own either way. The first step is a conversation, not a contract.</p>
+        <h2 class="t-sm flex-2 mw-18">Everything starts with Discovery.</h2>
+        <p class="copy-l flex-4 mw-56" style="margin:0;" id="fit-h">It's the only way in. A build can't be planned properly before the discovery work is done, so the one-week, $3,000 phase comes first. It puts a month count on the build before you've committed to it, weeds out the projects that shouldn't happen, and leaves you with a specification you own either way. The first step is a conversation, not a contract.</p>
       </div>
       <div class="cta-row" style="margin-top:2.4rem;">
         <a class="btn" href="#book" data-cta="book-fit">Book a free consultation →</a>
@@ -499,19 +516,27 @@
       <div class="faq" style="margin-top:clamp(1.8rem,4vw,2.4rem);">
         <details>
           <summary>What if the answer is “don't build”?</summary>
-          <p class="faq__a">Then that's what the specification says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week two than start a build I don't believe in. A build only happens if the specification says “build” — and the document is yours either way.</p>
+          <p class="faq__a">Then that's what the specification says, and you've saved many times the fee. Plenty of problems that look like software problems aren't — often the fix is a process change, a renegotiated contract, or configuring something you already pay for. I'd rather tell you that in week one than start a build I don't believe in. A build only happens if the specification says “build” — and the document is yours either way.</p>
         </details>
         <details>
           <summary>What exactly do I get for $3,000?</summary>
-          <p class="faq__a">A written specification you own: the product argued down to what version one needs, the technical approach in plain English, how it will reach users, any compliance requirements, an implementation plan with milestones, and a fixed price for the build — a number, not a range. You can take it to any builder, including one who isn't me. The fee is fixed, agreed before we start, and isn't credited against the build — the specification is worth having whether or not I'm the one who builds from it.</p>
+          <p class="faq__a">A written specification you own: the product argued down to what version one needs, the technical approach in plain English, how it will reach users, any compliance requirements, a month-by-month build plan, and an estimate of how many build months it takes — so the budget is $8,000 times a number you've seen the reasoning for. You can take it to any builder, including one who isn't me. The fee is fixed, agreed before we start, and isn't credited against the build — the specification is worth having whether or not I'm the one who builds from it.</p>
         </details>
         <details>
-          <summary>Can we skip Definition and go straight to a build?</summary>
-          <p class="faq__a">No — Definition is the only way in. A build can't be priced properly before the definition work is done; skipping it means bidding on a guess, and a fixed price built on a guess punishes us both. If you already have notes, sketches, board minutes, or a document from another developer, bring them — good input makes Definition faster and sharper, not unnecessary.</p>
+          <summary>Can we skip Discovery and go straight to a build?</summary>
+          <p class="faq__a">No — Discovery is the only way in. A build can't be estimated properly before the discovery work is done; skipping it means planning on a guess, and a month count built on a guess punishes us both. If you already have notes, sketches, board minutes, or a document from another developer, bring them — good input makes Discovery faster and sharper, not unnecessary.</p>
+        </details>
+        <details>
+          <summary>Why a monthly price instead of a fixed one?</summary>
+          <p class="faq__a">Because a fixed price only works when the requirements hold still, and for most organizations they don't — priorities shift the moment staff see working software. A fixed-price contract turns every one of those shifts into a change order and a negotiation. The retainer fixes the two things you actually need fixed, the price and the pace, and leaves the contents of each month yours to set. For a budget, it also means a predictable line item rather than one large capital request, and you can stop at any month boundary holding working software.</p>
+        </details>
+        <details>
+          <summary>We need a fixed total for a grant or an RFP. Can you do that?</summary>
+          <p class="faq__a">Yes, when the fixed total is imposed from outside — a grant deliverable, an RFP, a regulatory requirement, or a partner integration with someone else's spec. In that case I quote a fixed fee against the Discovery specification, starting at $20,000, paid in three stages — 35% to start, 30% mid-build, and 35% on completion — with anything outside the specification priced as a change order before the work happens. It's the exception rather than the default, because a fixed price has to be padded against the unknowns a monthly arrangement simply absorbs.</p>
         </details>
         <details>
           <summary>How do payments work?</summary>
-          <p class="faq__a">Definition is a fixed $3,000, agreed up front. Builds are a fixed fee quoted against the specification — builds start at $20,000, and the typical range is $25,000 to $30,000 — paid 35% to start, 30% mid-build, and 35% on completion, against milestones you can see. Anything added outside the specification is a change order, priced when you request it and agreed in writing before the work happens. Support is a monthly retainer between $2,500 and $4,000, month to month — stop whenever it stops being worth it.</p>
+          <p class="faq__a">Discovery is a fixed $3,000, agreed up front. The build is $8,000 a month, invoiced at the start of each month; the first three months are a commitment on both sides, and after that it's month to month with 30 days' notice either way. There are no change orders: anything added beyond the plan goes on a later month's list, at a price you already know. Once the product is live, maintenance is $2,500 a month for up to ten hours or $4,000 for up to twenty, month to month — stop whenever it stops being worth it.</p>
         </details>
         <details>
           <summary>How is this different from hiring an agency?</summary>
@@ -523,7 +548,7 @@
         </details>
         <details>
           <summary>What's not included?</summary>
-          <p class="faq__a">Two things clients often assume are included, and aren't: ongoing feature development after launch — that's a new engagement, or as-needed work under the retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly.</p>
+          <p class="faq__a">Two things clients often assume are included, and aren't: ongoing feature development after launch — that's a build month, or as-needed work outside the retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly.</p>
         </details>
         <details>
           <summary>Can I talk to a reference first?</summary>
@@ -531,7 +556,7 @@
         </details>
         <details>
           <summary>Do you discount for nonprofits?</summary>
-          <p class="faq__a">Often, yes — for nonprofits, educational institutions, and churches. A good share of my work is with them, and the pricing on this page isn't the end of the conversation. Tell me your situation on the call.</p>
+          <p class="faq__a">The rate is the rate, but the scope isn't. A good share of my work is with nonprofits, and the honest way to meet a smaller budget is a smaller first version or fewer months, not a cheaper month — I'll show you what comes out and what it costs you to leave it out. The price on this page is the one every client pays, which is what makes it a number you can trust when you carry it to a board. Tell me your situation on the call.</p>
         </details>
       </div>
     </div>

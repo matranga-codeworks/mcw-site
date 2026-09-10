@@ -18,8 +18,8 @@ including `_redirects`.
 | File            | What it is |
 | --------------- | ---------- |
 | `index.html`    | Home — hero, differentiator, the after-the-call timeline (`#path`), the two-audience split, case-study teasers, booking, contact |
-| `startups.html` | Engagement model for funded founders: Definition, then four-week build cycles. Own booking embed, own FAQ |
-| `organizations.html` | Engagement model for nonprofits, associations, and established organizations: Definition, then a fixed-fee build. Own booking embed, own FAQ |
+| `startups.html` | The engagement model framed for funded founders: Discovery, then the monthly build retainer. Own booking embed, own FAQ |
+| `organizations.html` | The same model framed for nonprofits, associations, and established organizations, plus the fixed-fee exception in its FAQ. Own booking embed, own FAQ |
 | `work/index.html` | Work — three case studies, Miirror Health first as the primary proof asset |
 | `work/miirror-health.html` | The Miirror Health case study in full. **On hold — not published.** See **Held back** below |
 | `about.html`    | About — background, beliefs, locally + event photos. The only page that carries the Capital Region material — it's who Frank is, not who MCW serves |
@@ -92,21 +92,29 @@ audience-specific engagement models. Two rules are easy to break by accident:
 Also: never the phrase "small businesses"; never a "Fractional CTO" page or named
 offering (the phrase appears once in a `startups.html` FAQ answer, for search).
 
-### The two models
+### The engagement model
 
-| | `/startups` | `/organizations` |
-| --- | --- | --- |
-| Stage 1 | **Definition** — $3,000, two weeks | **Definition** — $3,000, two weeks |
-| Deliverable | Spec, prioritized backlog, cycle estimate | Spec, implementation plan, **fixed build price** |
-| Stage 2 | **Build cycles** — $20,000 each, four weeks, one client at a time, paid in advance | **Build** — fixed fee, 35% / 30% / 35%, from $20,000 (typical $25,000–$30,000) |
-| Stage 3 | Retainer $2,500–$4,000/mo · ad-hoc $200/hr | Retainer $2,500–$4,000/mo · ad-hoc $200/hr |
+One model, sold to both audiences. The two pages differ in framing and FAQ, not
+in price. The numbers come from the MCW knowledge base
+(`knowledge/pricing-and-service-structure.md` in the `mcw` repo) and the site
+must match it — a published price only protects against anchoring if it's true.
 
-Both pages use the word **Definition**, never "Discovery." The prices differ on
-purpose — don't reconcile them.
+| Stage | Both pages |
+| --- | --- |
+| 1 · **Discovery** | $3,000, one week, not credited toward the build. Spec, prioritized month-by-month plan, estimated number of build months |
+| 2 · **Build retainer** | **$8,000 per month** ≈ six working days. Three-month initial term, then month to month with 30 days' notice. Billed in advance; no change orders — added scope is next month's list. Regulated/health products carry a premium |
+| 3 · **Maintenance retainer** | $2,500/mo for up to 10 hours or $4,000/mo for up to 20. Starts after production acceptance. Ad-hoc work outside it $200/hr |
+| Exception | **Fixed fee** from $20,000, 35% / 30% / 35%, change orders — only when a grant, RFP, regulator, or partner spec forces a fixed total. Published only in the `/organizations` FAQ and build aside |
+| Variant | Advisory retainer = the same $8,000 unit spent on direction instead of code. One sentence in the `/startups` FAQ, never productized |
 
-**The home page never lists the two structures side by side.** It routes readers
-to one or the other through the `#who` split. A nonprofit ED comparing cycle
-pricing to their own fixed fee is the failure this IA exists to prevent.
+Both pages use the word **Discovery**, matching the knowledge base and the
+proposal template — never "Definition", the site's old name for the phase. The
+`/startups`
+build `Service` keeps its historical `@id` `#cycles`.
+
+**The home page prices the shared stages but never the month count** — that's
+what Discovery produces. It routes readers to their framing through the
+`#who` split; the two pages must never drift into different prices.
 
 ## SEO
 
@@ -119,8 +127,8 @@ Each page carries a full Open Graph block, a canonical link, and JSON-LD:
 - **Home** — `ProfessionalService` + `Person` + `WebSite`, the shared entities
   the other pages reference by `@id`
 - **Startups** — `WebPage` with an `audience` node, its own `FAQPage`, and its own
-  three `Service` nodes (`#definition`, `#cycles`, `#support`)
-- **Organizations** — same shape, with `#definition`, `#build`, `#support`
+  three `Service` nodes (`#discovery`, `#cycles` — the build retainer, `@id` kept from the cycle era — `#support`)
+- **Organizations** — same shape, with `#discovery`, `#build`, `#support`
 - **Work** — `CollectionPage` with an `ItemList` of the three case studies
 - **Miirror Health** — `WebPage` + the `CreativeWork` the work index points at
 - **About** — `AboutPage` + the detailed `Person`
@@ -130,7 +138,7 @@ intentionally has no `item` — Google's spec wants the current page unlinked.
 
 The home page's business node carries `hasOfferCatalog` as **two** `OfferCatalog`
 nodes, one per audience, each referencing that page's `Service` `@id`s. That's
-what keeps one definition of each offer in the graph. The two Definition services
+what keeps one definition of each offer in the graph. The two Discovery services
 are separate nodes on purpose: same price, different deliverable. If you rename a
 stage, the `@id` is what has to stay put.
 
@@ -180,10 +188,10 @@ button, just add the attribute — no JS change:
     `X-Frame-Options: SAMEORIGIN` and renders an empty box. Each embed has a
     visible "open in a new tab" fallback beneath it.
 - **After-the-call timeline** (`#path`, home). A week-by-week figure of the
-  shared opening of both models: the free call, Definition ($3,000, two weeks),
-  and the gate at week two where the plan and the number exist. The build bar
-  is deliberately unpriced and fades out — pricing it here would put the two
-  structures on one page — and the caption hands off to `#who`. Built from
+  shared path: the free call, Discovery ($3,000, one week), the gate at week
+  one where the plan and the number exist, and the build at $8,000 a month. The
+  build bar fades out because its length — the month count — is what Discovery
+  produces, and the caption hands off to `#who`. Built from
   HTML/CSS with the site's tokens; the gray is `--muted-2` because `--muted`
   fails the colorblind and normal-vision separation checks against the pine
   accent (numbers in the `styles.css` section comment). Every mark is directly
@@ -195,8 +203,8 @@ button, just add the attribute — no JS change:
   that's the signal for whether any other segment deserves its own page.
 - **FAQ** lives on both audience pages, tuned to each: Organizations answers the
   board-and-budget questions, Startups answers the founder-specific ones — equity,
-  IP ownership at diligence time, why a cycle is paid in advance, and what happens
-  at the first in-house hire.
+  IP ownership at diligence time, why each month is paid in advance, and what
+  happens at the first in-house hire.
 
 ## Dating
 

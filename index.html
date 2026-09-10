@@ -85,9 +85,9 @@
           "name": "For startups",
           "url": "https://matrangacode.works/startups",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/startups#definition", "name": "Product and Technical Definition" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/startups#cycles", "name": "Build cycles" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/startups#support", "name": "Post-launch support" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/startups#discovery", "name": "Product and Technical Discovery" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/startups#cycles", "name": "Build retainer" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/startups#support", "name": "Maintenance retainer" } }
           ]
         },
         {
@@ -95,9 +95,9 @@
           "name": "For organizations",
           "url": "https://matrangacode.works/organizations",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/organizations#definition", "name": "Product and Technical Definition" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/organizations#build", "name": "Build" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/organizations#support", "name": "Ongoing support" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/organizations#discovery", "name": "Product and Technical Discovery" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/organizations#build", "name": "Build retainer" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://matrangacode.works/organizations#support", "name": "Maintenance retainer" } }
           ]
         }
       ]
@@ -296,11 +296,11 @@
         </div>
         <div>
           <h3 style="font-size:1.35rem;letter-spacing:-.02em;margin-bottom:.7rem;">You'll be told what not to build.</h3>
-          <p class="on-dark-soft" style="font-size:1.05rem;line-height:1.55;margin:0;">Most of the first two weeks goes to deciding what <em style="font-style:normal;color:var(--acc3);">not</em> to build. Every feature that doesn't make version one is money you keep and a launch that comes sooner.</p>
+          <p class="on-dark-soft" style="font-size:1.05rem;line-height:1.55;margin:0;">Most of the first week goes to deciding what <em style="font-style:normal;color:var(--acc3);">not</em> to build. Every feature that doesn't make version one is money you keep and a launch that comes sooner.</p>
         </div>
         <div>
           <h3 style="font-size:1.35rem;letter-spacing:-.02em;margin-bottom:.7rem;">You'll know the price before you commit.</h3>
-          <p class="on-dark-soft" style="font-size:1.05rem;line-height:1.55;margin:0;">Two paid weeks of definition end in a written plan and a number. The plan is yours to keep, whether or not I'm the one who builds from it.</p>
+          <p class="on-dark-soft" style="font-size:1.05rem;line-height:1.55;margin:0;">One paid week of discovery ends in a written plan and a number. The plan is yours to keep, whether or not I'm the one who builds from it.</p>
         </div>
       </div>
     </div>
@@ -317,39 +317,40 @@
   </section>
 
   <!-- PATH — what happens after the call, as a week-by-week timeline.
-       Definition is the only priced stage here because it's identical on both
-       audience pages ($3,000, two weeks). The build is deliberately left
-       unpriced — its schedule and price differ by audience (README § The two
-       models) — and the caption hands off to the #who router below. Pure
+       Both stages are priced here because both are identical on the two
+       audience pages ($3,000 Discovery, then $8,000 a month to build — README
+       § The engagement model). What the figure can't say is how many months,
+       which is what Discovery produces, so the build bar is open-ended and
+       the caption hands off to the #who router below. Pure
        HTML/CSS, so it renders with JS blocked; site.js adds the hover/focus
        readouts from data-tip. The <details> table is the accessible twin of
        the figure: every value in the chart is also in the table. -->
   <section id="path" aria-labelledby="path-h">
     <div class="wrap pad-l">
       <div class="eyebrow">What happens after the call</div>
-      <h2 class="t-md mw-22" id="path-h">Two weeks in, you'll have a plan and a price.</h2>
-      <p class="lead mw-52">The first conversation is free. If it's worth going further, Definition is two weeks at a fixed $3,000, and it ends with a written plan and a number for the build. A build starts only after you've seen that number, and only if you want it to.</p>
+      <h2 class="t-md mw-22" id="path-h">One week in, you'll have a plan and a price.</h2>
+      <p class="lead mw-52">The first conversation is free. If it's worth going further, Discovery is one week at a fixed $3,000, and it ends with a written plan and a number for the build. A build starts only after you've seen that number, and only if you want it to.</p>
 
       <figure class="timeline" style="margin-top:clamp(2rem,4vw,2.8rem);">
         <div class="timeline__key" aria-label="Key">
           <span><i class="timeline__swatch timeline__swatch--fixed" aria-hidden="true"></i>Fixed price, agreed up front</span>
-          <span><i class="timeline__swatch timeline__swatch--open" aria-hidden="true"></i>Set by the plan</span>
+          <span><i class="timeline__swatch timeline__swatch--open" aria-hidden="true"></i>Monthly, for as long as the plan says</span>
         </div>
 
         <div class="timeline__axis" aria-hidden="true">
           <span class="timeline__tick timeline__tick--start" style="--x:0">Start</span>
-          <span class="timeline__tick timeline__tick--odd" style="--x:.25">Week 1</span>
-          <span class="timeline__tick timeline__tick--gate" style="--x:.5">Week 2</span>
+          <span class="timeline__tick timeline__tick--gate" style="--x:.25">Week 1</span>
+          <span class="timeline__tick timeline__tick--odd" style="--x:.5">Week 2</span>
           <span class="timeline__tick timeline__tick--odd" style="--x:.75">Week 3</span>
           <span class="timeline__tick timeline__tick--end" style="--x:1">Week 4</span>
         </div>
 
         <div class="timeline__body">
           <i class="timeline__line" style="--x:0" aria-hidden="true"></i>
-          <i class="timeline__line timeline__line--minor" style="--x:.25" aria-hidden="true"></i>
+          <i class="timeline__line timeline__line--minor" style="--x:.5" aria-hidden="true"></i>
           <i class="timeline__line timeline__line--minor" style="--x:.75" aria-hidden="true"></i>
           <i class="timeline__line timeline__line--minor" style="--x:1" aria-hidden="true"></i>
-          <div class="timeline__gate" style="--x:.5" aria-hidden="true"><span>Plan and price in hand</span></div>
+          <div class="timeline__gate" style="--x:.25" aria-hidden="true"><span>Plan and price in hand</span></div>
 
           <ol class="timeline__rows">
             <li class="timeline__row">
@@ -360,23 +361,23 @@
               </span>
             </li>
             <li class="timeline__row">
-              <span class="timeline__name">Definition</span>
+              <span class="timeline__name">Discovery</span>
               <span class="timeline__track">
-                <span class="timeline__bar timeline__bar--fixed" style="--x:0;--w:.5" tabindex="0" role="img" aria-label="Definition: weeks one and two, $3,000, fixed." data-tip-value="$3,000 · two weeks · fixed" data-tip="We settle what the software needs to do, what gets cut from version one, and how it will be built. You leave with a written plan and a number for the build, yours to keep whether or not I build it."></span>
-                <span class="timeline__val" style="--x:.5" aria-hidden="true">$3,000 · 2 weeks</span>
+                <span class="timeline__bar timeline__bar--fixed" style="--x:0;--w:.25" tabindex="0" role="img" aria-label="Discovery: week one, $3,000, fixed." data-tip-value="$3,000 · one week · fixed" data-tip="We settle what the software needs to do, what gets cut from version one, and how it will be built. You leave with a written plan and a number for the build, yours to keep whether or not I build it."></span>
+                <span class="timeline__val" style="--x:.25" aria-hidden="true">$3,000 · 1 week</span>
               </span>
             </li>
             <li class="timeline__row">
               <span class="timeline__name">Build</span>
               <span class="timeline__track">
-                <span class="timeline__bar timeline__bar--open" style="--x:.5;--w:.5" tabindex="0" role="img" aria-label="Build: from week three, priced by the plan." data-tip-value="Priced by the plan" data-tip="Starts only after you've seen the number, and only if you want it to. How the build is structured depends on your situation; the page for yours, below, lays it out."></span>
-                <span class="timeline__val timeline__val--in" style="--x:.5" aria-hidden="true">Priced by the plan<span class="timeline__cont"> →</span></span>
+                <span class="timeline__bar timeline__bar--open" style="--x:.25;--w:.75" tabindex="0" role="img" aria-label="Build: from week two, $8,000 a month, for as many months as the plan says." data-tip-value="$8,000 a month · months set by the plan" data-tip="Starts only after you've seen the plan, and only if you want it to. A flat monthly price buys about six working days on your product; Discovery tells you how many months version one needs. The page for your situation, below, lays out what a month looks like."></span>
+                <span class="timeline__val timeline__val--in" style="--x:.25" aria-hidden="true">$8,000 / month<span class="timeline__cont"> →</span></span>
               </span>
             </li>
           </ol>
         </div>
 
-        <figcaption class="timeline__cap">The build after week two is set up differently for startups and for organizations. The page for your situation, below, lays out its schedule and price.</figcaption>
+        <figcaption class="timeline__cap">How many months the build takes is what Discovery works out. The page for your situation, below, lays out what a month looks like for you.</figcaption>
       </figure>
 
       <details class="timeline__table">
@@ -387,8 +388,8 @@
           </thead>
           <tbody>
             <tr><th scope="row">Free consultation</th><td>Start</td><td>Free</td><td>A read on whether software is the answer, and whether I'm the right person for it.</td></tr>
-            <tr><th scope="row">Definition</th><td>Weeks 1–2</td><td>$3,000, fixed</td><td>A written plan, a ranked list of what to build first, and a number for the build. Yours to keep.</td></tr>
-            <tr><th scope="row">Build</th><td>Week 3 on</td><td>Priced by the plan</td><td>Working software. Set up differently for startups and for organizations; see the page for your situation.</td></tr>
+            <tr><th scope="row">Discovery</th><td>Week 1</td><td>$3,000, fixed</td><td>A written plan, a ranked list of what to build first, and a number for the build. Yours to keep.</td></tr>
+            <tr><th scope="row">Build</th><td>Week 2 on</td><td>$8,000 a month</td><td>Working software, deployed every month. How many months is set by the plan; see the page for your situation.</td></tr>
           </tbody>
         </table>
       </details>
@@ -407,12 +408,12 @@
       <div class="grid" style="margin-top:clamp(2rem,5vw,3rem);">
         <a class="route" href="/startups" data-cta="who-startups">
           <h3 class="route__title">You've raised money and there's nothing built yet.</h3>
-          <p class="copy">For funded startups whose first product doesn't exist. We spend two weeks deciding what version one is, then build it in four-week cycles you can change direction between.</p>
+          <p class="copy">For funded startups whose first product doesn't exist. We spend a week deciding what version one is, then build it month by month at a flat price, changing direction between months whenever you learn something.</p>
           <span class="route__go">See how startups work with me →</span>
         </a>
         <a class="route" href="/organizations" data-cta="who-organizations">
           <h3 class="route__title">Your tools stopped fitting, and there's no one on staff to fix it.</h3>
-          <p class="copy">For nonprofits, associations, and established businesses that have outgrown spreadsheets and off-the-shelf tools. We pin down exactly what's needed first, then the build is one fixed price you can put in a budget.</p>
+          <p class="copy">For nonprofits, associations, and established businesses that have outgrown spreadsheets and off-the-shelf tools. We pin down exactly what's needed first, then the build is a flat monthly price you can put in a budget and defend to a board.</p>
           <span class="route__go">See how organizations work with me →</span>
         </a>
       </div>

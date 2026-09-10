@@ -1404,7 +1404,7 @@ body[data-grain] .grain { display: block; }
    Built from HTML/CSS rather than SVG so text stays at page sizes and wraps.
    Every x position is a fraction of the track (--x / --w in 0–1). The name
    column is --name-w wide and collapses to 0 on narrow screens, where each
-   name sits above its track. Emphasis form: Definition wears the accent; the
+   name sits above its track. Emphasis form: Discovery wears the accent; the
    build is a de-emphasis gray that fades out because its length is set by
    the plan, and it has no rounded end because it doesn't end on the chart.
 

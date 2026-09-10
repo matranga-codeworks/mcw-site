@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>First products for funded startups — Frank Matranga</title>
-<meta name="description" content="You've raised money and there's no one to build your MVP. Two weeks of Definition for $3,000, then four-week build cycles at $20,000 each. Change direction between cycles without renegotiating.">
+<meta name="description" content="You've raised money and there's no one to build your MVP. One week of Discovery for $3,000, then a build retainer at $8,000 a month. Change direction between months without renegotiating.">
 <meta name="author" content="Frank Matranga">
 <meta name="theme-color" content="#2E5D46">
 <link rel="canonical" href="https://matrangacode.works/startups">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Matranga Codeworks">
 <meta property="og:url" content="https://matrangacode.works/startups">
 <meta property="og:title" content="For startups — Frank Matranga">
-<meta property="og:description" content="You don't have an engineer yet. I'll help you decide what version one is, then build it in four-week cycles you can redirect between, at a price you know in advance.">
+<meta property="og:description" content="You don't have an engineer yet. I'll help you decide what version one is, then build it month by month, at a flat monthly price you know in advance.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://matrangacode.works/images/og.png">
 <meta property="og:image:width" content="1200">
@@ -56,42 +56,42 @@
     },
     {
       "@type": "Service",
-      "@id": "https://matrangacode.works/startups#definition",
-      "name": "Product and Technical Definition",
-      "serviceType": "Software product definition and scoping",
+      "@id": "https://matrangacode.works/startups#discovery",
+      "name": "Product and Technical Discovery",
+      "serviceType": "Software product discovery and scoping",
       "provider": { "@id": "https://matrangacode.works/#business" },
-      "url": "https://matrangacode.works/startups#definition",
-      "description": "A two-week fixed-fee phase before any code: what the product needs to do, what gets cut from version one, how it will be built and what it will cost to run, the launch path — the App Store or the web — and any rules the industry adds. Ends in a written specification, a ranked list of what gets built in what order, and an estimate of how many build cycles version one requires. Not credited toward the build.",
+      "url": "https://matrangacode.works/startups#discovery",
+      "description": "A one-week fixed-fee phase before any code: what the product needs to do, what gets cut from version one, how it will be built and what it will cost to run, the launch path — the App Store or the web — and any rules the industry adds. Ends in a written specification, a ranked list of what gets built in what order, and an estimate of how many build months version one requires. Not credited toward the build.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
-        "price": 5000,
+        "price": 3000,
         "priceSpecification": {
           "@type": "PriceSpecification",
           "priceCurrency": "USD",
-          "price": 5000
+          "price": 3000
         }
       }
     },
     {
       "@type": "Service",
       "@id": "https://matrangacode.works/startups#cycles",
-      "name": "Build cycles",
+      "name": "Build retainer",
       "serviceType": "Custom software development",
       "provider": { "@id": "https://matrangacode.works/#business" },
       "url": "https://matrangacode.works/startups#cycles",
-      "description": "Fixed-length four-week build cycles at $20,000 each, one client at a time. You maintain the priority order and I ship what fits, in that order, with something usable delivered at the end of every cycle. Reprioritize freely between cycles. Paid in advance; either side can decline the next cycle with no penalty. Most defined version-one scopes land at two or three cycles. Projects in highly regulated industries, such as healthcare and financial services, may be priced at a premium.",
+      "description": "A monthly build retainer at $8,000 per month, buying about six working days of focused time. You own the priority order and I ship what fits, in that order, with something usable deployed every month and a written summary of what shipped. Reprioritize freely between months. Three-month initial term, then month to month with 30 days' notice; billed monthly in advance. Projects in highly regulated industries, such as healthcare and financial services, carry a premium.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "priceCurrency": "USD",
-          "price": 20000,
+          "price": 8000,
           "referenceQuantity": {
             "@type": "QuantitativeValue",
-            "value": 4,
-            "unitCode": "WEE"
+            "value": 1,
+            "unitCode": "MON"
           }
         }
       }
@@ -99,11 +99,11 @@
     {
       "@type": "Service",
       "@id": "https://matrangacode.works/startups#support",
-      "name": "Post-launch support",
+      "name": "Maintenance retainer",
       "serviceType": "Software maintenance and support",
       "provider": { "@id": "https://matrangacode.works/#business" },
       "url": "https://matrangacode.works/startups#support",
-      "description": "Priority access and defined response windows on a month-to-month retainer after launch. Substantial new work is a new build cycle; as-needed work outside a retainer is billed at $200 per hour.",
+      "description": "Keeps the product running once it is live: hosting and security updates, bug fixes, monitoring, and small changes, with requests acknowledged within one business day. $2,500 per month covers up to ten hours; $4,000 covers up to twenty. New features are a build month; as-needed work outside a retainer is billed at $200 per hour.",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "USD",
@@ -136,23 +136,23 @@
           "name": "I inherited an app someone else built. Is it worth saving?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, and it's a common way founders start with me. That's a Definition engagement: a fixed-fee, two-week phase that ends in a straight answer — keep it, fix it, or start over — with numbers attached to each. Sometimes what you inherited is fine and just needs an owner. Sometimes it carries far more complexity and cost than an early-stage company should, and the right recommendation is to rebuild something much simpler. I've given both answers."
+            "text": "Yes, and it's a common way founders start with me. That's a Discovery engagement: a fixed-fee, one-week phase that ends in a straight answer — keep it, fix it, or start over — with numbers attached to each. Sometimes what you inherited is fine and just needs an owner. Sometimes it carries far more complexity and cost than an early-stage company should, and the right recommendation is to rebuild something much simpler. I've given both answers."
           }
         },
         {
           "@type": "Question",
-          "name": "What if we need more cycles than the estimate?",
+          "name": "What if the build takes more months than the estimate?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Then you decide whether to buy another one, at a price you already know. That's the point of the structure: added scope is a decision you make with a number in front of you, not a surprise invoice after the fact. I'll tell you we're heading that way before we get there, not after. And stopping is always available — what shipped in the cycles you did pay for is working software you own."
+            "text": "Then you decide whether to keep going, at a price you already know. That's the point of the structure: added scope is a decision you make with a number in front of you, not a surprise invoice after the fact. I'll tell you we're heading that way before we get there, not after. And stopping is always available at any month boundary — what shipped in the months you did pay for is working software you own."
           }
         },
         {
           "@type": "Question",
-          "name": "Why is a cycle paid in advance?",
+          "name": "Why is each month paid in advance?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Because a cycle reserves four weeks of the only capacity I have. I work with one client at a time, so booking you means turning down everyone else for that month — and if the cycle is cancelled halfway through, I can't refill it. Paying in advance is what makes one-client-at-a-time possible. The cycle starts when payment clears, and either of us can decline the next one with no penalty."
+            "text": "Because a month reserves about a third of the only capacity I have. I never work on more than three products at once, so booking you means turning someone else away from that slot — and if a month is cancelled halfway through, I can't refill it. Paying in advance is what makes that arrangement possible. Each month starts when payment clears. The first three months are a commitment on both sides; after that it's month to month, and either of us can end it with 30 days' notice."
           }
         },
         {
@@ -160,7 +160,7 @@
           "name": "What if our direction changes completely?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Reprioritize between cycles at no cost — that's the whole reason the engagement is shaped this way instead of as a fixed-price contract. Reorder the list, cut things, add things, and the next cycle works down the new list. But if the direction is changing that fundamentally, it's worth saying out loud: we should talk about whether you're ready to build at all, or whether another round of talking to users is a better use of $20,000."
+            "text": "Reprioritize between months at no cost — that's the whole reason the engagement is shaped this way instead of as a fixed-price contract. Reorder the list, cut things, add things, and next month works down the new list. But if the direction is changing that fundamentally, it's worth saying out loud: we should talk about whether you're ready to build at all, or whether another round of talking to users is a better use of $8,000."
           }
         },
         {
@@ -184,7 +184,7 @@
           "name": "Can you work with our existing developers?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — though not as a build engagement. If you already have developers and what you're missing is someone senior enough to make the calls, that's an advisory retainer: a capped number of days a month with a defined response window, somewhere between $8,000 and $12,000 depending on how much of me you need. Some people would call that a fractional CTO. It isn't a product I sell off a page — tell me the situation on a call and we'll work out whether it fits."
+            "text": "Yes — though not as a build engagement. If you already have developers and what you're missing is someone senior enough to make the calls, that's an advisory retainer: the same $8,000 a month and the same capped time as a build month, spent on direction, architecture, and build-versus-buy calls instead of on code. Some people would call that a fractional CTO. It isn't a product I sell off a page — tell me the situation on a call and we'll work out whether it fits."
           }
         },
         {
@@ -192,7 +192,7 @@
           "name": "What's not included?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Two things founders often assume are included, and aren't: ongoing feature development after launch — that's another cycle, or as-needed work outside a retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly."
+            "text": "Two things founders often assume are included, and aren't: ongoing feature development after launch — that's another build month, or as-needed work outside a retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly."
           }
         },
         {
@@ -248,7 +248,7 @@
       <p class="lead mw-52 rise rise-2">You've raised the money and done the homework, and now a real product has to exist. You're deciding what it is, who builds it, and what it should cost, with no engineer on your side of the table. I build first products for founders in exactly that spot, and the first thing I'll do is argue yours smaller.</p>
       <div class="status rise rise-3" style="margin-top:2.2rem;">
         <span class="status__dot" aria-hidden="true"></span>
-        <span class="status__text"><b>Currently</b> &nbsp;Taking on new build cycles for <span data-quarter>Q3 2026</span></span>
+        <span class="status__text"><b>Currently</b> &nbsp;Taking on new build retainers for <span data-quarter>Q3 2026</span></span>
       </div>
       <nav class="chipnav" aria-label="Jump to a section">
         <a href="#who">Is this you?</a>
@@ -300,31 +300,31 @@
   <section id="how" class="ruled" aria-labelledby="su-how-h">
     <div class="wrap pad-m">
       <div class="eyebrow">How we'd work</div>
-      <h2 class="t-md2 mw-26" id="su-how-h">Two weeks to define it. Then four-week cycles.</h2>
-      <p class="lead mw-54" style="margin-top:1.2rem;">Early-stage products change direction; that's what the stage is for. A fixed-price contract punishes you for learning something, and everyone ends up arguing about scope. I work in four-week cycles instead, so you can change direction between them without renegotiating anything.</p>
+      <h2 class="t-md2 mw-26" id="su-how-h">One week to define it. Then a flat monthly price to build it.</h2>
+      <p class="lead mw-54" style="margin-top:1.2rem;">Early-stage products change direction; that's what the stage is for. A fixed-price contract punishes you for learning something, and everyone ends up arguing about scope. I work on a monthly retainer instead: the price and the pace are fixed, the contents of each month are yours to set, and you can change direction between months without renegotiating anything.</p>
 
       <div class="ledger" style="margin-top:clamp(2rem,4vw,2.8rem);">
         <div class="ledger__row">
           <div class="flex-2">
-            <div class="ledger__head"><span class="ledger__num">1</span><h3 class="ledger__title">Definition</h3></div>
-            <p class="copy mw-50" style="margin-top:.6rem;">Two weeks before any code. We settle what the product needs to do and what gets cut from version one, how it will be built and what it will cost to run each month, whether it lives in the App Store or on the web, and any rules your industry adds. You leave with a written specification, a ranked list of what gets built in what order, and an estimate of how many cycles version one takes. You own the specification whether or not I build it. It isn't credited toward the build; it's worth having on its own.</p>
+            <div class="ledger__head"><span class="ledger__num">1</span><h3 class="ledger__title">Discovery</h3></div>
+            <p class="copy mw-50" style="margin-top:.6rem;">One week before any code. We settle what the product needs to do and what gets cut from version one, how it will be built and what it will cost to run each month, whether it lives in the App Store or on the web, and any rules your industry adds. You leave with a written specification, a ranked list of what gets built in what order, and an estimate of how many build months version one takes. You own the specification whether or not I build it. It isn't credited toward the build; it's worth having on its own.</p>
           </div>
-          <div class="ledger__price">$3,000 · 2 weeks</div>
+          <div class="ledger__price">$3,000 · 1 week</div>
         </div>
 
         <div class="ledger__row">
           <div class="flex-2">
-            <div class="ledger__head"><span class="ledger__num">2</span><h3 class="ledger__title">Build cycles</h3></div>
-            <p class="copy mw-50" style="margin-top:.6rem;">Four weeks of my full attention, one client at a time. You maintain the priority order and I ship what fits, in that order, so something usable lands at the end of every cycle. If you stop after cycle two you have working software, not a construction site. Reprioritize freely between cycles. Most defined version-one scopes land at two or three.</p>
-            <p class="note mw-50" style="margin:.9rem 0 0;">Projects in highly regulated industries — healthcare, financial services — may be priced at a premium.</p>
+            <div class="ledger__head"><span class="ledger__num">2</span><h3 class="ledger__title">Build retainer</h3></div>
+            <p class="copy mw-50" style="margin-top:.6rem;">A month buys about a third of my working time — roughly six working days on your product, and never more than three products at once. You own the priority order and I ship what fits, in that order, so something usable is deployed every month and you get a written summary of what shipped. If you stop after month three you have working software, not a construction site. Reprioritize freely between months; added scope is next month's list, at a price you already know.</p>
+            <p class="note mw-50" style="margin:.9rem 0 0;">Projects in highly regulated industries — healthcare, financial services — carry a premium.</p>
           </div>
-          <div class="ledger__price">$20,000 per cycle</div>
+          <div class="ledger__price">$8,000 per month</div>
         </div>
 
         <div class="ledger__row">
           <div class="flex-2">
-            <div class="ledger__head"><span class="ledger__num">3</span><h3 class="ledger__title">Post-launch support</h3></div>
-            <p class="copy mw-50" style="margin-top:.6rem;">Priority access and defined response windows once you're live — a standing technical person for what crosses your desk, from the contractor's estimate to the engineer you're about to make an offer to. Substantial new work is a new cycle. As-needed work outside a retainer is billed at $200/hour. Month to month, until you hire in-house.</p>
+            <div class="ledger__head"><span class="ledger__num">3</span><h3 class="ledger__title">Maintenance retainer</h3></div>
+            <p class="copy mw-50" style="margin-top:.6rem;">Once you're live, this keeps it that way: hosting and security updates, bug fixes, monitoring, small changes, and a standing technical person for what crosses your desk, from the contractor's estimate to the engineer you're about to make an offer to. Requests are acknowledged within a business day. New features are a build month; as-needed work outside a retainer is billed at $200/hour. Month to month, until you hire in-house.</p>
           </div>
           <div class="ledger__price">$2,500–$4,000/mo</div>
         </div>
@@ -332,12 +332,12 @@
 
       <div class="rule-top" style="margin-top:clamp(2rem,4vw,2.6rem);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem 2.5rem;">
         <div>
-          <div class="label" style="margin-bottom:.8rem;">How a cycle works</div>
+          <div class="label" style="margin-bottom:.8rem;">How a month works</div>
           <ul class="marks marks--compact marks--onPaper">
-            <li>Paid in advance — the cycle starts when payment clears</li>
-            <li>You set the priority order; I ship what fits, in that order</li>
-            <li>Something usable ships at the end of every cycle</li>
-            <li>Either side can decline the next cycle, no penalty</li>
+            <li>Billed in advance — the month starts when payment clears</li>
+            <li>A planning session sets the month's list; you set the priority order, I ship what fits</li>
+            <li>Something usable is deployed every month, with a written summary</li>
+            <li>Three-month initial term, then month to month with 30 days' notice either way</li>
           </ul>
         </div>
         <div>
@@ -346,7 +346,7 @@
         </div>
       </div>
 
-      <p class="closer">The sequence matters more than the prices. Definition is where I earn the right to tell you what not to build; the cycles are what keep a change of direction from turning into a contract negotiation.</p>
+      <p class="closer">The sequence matters more than the prices. Discovery is where I earn the right to tell you what not to build; the monthly retainer is what keeps a change of direction from turning into a contract negotiation.</p>
 
       <div class="cta-row" style="margin-top:2.2rem;">
         <a class="btn" href="#book" data-cta="book-how">Book a free consultation →</a>
@@ -422,19 +422,19 @@
         </details>
         <details>
           <summary>I inherited an app someone else built. Is it worth saving?</summary>
-          <p class="faq__a">Yes, and it's a common way founders start with me. That's a Definition engagement: a fixed-fee, two-week phase that ends in a straight answer — keep it, fix it, or start over — with numbers attached to each. Sometimes what you inherited is fine and just needs an owner. Sometimes it carries far more complexity and cost than an early-stage company should, and the right recommendation is to rebuild something much simpler. I've given both answers.</p>
+          <p class="faq__a">Yes, and it's a common way founders start with me. That's a Discovery engagement: a fixed-fee, one-week phase that ends in a straight answer — keep it, fix it, or start over — with numbers attached to each. Sometimes what you inherited is fine and just needs an owner. Sometimes it carries far more complexity and cost than an early-stage company should, and the right recommendation is to rebuild something much simpler. I've given both answers.</p>
         </details>
         <details>
-          <summary>What if we need more cycles than the estimate?</summary>
-          <p class="faq__a">Then you decide whether to buy another one, at a price you already know. That's the point of the structure: added scope is a decision you make with a number in front of you, not a surprise invoice after the fact. I'll tell you we're heading that way before we get there, not after. And stopping is always available — what shipped in the cycles you did pay for is working software you own.</p>
+          <summary>What if the build takes more months than the estimate?</summary>
+          <p class="faq__a">Then you decide whether to keep going, at a price you already know. That's the point of the structure: added scope is a decision you make with a number in front of you, not a surprise invoice after the fact. I'll tell you we're heading that way before we get there, not after. And stopping is always available at any month boundary — what shipped in the months you did pay for is working software you own.</p>
         </details>
         <details>
-          <summary>Why is a cycle paid in advance?</summary>
-          <p class="faq__a">Because a cycle reserves four weeks of the only capacity I have. I work with one client at a time, so booking you means turning down everyone else for that month — and if the cycle is cancelled halfway through, I can't refill it. Paying in advance is what makes one-client-at-a-time possible. The cycle starts when payment clears, and either of us can decline the next one with no penalty.</p>
+          <summary>Why is each month paid in advance?</summary>
+          <p class="faq__a">Because a month reserves about a third of the only capacity I have. I never work on more than three products at once, so booking you means turning someone else away from that slot — and if a month is cancelled halfway through, I can't refill it. Paying in advance is what makes that arrangement possible. Each month starts when payment clears. The first three months are a commitment on both sides; after that it's month to month, and either of us can end it with 30 days' notice.</p>
         </details>
         <details>
           <summary>What if our direction changes completely?</summary>
-          <p class="faq__a">Reprioritize between cycles at no cost — that's the whole reason the engagement is shaped this way instead of as a fixed-price contract. Reorder the list, cut things, add things, and the next cycle works down the new list. But if the direction is changing that fundamentally, it's worth saying out loud: we should talk about whether you're ready to build at all, or whether another round of talking to users is a better use of $20,000.</p>
+          <p class="faq__a">Reprioritize between months at no cost — that's the whole reason the engagement is shaped this way instead of as a fixed-price contract. Reorder the list, cut things, add things, and next month works down the new list. But if the direction is changing that fundamentally, it's worth saying out loud: we should talk about whether you're ready to build at all, or whether another round of talking to users is a better use of $8,000.</p>
         </details>
         <details>
           <summary>Do you take equity instead of cash?</summary>
@@ -446,11 +446,11 @@
         </details>
         <details>
           <summary>Can you work with our existing developers?</summary>
-          <p class="faq__a">Yes — though not as a build engagement. If you already have developers and what you're missing is someone senior enough to make the calls, that's an advisory retainer: a capped number of days a month with a defined response window, somewhere between $8,000 and $12,000 depending on how much of me you need. Some people would call that a fractional CTO. It isn't a product I sell off a page — tell me the situation on a call and we'll work out whether it fits.</p>
+          <p class="faq__a">Yes — though not as a build engagement. If you already have developers and what you're missing is someone senior enough to make the calls, that's an advisory retainer: the same $8,000 a month and the same capped time as a build month, spent on direction, architecture, and build-versus-buy calls instead of on code. Some people would call that a fractional CTO. It isn't a product I sell off a page — tell me the situation on a call and we'll work out whether it fits.</p>
         </details>
         <details>
           <summary>What's not included?</summary>
-          <p class="faq__a">Two things founders often assume are included, and aren't: ongoing feature development after launch — that's another cycle, or as-needed work outside a retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly.</p>
+          <p class="faq__a">Two things founders often assume are included, and aren't: ongoing feature development after launch — that's another build month, or as-needed work outside a retainer billed at $200/hour — and your marketing site. A few things stay your responsibility rather than mine: the App Store developer account, the business entity, the terms of service, and any regulatory or clinical sign-off your product needs. I'll help you navigate all of them, but they're yours, and the agreement says so plainly.</p>
         </details>
         <details>
           <summary>What happens when we hire our own engineers?</summary>
