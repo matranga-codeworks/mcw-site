@@ -98,7 +98,7 @@ offering (the phrase appears once in a `startups.html` FAQ answer, for search).
 | --- | --- | --- |
 | Stage 1 | **Definition** — $5,000, two weeks | **Definition** — $5,000, two weeks |
 | Deliverable | Spec, prioritized backlog, cycle estimate | Spec, implementation plan, **fixed build price** |
-| Stage 2 | **Build cycles** — $20,000 each, four weeks, one client at a time, paid in advance | **Build** — fixed fee, 35% / 30% / 35%, from $35,000 (typical $45,000–$60,000) |
+| Stage 2 | **Build cycles** — $20,000 each, four weeks, one client at a time, paid in advance | **Build** — fixed fee, 35% / 30% / 35%, from $20,000 (typical $25,000–$30,000) |
 | Stage 3 | Retainer $2,500–$4,000/mo · ad-hoc $200/hr | Retainer $2,500–$4,000/mo · ad-hoc $200/hr |
 
 Both pages use the word **Definition**, never "Discovery." The prices differ on

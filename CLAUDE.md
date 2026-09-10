@@ -108,7 +108,7 @@ Breaking any of these is a real regression, not a style nit.
 
 - **Two audience pages, two different engagement models.** `startups.html` sells
   four-week build cycles at $20,000 each; `organizations.html` sells a fixed-fee
-  build starting at $35,000. Both open with the same $5,000, two-week **Definition**
+  build starting at $20,000. Both open with the same $5,000, two-week **Definition**
   phase, and both use that word — never "Discovery." The prices on the two pages
   are *supposed* to differ; don't "fix" one to match the other.
 - **A visitor must land on the page for their situation and see only that model.**
