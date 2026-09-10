@@ -96,7 +96,7 @@ offering (the phrase appears once in a `startups.html` FAQ answer, for search).
 
 | | `/startups` | `/organizations` |
 | --- | --- | --- |
-| Stage 1 | **Definition** — $5,000, two weeks | **Definition** — $5,000, two weeks |
+| Stage 1 | **Definition** — $3,000, two weeks | **Definition** — $3,000, two weeks |
 | Deliverable | Spec, prioritized backlog, cycle estimate | Spec, implementation plan, **fixed build price** |
 | Stage 2 | **Build cycles** — $20,000 each, four weeks, one client at a time, paid in advance | **Build** — fixed fee, 35% / 30% / 35%, from $20,000 (typical $25,000–$30,000) |
 | Stage 3 | Retainer $2,500–$4,000/mo · ad-hoc $200/hr | Retainer $2,500–$4,000/mo · ad-hoc $200/hr |
@@ -180,7 +180,7 @@ button, just add the attribute — no JS change:
     `X-Frame-Options: SAMEORIGIN` and renders an empty box. Each embed has a
     visible "open in a new tab" fallback beneath it.
 - **After-the-call timeline** (`#path`, home). A week-by-week figure of the
-  shared opening of both models: the free call, Definition ($5,000, two weeks),
+  shared opening of both models: the free call, Definition ($3,000, two weeks),
   and the gate at week two where the plan and the number exist. The build bar
   is deliberately unpriced and fades out — pricing it here would put the two
   structures on one page — and the caption hands off to `#who`. Built from
