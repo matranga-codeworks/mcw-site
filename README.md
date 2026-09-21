@@ -102,7 +102,7 @@ must match it — a published price only protects against anchoring if it's true
 | Stage | Both pages |
 | --- | --- |
 | 1 · **Discovery** | $3,000, one week, not credited toward the build. Spec, prioritized month-by-month plan, estimated number of build months |
-| 2 · **Build retainer** | **$8,000 per month** ≈ six working days. Three-month initial term, then month to month with 30 days' notice. Billed in advance; no change orders — added scope is next month's list. Regulated/health products carry a premium |
+| 2 · **Build retainer** | **$8,000 per month**. Three-month initial term, then month to month with 30 days' notice. Billed in advance; no change orders — added scope is next month's list. Regulated/health products carry a premium |
 | 3 · **Maintenance retainer** | $2,500/mo for up to 10 hours or $4,000/mo for up to 20. Starts after production acceptance. Ad-hoc work outside it $200/hr |
 | Exception | **Fixed fee** from $20,000, 35% / 30% / 35%, change orders — only when a grant, RFP, regulator, or partner spec forces a fixed total. Published only in the `/organizations` FAQ and build aside |
 | Variant | Advisory retainer = the same $8,000 unit spent on direction instead of code. One sentence in the `/startups` FAQ, never productized |

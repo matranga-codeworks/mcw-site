@@ -97,6 +97,14 @@ from that and are easy to undo by accident:
   there ("I work with clients anywhere. I'm invested in Albany specifically").
   The `LocalBusiness` address and phone are NAP data, not positioning — they stay.
 - Do not use the phrase **"small businesses"** anywhere.
+- **Never publish the day count.** "Six working days," "a third of my time,"
+  and "three products at once" are internal capacity numbers from the knowledge
+  base. On the site they invite day-rate math and make MCW read as small; the
+  build retainer is described by its monthly shipped output instead.
+- **Continuity claims on `organizations.html` must stay true.** The page says
+  Frank carries general and professional liability insurance, keeps a short list
+  of contractors for overflow, and will sign a BAA. Change the copy if any of
+  those stop being the case.
 - Do not create a **"Fractional CTO"** page or named offering. The phrase may
   appear once in body copy for search; the advisory variant (the same $8,000
   build-retainer month, spent on direction instead of code) is described in a
@@ -110,7 +118,7 @@ Breaking any of these is a real regression, not a style nit.
   stages at the same prices: a $3,000, one-week **Discovery** phase (the same word
   the knowledge base and proposals use — never "Definition", the site's old
   name for it), a **build retainer at $8,000 per month**
-  (about six working days; three-month initial term, then month to month with
+  (three-month initial term, then month to month with
   30 days' notice; no change orders), and a **maintenance retainer** at
   $2,500/mo for up to 10 hours or $4,000/mo for up to 20. The pages differ in
   framing and FAQ, never in price — if one page's number drifts, that's the bug.
