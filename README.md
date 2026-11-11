@@ -101,7 +101,7 @@ must match it — a published price only protects against anchoring if it's true
 
 | Stage | Both pages |
 | --- | --- |
-| 1 · **Discovery** | $3,000, one week, not credited toward the build. Spec, prioritized month-by-month plan, estimated number of build months |
+| 1 · **Discovery** | Free, about one week, done before the proposal. Ends in a proposal with mockups of the main screens, a prioritized month-by-month plan, and an estimated number of build months |
 | 2 · **Build retainer** | **$8,000 per month**. Three-month initial term, then month to month with 30 days' notice. Billed in advance; no change orders — added scope is next month's list. Regulated/health products carry a premium |
 | 3 · **Maintenance retainer** | $2,500/mo for up to 10 hours or $4,000/mo for up to 20. Starts after production acceptance. Ad-hoc work outside it $200/hr |
 | Exception | **Fixed fee** from $20,000, 35% / 30% / 35%, change orders — only when a grant, RFP, regulator, or partner spec forces a fixed total. Published only in the `/organizations` FAQ and build aside |
@@ -188,8 +188,8 @@ button, just add the attribute — no JS change:
     `X-Frame-Options: SAMEORIGIN` and renders an empty box. Each embed has a
     visible "open in a new tab" fallback beneath it.
 - **After-the-call timeline** (`#path`, home). A week-by-week figure of the
-  shared path: the free call, Discovery ($3,000, one week), the gate at week
-  one where the plan and the number exist, and the build at $8,000 a month. The
+  shared path: the free call, free Discovery (about one week), the gate at week
+  one where the proposal, mockups, and number exist, and the build at $8,000 a month. The
   build bar fades out because its length — the month count — is what Discovery
   produces, and the caption hands off to `#who`. Built from
   HTML/CSS with the site's tokens; the gray is `--muted-2` because `--muted`

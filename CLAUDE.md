@@ -115,15 +115,18 @@ from that and are easy to undo by accident:
 Breaking any of these is a real regression, not a style nit.
 
 - **Two audience pages, one engagement model.** Both sell the same three
-  stages at the same prices: a $3,000, one-week **Discovery** phase (the same word
-  the knowledge base and proposals use — never "Definition", the site's old
-  name for it), a **build retainer at $8,000 per month**
+  stages at the same prices: a **free**, roughly one-week **Discovery** phase (the
+  same word the knowledge base and proposals use — never "Definition", the site's
+  old name for it) that ends in a proposal with mockups of the main screens —
+  never a paid, document-only deliverable, a **build retainer at $8,000 per month**
   (three-month initial term, then month to month with
   30 days' notice; no change orders), and a **maintenance retainer** at
   $2,500/mo for up to 10 hours or $4,000/mo for up to 20. The pages differ in
   framing and FAQ, never in price — if one page's number drifts, that's the bug.
   The numbers are set in the `mcw` knowledge base
   (`knowledge/pricing-and-service-structure.md`); change them there first.
+  Exception: as of 2026-11-11 the knowledge base still lists Discovery at
+  $3,000. The site is ahead of it; don't revert the site to match.
 - **Fixed fee is an exception, not a model.** It appears only on
   `organizations.html`, in one FAQ answer and the build aside: from $20,000,
   35/30/35 milestones, change orders, and only when a grant, RFP, regulator, or
