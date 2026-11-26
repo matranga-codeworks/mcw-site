@@ -44,8 +44,9 @@ into the markup), JSON-LD parsing, and the FAQ byte-identity check.
 
 **Cloudflare serves every page extensionless and redirects the `.html` form to
 it.** `organizations.html` is served at `/organizations`; `work/index.html` at
-`/work/` (Worker assets add the trailing slash to folder pages and redirect
-`/work` there; `html_handling` in `wrangler.jsonc` would change that). Every `canonical`, `og:url`, JSON-LD `@id`, `sitemap.xml` entry, and
+`/work` (`"html_handling": "drop-trailing-slash"` in `wrangler.jsonc`; `/work/`
+redirects to `/work`. Don't remove it: the default adds the slash, which turns
+every `/work` canonical and link into a redirect). Every `canonical`, `og:url`, JSON-LD `@id`, `sitemap.xml` entry, and
 internal link uses the extensionless, **root-relative** form (`/work`, `/styles.css`)
 — never a relative path and never a `.html` suffix. A `.html` suffix anywhere in
 the markup means an internal link that eats a redirect hop.

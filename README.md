@@ -52,7 +52,9 @@ configured in the Cloudflare dashboard, not in this repo.
 
 Cloudflare serves every page **extensionless** and redirects the `.html` form to
 it. So `organizations.html` is served at `/organizations`, and `work/index.html`
-at `/work/` (folder pages get a trailing slash, and `/work` redirects there). Everything in the markup — canonicals, `og:url`, JSON-LD `@id`s,
+at `/work` (`"html_handling": "drop-trailing-slash"` in `wrangler.jsonc`, so
+`/work/` redirects to `/work`; the default would do the reverse and leave every
+`/work` canonical pointing at a redirect). Everything in the markup — canonicals, `og:url`, JSON-LD `@id`s,
 sitemap entries, internal links, asset paths — uses the extensionless,
 **root-relative** form:
 
