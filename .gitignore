@@ -1,5 +1,10 @@
 .DS_Store
 
-# Local state from `npx wrangler pages dev .` — Miniflare caches, SQLite state,
-# and per-run bundle temp dirs. Regenerated on every run; never belongs in git.
+# Local state from `npx wrangler pages dev public` — Miniflare caches, SQLite
+# state, and per-run bundle temp dirs. Regenerated on every run; never belongs in git.
 .wrangler/
+
+# Local secrets for Wrangler (functions/_sketch.js lists them). Wrangler also
+# reads .dev.vars.<env> and, when there's no .dev.vars, .env files.
+.dev.vars*
+.env*

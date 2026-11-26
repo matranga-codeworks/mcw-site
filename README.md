@@ -1,11 +1,12 @@
 # Matranga Codeworks — site
 
-Static site for Frank Matranga / Matranga Codeworks LLC. Seven pages, no build
-step, no dependencies.
+Static site for Frank Matranga / Matranga Codeworks LLC. Eight pages, no build
+step, no dependencies. **Only `public/` is published**; this README, `CLAUDE.md`,
+`docs/`, `functions/` source and `videos/` masters stay private.
 
 ```sh
-npx wrangler pages dev .     # accurate: extensionless URLs + _redirects, like production
-python3 -m http.server 8000  # quick, but /organizations 404s — use /organizations.html
+npx wrangler pages dev public            # accurate: extensionless URLs + _redirects + Functions, like production
+python3 -m http.server 8000 -d public    # quick, but /organizations 404s — use /organizations.html
 ```
 
 Prefer the first. Because every internal link is root-relative and extensionless
@@ -17,26 +18,34 @@ including `_redirects`.
 
 | File            | What it is |
 | --------------- | ---------- |
-| `index.html`    | Home — hero, differentiator, the after-the-call timeline (`#path`), the two-audience split, case-study teasers, booking, contact |
-| `startups.html` | The engagement model framed for funded founders: Discovery, then the monthly build retainer. Own booking embed, own FAQ |
-| `organizations.html` | The same model framed for nonprofits, associations, and established organizations, plus the fixed-fee exception in its FAQ. Own booking embed, own FAQ |
-| `work/index.html` | Work — three case studies, Miirror Health first as the primary proof asset |
-| `work/miirror-health.html` | The Miirror Health case study in full. **On hold — not published.** See **Held back** below |
-| `about.html`    | About — background, beliefs, locally + event photos. The only page that carries the Capital Region material — it's who Frank is, not who MCW serves |
-| `404.html`      | Custom not-found page. Cloudflare Pages serves this automatically |
-| `_redirects`    | Cloudflare Pages 301s. Only for paths whose file moved or was deleted |
-| `styles.css`    | The whole design system: tokens, layout, components |
-| `site.js`       | Scroll reveal, image-slot fallback, self-updating dateline, `[data-tip]` tooltips. Progressive enhancement — every page reads fine with JS off |
-| `analytics.js`  | PostHog. Live — see **Analytics** below |
-| `images/`       | `og.png` (social card) plus drop-in photos. See `images/README.md` |
-| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Site icons — a geometric "F" drawn as rects, so it never depends on a font |
-| `robots.txt`, `sitemap.xml` | Crawler directives. Both hard-code the canonical domain |
+| `public/index.html`    | Home — hero, differentiator, the after-the-call timeline (`#path`), the two-audience split, case-study teasers, booking, contact |
+| `public/startups.html` | The engagement model framed for funded founders: Discovery, then the monthly build retainer. Own booking embed, own FAQ |
+| `public/organizations.html` | The same model framed for nonprofits, associations, and established organizations, plus the fixed-fee exception in its FAQ. Own booking embed, own FAQ |
+| `public/work/index.html` | Work — three case studies, Miirror Health first as the primary proof asset |
+| `public/work/miirror-health.html` | The Miirror Health case study in full. **On hold — not published.** See **Held back** below |
+| `public/about.html`    | About — background, beliefs, locally + event photos. The only page that carries the Capital Region material — it's who Frank is, not who MCW serves |
+| `public/404.html`      | Custom not-found page. Cloudflare Pages serves this automatically |
+| `public/_redirects`    | Cloudflare Pages 301s. Only for paths whose file moved or was deleted |
+| `public/styles.css`    | The whole design system: tokens, layout, components |
+| `public/site.js`       | Scroll reveal, image-slot fallback, self-updating dateline, `[data-tip]` tooltips. Progressive enhancement — every page reads fine with JS off |
+| `public/analytics.js`  | PostHog. Live — see **Analytics** below |
+| `public/start.html`, `public/start.js` | `/start`, the "sketch your idea" wizard. See **The /start wizard** below |
+| `functions/`    | Cloudflare Pages Functions for `/start`: `api/sketch.js` (Claude), `api/brief.js` (sends the lead to Business OS), `_sketch.js` (shared) |
+| `public/images/`       | `og.png` (social card) plus drop-in photos. See `docs/images.md` |
+| `public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Site icons — a geometric "F" drawn as rects, so it never depends on a font |
+| `public/robots.txt`, `sitemap.xml` | Crawler directives. Both hard-code the canonical domain |
+| `public/frank-matranga.vcf` | Downloadable contact card |
+| `public/fonts/` | Bricolage Grotesque and Spline Sans Mono, self-hosted |
+| `docs/images.md` | Every image slot, its crop, and the sign-off rules for client screenshots |
+| `videos/`       | Source video masters. **Not published**; the site uses compressed copies in `public/images/` |
 | `CNAME`, `.nojekyll` | Inert leftovers from the old GitHub Pages setup. Harmless; don't build on them |
 
 ## Deployment and URLs
 
-The site is deployed by **Cloudflare Pages** from `main`. The custom domain is
-configured in the Cloudflare dashboard, not in this repo.
+The site is deployed by **Cloudflare Pages** from `main`, with the build output
+directory set to `public` and no build command (both in the dashboard). Only
+`public/` is uploaded; `functions/` is picked up from the repo root. The custom
+domain is configured in the Cloudflare dashboard, not in this repo.
 
 Cloudflare serves every page **extensionless** and redirects the `.html` form to
 it. So `organizations.html` is served at `/organizations`, and `work/index.html`
@@ -52,7 +61,7 @@ sitemap entries, internal links, asset paths — uses the extensionless,
 A `.html` suffix anywhere in the markup means an internal link that eats a
 redirect hop. There's a checker for this; see **Verifying**.
 
-`_redirects` holds real 301s and covers only what actually broke:
+`public/_redirects` holds real 301s and covers only what actually broke:
 
 ```
 /services       /organizations   301
@@ -172,6 +181,45 @@ button, just add the attribute — no JS change:
 <a class="btn" href="#consult" data-cta="book-somewhere">Book a free consultation →</a>
 ```
 
+## The /start wizard
+
+`/start` asks five questions about the software a visitor has in mind and draws
+it as they answer: a working title, desktop and/or phone frames, what it
+replaces (struck through), then one screen per must-do. It ends with a one-page
+brief, a contact form, and the booking embed. Booking stays the primary CTA; the
+home hero links here as a quiet second option.
+
+- **Claude** (`functions/api/sketch.js`, model `claude-opus-5-5` at low effort,
+  with server-side fallbacks) names the app, picks the screens' interface blocks
+  from a fixed list and writes the brief: three calls per finished wizard, about
+  10¢. Every answer is a JSON schema the function re-validates, and `start.js`
+  writes every string with `textContent`. When Claude isn't available (not
+  configured, over a limit, an error, or no Functions at all under
+  `python3 -m http.server -d public`), `start.js` draws the sketch itself, so the wizard
+  always finishes.
+- **Abuse limits:** both endpoints need a Cloudflare Turnstile token or the
+  signed session ticket the first token earns (3 hours; the page gets a fresh
+  token when it expires). At most 6 Claude calls per session and 40 per IP per
+  day; 3 successful sends per session and 5 per IP per day (KV counters,
+  approximate; a failed send doesn't count). A visitor whose browser blocks
+  Turnstile gets the prefilled-email fallback instead of Send.
+  Also set a monthly spend limit on the API key in the Anthropic console.
+- **Privacy:** name, email, company and phone are asked for only after the brief
+  and go only to `functions/api/brief.js`, never to Claude. PostHog gets step
+  numbers (`sketch_started`, `sketch_step`, `sketch_sent`), never answers.
+- **The lead** goes to Business OS's website form webhook, signed with
+  `WEBSITE_FORM_SECRET`: a client, contact and opportunity (lead source "Website
+  form"), with the brief, the screens and the visitor's own words as a note on
+  the client's timeline. Business OS needs no change.
+- **Configuration** (Pages → Settings): `ANTHROPIC_API_KEY`, `SKETCH_SECRET`,
+  `TURNSTILE_SITEKEY`, `TURNSTILE_SECRET`, `WEBSITE_FORM_SECRET`,
+  `BUSINESS_OS_WEBHOOK_URL`, and a KV namespace bound as `SKETCH_KV`.
+  `functions/_sketch.js` describes each. Locally, put them in `.dev.vars`
+  (gitignored) and use Cloudflare's Turnstile test keys
+  (`1x00000000000000000000AA` / `1x0000000000000000000000000000000AA`), then
+  `npx wrangler pages dev public --kv SKETCH_KV`. `.dev.vars` stays at the
+  repo root, outside `public/`, so it can never be uploaded.
+
 ## Conversion & proof
 
 - **Testimonials** (`.quote`) appear on Home, Organizations, and inline on the
@@ -232,10 +280,11 @@ tokens depend on — breaking either reintroduces a failure:
 
 ## Verifying
 
-No build step and no test suite, so checks are scripts you run by hand from the
-repo root. Worth doing before any push that touched markup:
+No build step and no test suite, so checks are scripts you run by hand from
+`public/`. Worth doing before any push that touched markup:
 
 ```sh
+cd public
 python3 -m http.server 8000        # then open http://localhost:8000
 
 # 1. every internal link, asset, and #anchor resolves — and no .html suffixes leak
@@ -338,6 +387,16 @@ Things that can't be done from this repo:
       Health) — there's a commented slot ready on the home page.
 - [ ] Decide whether the retainer and hourly numbers stay published. They
       currently are, on both audience pages.
+- [ ] **Before the push that moves the site into `public/`:** in Cloudflare Pages
+      → Settings → Builds, set the build output directory to `public` (no
+      build command). Changing it doesn't trigger a build; the next push builds
+      with it. Pushing first would publish an empty-looking site.
+- [ ] Turn on `/start`'s Claude sketches and sending: create a Turnstile widget
+      for the domain, a KV namespace bound as `SKETCH_KV`, and set the variables
+      listed under **The /start wizard**. Claude and sending switch on
+      separately: without `ANTHROPIC_API_KEY` the wizard draws its own sketches,
+      and without the Business OS variables it offers a prefilled email
+      instead of sending.
 
 ## Theme
 
@@ -360,7 +419,7 @@ turning the per-element inline styles into a shared stylesheet. A few decisions
 worth knowing about:
 
 - **Hero portraits are hidden**, matching the same saved state. The markup is
-  intact inside a comment; see `images/README.md` to restore them.
+  intact inside a comment; see `docs/images.md` to restore them.
 - **Image slots degrade.** Each is an `<img>` over a hatched frame. If the file
   is missing, `site.js` drops the image and the frame shows its placeholder
   label instead of a broken-image icon.

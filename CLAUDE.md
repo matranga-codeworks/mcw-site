@@ -4,9 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Static brochure site for Frank Matranga / Matranga Codeworks LLC. Seven hand-written
-HTML pages, one stylesheet, two small scripts. **No build step, no dependencies, no
-test suite, no package.json.** Deployed by pushing `main` to **Cloudflare Pages**.
+Static brochure site for Frank Matranga / Matranga Codeworks LLC. Eight hand-written
+HTML pages, one stylesheet, three small scripts, and two Cloudflare Pages Functions
+for the `/start` wizard. **No build step, no dependencies, no test suite, no
+package.json.** Deployed by pushing `main` to **Cloudflare Pages**.
+
+**Only `public/` is published** (the Pages build output directory, set in the
+Cloudflare dashboard). Everything a visitor can load lives there; everything else
+in the repo (this file, `README.md`, `docs/`, `functions/` source, `videos/`
+masters, `.dev.vars`) never reaches the site. Don't put internal notes, source
+files or secrets in `public/`; it's all downloadable. Pages Functions stay in
+`functions/` at the repo root, where Pages looks for them.
 
 `CNAME` and `.nojekyll` are inert leftovers from the old GitHub Pages setup — the
 domain is configured in the Cloudflare dashboard, not in this repo. Don't add
@@ -15,8 +23,8 @@ anything that depends on them.
 ## Commands
 
 ```sh
-npx wrangler pages dev .        # accurate: extensionless URLs + _redirects, like production
-python3 -m http.server 8000     # quick, but /organizations 404s — use /organizations.html
+npx wrangler pages dev public   # accurate: extensionless URLs + _redirects + Functions, like production
+python3 -m http.server 8000 -d public   # quick, but /organizations 404s — use /organizations.html
 ```
 
 **Use Wrangler for anything involving navigation.** Every internal link is
@@ -24,7 +32,7 @@ root-relative and extensionless (`/organizations`, not `organizations.html`), so
 the plain Python server can't resolve them — see **URLs** below.
 
 There is nothing to build, lint, or install. `README.md` § **Verifying** holds
-three copy-paste Python checks worth running before any push that touched markup:
+three copy-paste Python checks (run from `public/`) worth running before any push that touched markup:
 link/anchor resolution (including a guard against `.html` suffixes leaking back
 into the markup), JSON-LD parsing, and the FAQ byte-identity check.
 
@@ -37,7 +45,7 @@ internal link uses the extensionless, **root-relative** form (`/work`, `/styles.
 — never a relative path and never a `.html` suffix. A `.html` suffix anywhere in
 the markup means an internal link that eats a redirect hop.
 
-`_redirects` at the repo root holds real 301s, and only for paths whose file
+`public/_redirects` holds real 301s, and only for paths whose file
 moved or was deleted (`/services` → `/organizations`, `/work.html` → `/work`).
 Cloudflare already handles `.html` → extensionless for files that still exist, so
 adding rules for those would shadow the built-in handling for no gain.
@@ -46,7 +54,7 @@ adding rules for those would shadow the built-in handling for no gain.
 
 Each page is standalone and duplicates the shared chrome — there is no include
 mechanism. **A change to the masthead, nav, or footer must be repeated in all
-seven HTML files** (`index`, `about`, `organizations`, `startups`, `work/index`,
+eight HTML files** (`index`, `about`, `organizations`, `startups`, `start`, `work/index`,
 `work/miirror-health`, `404`). Each nav marks its own page with
 `aria-current="page"`; both `work` pages mark the `Work` item.
 
@@ -59,6 +67,16 @@ seven HTML files** (`index`, `about`, `organizations`, `startups`, `work/index`,
   dateline, and `[data-tip]` tooltips.
 - `analytics.js` — PostHog, live (real project key). No cookies, no autocapture, no
   session recording; honors Do Not Track.
+- `start.html` + `start.js` + `functions/` — `/start`, the "sketch your idea"
+  wizard (README § **The /start wizard**). `functions/api/sketch.js` calls Claude
+  with plain `fetch` (no SDK: there's no package.json); `functions/api/brief.js`
+  posts the lead to Business OS's signed website form webhook;
+  `functions/_sketch.js` is shared and lists the variables and bindings.
+  `start.js` must keep working with no Functions at all (it draws the sketch
+  itself), contact details must never reach `/api/sketch`, and every string from
+  Claude goes on the page via `textContent`, never `innerHTML`.
+  `.dev.vars` (local secrets) lives at the repo root, outside `public/`, and is
+  gitignored; never move it, or any other secret, into `public/`.
 
 ### Markup conventions the CSS and JS depend on
 
@@ -154,6 +172,11 @@ Breaking any of these is a real regression, not a style nit.
   text uses `--muted`, already at the AA floor (4.59:1) — don't lighten it. On the
   hatch and feature-quote tints, `--muted` drops below the floor, so those step down
   to `--ink-3`.
+- **The `/start` prompt and copy follow Positioning too.** Its system prompt
+  (`functions/api/sketch.js`) forbids prices, timelines, feasibility promises,
+  "small business", "consulting" and places; the brief ends on the free
+  Discovery week, never a price or month count. Claude's lines are tagged
+  "Claude" in the conversation and must never claim to be Frank.
 - **Testimonials are real client words only.** Don't write, embellish, or invent one.
   `work/miirror-health.html` has a commented-out pull-quote slot waiting on Haley's
   approved wording — paste it verbatim or leave it commented.
@@ -165,7 +188,8 @@ Breaking any of these is a real regression, not a style nit.
   summaries on `/work` and `/startups` and the client-list entries stay live;
   only the long-form page is held.
 - **Booking is the single primary CTA sitewide**; email and phone stay visibly
-  secondary. Only the `calendar.google.com/calendar/appointments/schedules/…?gv=true`
+  secondary, and so does `/start` (a quiet link in the home hero; the wizard
+  ends at the booking embed). Only the `calendar.google.com/calendar/appointments/schedules/…?gv=true`
   URL form is frameable — the `calendar.app.google/…` short link sends
   `X-Frame-Options: SAMEORIGIN` and renders an empty box. The embed lives at
   `/#consult`, `/organizations#book`, and `/startups#book`; other pages link to
@@ -174,5 +198,5 @@ Breaking any of these is a real regression, not a style nit.
 Update `<lastmod>` in `sitemap.xml` when content changes materially.
 
 `README.md` is the fuller reference — SEO/JSON-LD layout per page, analytics setup,
-theme alternates, and the outstanding manual to-dos. `images/README.md` lists every
+theme alternates, and the outstanding manual to-dos. `docs/images.md` lists every
 image slot, its crop, and the sign-off/data-scrubbing rules for client screenshots.
