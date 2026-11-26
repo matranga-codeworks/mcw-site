@@ -31,7 +31,7 @@ const STEPS = {
     schema: object({ app_name: str, ack: str, follow_up: str }),
     task: `They have just answered the first question (idea). Return:
 - app_name: a plain working title for their app, 1 to 3 words, title case, that says what it does rather than a clever brand name (for example "Shift Board" or "Intake Tracker").
-- ack: one or two short sentences, at most 25 words, reacting to the specifics of their idea.
+- ack: one plain sentence, at most 25 words, restating what you understood they need, so they can see it was understood. Don't praise or judge the idea.
 - follow_up: if the idea is too vague to sketch (you can't tell who would use it or what it would do), one short question that would make it sketchable; otherwise an empty string.`,
     clean: (r) => ({
       app_name: clip(r.app_name, 40) || 'Your app',
@@ -53,7 +53,7 @@ const STEPS = {
     task: `They have just listed what it must do (musts). Sketch the screens of a first version:
 - screens: one per must-do, in their order, plus a first overview screen only when it clearly helps; at most 4 in all. Each screen's name is 1 to 3 words, title case.
 - blocks: 2 to 4 per screen. Each has a kind, the type of interface that best pictures it (${BLOCKS.join(', ')}), and a label of at most 28 characters in their own vocabulary (for example "Open shifts" or "Sign up").
-- ack: one short sentence, at most 20 words, about the screens you drew, inviting them to tap through them.`,
+- ack: one short sentence, at most 20 words, saying which screens you drew and that the buttons under the sketch switch between them.`,
     clean: (r) => {
       const screens = (Array.isArray(r.screens) ? r.screens : []).slice(0, 4).map((s) => ({
         name: clip(s?.name, 28) || 'Screen',
@@ -88,7 +88,9 @@ const SYSTEM = `You help with a short wizard on matrangacode.works, the website 
 
 How to write:
 - Return only the JSON the schema asks for.
-- Plain, warm, concrete American English. No exclamation marks, no emoji, no hype, no flattery.
+- Plain, concrete American English, the way a sensible person talks. No exclamation marks, no emoji, no hype, no flattery. Never call an idea great, smart, exciting or interesting.
+- No technical terms (database, backend, dashboard, API, integration, MVP, platform, workflow, user) unless the visitor used them first. Say "people", "staff" or their own words instead.
+- None of these words: seamless, streamline, empower, elevate, unlock, robust, leverage, journey, game-changer, effortless. No "not just X but Y" contrasts and no em dashes.
 - Speak as a helpful assistant on Frank's site. Never claim to be Frank or to speak for him.
 
 What never to say:

@@ -1,14 +1,14 @@
 /* Frank Matranga / Matranga Codeworks — the /start sketch wizard.
 
    Five questions; the board on the right draws the visitor's app as they
-   answer. Three answers go to /api/sketch (functions/api/sketch.js), which
+   answer. Three answers go to /api/sketch (worker/sketch.js), which
    asks Claude for a working title, the screens and the brief. Whenever that
-   isn't available (no Functions under `python3 -m http.server`, the challenge
+   isn't available (no Worker under `python3 -m http.server`, the challenge
    blocked, the session's limit reached, the API down), this file draws a
    plainer sketch itself, so the wizard always finishes.
 
    Contact details are asked for only after the brief, and go only to
-   /api/brief (functions/api/brief.js), never to /api/sketch or Claude.
+   /api/brief (worker/brief.js), never to /api/sketch or Claude.
    PostHog gets step numbers, never answers. */
 (function () {
   'use strict';
@@ -16,7 +16,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Mirrors the enums in functions/_sketch.js; the server rejects anything else. */
+  /* Mirrors the enums in worker/shared.js; the server rejects anything else. */
   var USERS = [['staff', 'Our staff'], ['customers', 'Our customers'], ['clients', 'Patients or clients'],
                ['members', 'Members or volunteers'], ['public', 'The public'], ['me', 'Just me']];
   var PLATFORMS = [['desktop', 'A computer'], ['phone', 'Their phone'], ['both', 'Both']];
@@ -27,19 +27,19 @@
   var BLOCKS = ['list', 'table', 'form', 'calendar', 'chart', 'map', 'messages', 'cards', 'payments', 'signin', 'stats', 'upload'];
 
   var GHOST_TAG = { sheets: 'Today: spreadsheets', paper: 'Today: paper', tool: 'Today: a tool that doesn’t fit',
-                    email: 'Today: email & calls', existing: 'Today: version one' };
+                    email: 'Today: email & calls', existing: 'Today: your current app' };
   var PLATFORM_ACK = {
-    desktop: 'A desktop app, then. Room for the detail.',
-    phone: 'Phone first. Every screen has to earn its place.',
-    both: 'Both, then. One app, two shapes.'
+    desktop: 'Got it. I’ll draw it for a computer screen.',
+    phone: 'Got it. I’ll draw it for a phone.',
+    both: 'Got it. I’ll draw it for a computer and a phone.'
   };
   var TODAY_ACK = {
-    sheets: 'Spreadsheets. Let’s see how much of that we can retire.',
-    paper: 'Paper has a way of getting lost. Noted.',
-    tool: 'Close, but not quite yours. That gap is what custom software is for.',
-    email: 'A lot of back-and-forth, then. Noted.',
-    existing: 'Something to build on. Good.',
-    nothing: 'A blank page. My favorite kind.'
+    sheets: 'Got it. Spreadsheets are where most of these projects start.',
+    paper: 'Got it. Paper is hard to search and easy to lose.',
+    tool: 'Got it. Knowing where that tool falls short will help.',
+    email: 'Got it. That usually means a lot of retyping and chasing replies.',
+    existing: 'Got it. Knowing what your current app does will help.',
+    nothing: 'Got it. Starting from scratch.'
   };
 
   var label = function (list, id) {
@@ -222,7 +222,7 @@
   }
 
   function progress(n) {
-    $('sk-step').textContent = n > 5 ? 'Done' : 'Q' + n + ' / 5';
+    $('sk-step').textContent = n > 5 ? 'Done' : 'Question ' + n + ' of 5';
     $('sk-bar').style.width = Math.min(100, (n - 1) / 5 * 100) + '%';
   }
 
@@ -465,7 +465,7 @@
 
   function stepIdea() {
     progress(1);
-    return say('What do you want to build? Or what’s the thing that isn’t working?', 'Q1')
+    return say('What’s the problem you want to solve? Or, if you already know, what do you want built?', 'Q1')
       .then(function () { return textTurn('e.g. Our volunteers sign up for shifts by replying to a group email, and someone retypes it all into a spreadsheet.', 12, true); })
       .then(function (idea) {
         state.answers.idea = idea;
@@ -498,7 +498,7 @@
         next.disabled = true;
         var check = function () { next.disabled = !(users.length && platform); };
         form.appendChild(chipGroup('Pick any that fit', USERS, true, function (v) { users = v; check(); }));
-        form.appendChild(chipGroup('Mostly on…', PLATFORMS, false, function (v) { platform = v[0]; setPlatform(platform); check(); }));
+        form.appendChild(chipGroup('Where will they mostly use it?', PLATFORMS, false, function (v) { platform = v[0]; setPlatform(platform); check(); }));
         form.appendChild(next);
         return { valid: function () { return users.length && platform; }, value: function () { return { users: users, platform: platform }; } };
       });
@@ -514,7 +514,7 @@
 
   function stepToday() {
     progress(3);
-    return say('How does it get done today?', 'Q3').then(function () {
+    return say('How is this handled today?', 'Q3').then(function () {
       return ask(function (form) {
         var today = '';
         var next = nextButton();
@@ -540,7 +540,7 @@
 
   function stepMusts() {
     progress(4);
-    return say('Name the three things it absolutely has to do.', 'Q4').then(function () {
+    return say('What are the most important things it has to do? Up to three.', 'Q4').then(function () {
       return ask(function (form) {
         var wrap = el('div', 'sk-musts');
         var examples = ['Let volunteers pick an open shift', 'Remind them the day before', 'Show coordinators who’s coming'];
@@ -554,7 +554,7 @@
           wrap.appendChild(row);
           return input;
         });
-        var next = nextButton('Draw it →');
+        var next = nextButton('Draw the screens →');
         next.disabled = true;
         inputs[0].addEventListener('input', function () { next.disabled = inputs[0].value.trim().length < 3; });
         form.appendChild(wrap);
@@ -578,7 +578,7 @@
       var ghost = $('sk-ghost');
       if (ghost.firstChild) ghost.classList.add('is-replaced');
       var where = window.matchMedia && matchMedia('(max-width: 960px)').matches ? 'above' : 'on the right';
-      return r && r.ack ? say(r.ack, 'Claude', true) : say('Here’s a first pass at the screens. Tap through them ' + where + '.', null, true);
+      return r && r.ack ? say(r.ack, 'Claude', true) : say('Here’s a first draft of the screens. Use the buttons under the sketch ' + where + ' to switch between them.', null, true);
     });
   }
 
@@ -587,7 +587,7 @@
     return say('Last one. Which sounds more like you?', 'Q5').then(function () {
       return ask(function (form) {
         var kind = '', timing = '';
-        var next = nextButton('Write my brief →');
+        var next = nextButton('Write my summary →');
         next.disabled = true;
         var check = function () { next.disabled = !(kind && timing); };
         form.appendChild(chipGroup('Your situation', KINDS, false, function (v) { kind = v[0]; check(); }));
@@ -601,7 +601,7 @@
       youSaid(label(KINDS, v.kind) + '\n' + label(TIMING, v.timing));
       setStatus((v.kind === 'startup' ? 'Startup' : 'Organization') + ' · ' + label(TIMING, v.timing));
       track('sketch_step', { step: 5 });
-      return say('Give me a moment to write this up.', null, true);
+      return say('Writing up your summary…', null, true);
     }).then(function () {
       drawing(true);
       return askClaude('brief');
@@ -610,7 +610,7 @@
       state.brief = r && r.title ? r : fallbackBrief();
       progress(6);
       renderBrief();
-      return say('Here’s your brief. Have a look below.', null, true);
+      return say('Your summary is ready below.', null, true);
     });
   }
 
@@ -621,13 +621,13 @@
   function renderBrief() {
     var b = state.brief, a = state.answers;
     $('brief-h').textContent = b.title;
-    $('sk-brief-no').textContent = 'Project brief · No. ' + briefNumber();
+    $('sk-brief-no').textContent = 'Project summary · No. ' + briefNumber();
     $('sk-brief-summary').textContent = b.summary;
 
     var dl = $('sk-brief-dl');
     while (dl.firstChild) dl.removeChild(dl.firstChild);
     var on = { desktop: 'Desktop', phone: 'Phone', both: 'Desktop and phone' }[a.platform];
-    [['For', b.who], ['On', on], ['Replaces', b.replaces],
+    [['For', b.who], ['Used on', on], ['Replaces', b.replaces],
      ['Screens', state.sketch.screens.map(function (s) { return s.name; }).join(', ')]].forEach(function (row) {
       if (!row[1]) return;
       var d = el('div');
@@ -641,8 +641,8 @@
     (b.musts && b.musts.length ? b.musts : a.musts).forEach(function (m) { ul.appendChild(el('li', null, m)); });
 
     $('sk-brief-credit').textContent = state.usedClaude
-      ? 'Sketched by Claude from your answers. Frank reads every one himself.'
-      : 'Sketched from your answers. Frank reads every one himself.';
+      ? 'Sketched by Claude from your answers. Frank reads every summary himself.'
+      : 'Sketched from your answers. Frank reads every summary himself.';
 
     var section = $('brief');
     section.hidden = false;
@@ -705,11 +705,11 @@
           showFormError('That email doesn’t look right.');
           f.email.focus();
         } else if (err && err.status === 429) {
-          showFormError('That’s more sketches than I can take from one place today.', true);
+          showFormError('Too many summaries have been sent from this connection today.', true);
         } else if (err && err.status === 'challenge') {
-          showFormError('Your browser blocked the check that keeps bots out, so this can’t be sent from here.', true);
+          showFormError('Your browser blocked our spam check, so this can’t be sent from the page.', true);
         } else {
-          showFormError('Something went wrong sending this.', true);
+          showFormError('This didn’t send.', true);
         }
       });
     });

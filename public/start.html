@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sketch your app idea — Frank Matranga</title>
-<meta name="description" content="Answer five quick questions about the software you have in mind and watch a sketch of it draw itself: its screens, who it's for and what it replaces. Then send the brief to Frank and book a free consultation.">
+<meta name="description" content="Answer five short questions about the problem you want solved and see a rough sketch of the software: its main screens, who uses it and what it replaces. Then send the one-page summary to Frank and book a free consultation.">
 <meta name="author" content="Frank Matranga">
 <meta name="theme-color" content="#2E5D46">
 <link rel="canonical" href="https://matrangacode.works/start">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Matranga Codeworks">
 <meta property="og:url" content="https://matrangacode.works/start">
 <meta property="og:title" content="Sketch your app idea">
-<meta property="og:description" content="Five questions, about three minutes. Watch a sketch of your software draw itself, then send the brief to Frank.">
+<meta property="og:description" content="Five questions, about three minutes. See a rough sketch of your software, then send the summary to Frank.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://matrangacode.works/images/og.png">
 <meta property="og:image:width" content="1200">
@@ -55,7 +55,7 @@
   <!-- SKETCH WIZARD
        The conversation (left) and the drawing board (right). start.js runs the
        five questions and draws the visitor's app on the board as they answer;
-       functions/api/sketch.js asks Claude for the names and screens, and
+       worker/sketch.js asks Claude for the names and screens, and
        start.js draws a plainer sketch itself if Claude can't be reached.
        With JS blocked, the <noscript> below offers booking and email instead. -->
   <section class="sk ruled" id="sketch" aria-labelledby="sk-h" data-no-reveal>
@@ -63,13 +63,13 @@
       <div class="sk__chat">
         <div class="sk__intro" id="sk-intro">
           <div class="eyebrow eyebrow--xs eyebrow--rule rise rise-1">Sketch your idea</div>
-          <h1 class="t-page mw-16 rise rise-2" id="sk-h">Tell me the idea. Watch it take <em class="sk__em">shape</em>.</h1>
-          <p class="lead mw-44 rise rise-3">Five quick questions about the software you have in mind. As you answer, a sketch of it draws itself: its screens, who it's for, and what it replaces. At the end you get a one-page brief to send me.</p>
+          <h1 class="t-page mw-16 rise rise-2" id="sk-h">Describe the problem. Get a first <em class="sk__em">sketch</em> of the fix.</h1>
+          <p class="lead mw-44 rise rise-3">Answer five short questions about what you need. As you go, a rough sketch of the software appears: its main screens, who uses it, and what it replaces. At the end you get a one-page summary you can send me.</p>
           <div class="cta-row rise rise-4" style="margin-top:2.2rem;">
             <button class="btn" type="button" id="sk-start" data-cta="sketch-start" hidden>Start sketching →</button>
             <a class="link-quiet" href="#consult">Rather just talk? Book a call</a>
           </div>
-          <p class="note mw-50 rise rise-4" style="margin-top:1.4rem;">About three minutes. Claude, an AI model made by Anthropic, reads your answers to draw the sketch. Your name and email never go to it, and nothing reaches me until you press Send.</p>
+          <p class="note mw-50 rise rise-4" style="margin-top:1.4rem;">About three minutes. Claude, an AI assistant made by Anthropic, reads your answers to draw the sketch. Your name and email never go to it, and nothing reaches me until you press Send.</p>
           <noscript>
             <p class="copy mw-44" style="margin-top:1.6rem;">The sketch needs JavaScript. You can still <a class="link-hair" href="#consult">book a free consultation</a> or email <a class="link-hair" href="mailto:frank@matrangacode.works">frank@matrangacode.works</a>.</p>
           </noscript>
@@ -92,7 +92,7 @@
         <div class="devices board" id="sk-board" data-platform="none" aria-hidden="true">
           <div class="board__empty" id="sk-empty">
             <span class="board__cursor"></span>
-            <span class="board__hint">Your app draws itself here</span>
+            <span class="board__hint">Your sketch will appear here</span>
           </div>
           <div class="dev dev--desktop" id="sk-desktop">
             <span class="dev__tag">Desktop</span>
@@ -116,17 +116,17 @@
     </div>
   </section>
 
-  <!-- BRIEF: filled in and revealed by start.js after the last question. -->
+  <!-- SUMMARY (the "brief" in code): filled in and revealed by start.js after the last question. -->
   <section class="sk-brief" id="brief" aria-labelledby="brief-h" data-no-reveal hidden>
     <div class="wrap pad-l">
       <div class="sk-brief__grid">
         <article class="spec sk-spec" id="sk-spec">
           <div class="spec__head">
             <div>
-              <div class="label label--onDark" id="sk-brief-no">Project brief</div>
+              <div class="label label--onDark" id="sk-brief-no">Project summary</div>
               <h2 class="t-sm sk-spec__title" id="brief-h">Your app</h2>
             </div>
-            <span class="sk-stamp">Ready for Discovery</span>
+            <span class="sk-stamp">Ready to send</span>
           </div>
           <p class="spec__lede" id="sk-brief-summary"></p>
           <dl class="spec-dl" id="sk-brief-dl"></dl>
@@ -134,14 +134,14 @@
             <div class="label label--onDark">It has to</div>
             <ul class="marks" id="sk-brief-musts"></ul>
           </div>
-          <p class="spec__pledge">Next: a free Discovery week. It ends in a proposal with mockups of these screens.</p>
+          <p class="spec__pledge">Next step: a free Discovery week, where we work through the details together. It ends in a written proposal with designs of these screens.</p>
           <p class="sk-spec__credit" id="sk-brief-credit"></p>
         </article>
 
         <div class="sk-send" id="sk-send">
           <div class="eyebrow eyebrow--sm">Send it to me</div>
-          <h3 class="t-xs mw-18">Where should I send my reply?</h3>
-          <p class="copy mw-40" style="margin-top:1rem;">This brief and your answers come straight to me. Then pick a time below and we'll talk it through.</p>
+          <h3 class="t-xs mw-18">Where should I reply?</h3>
+          <p class="copy mw-40" style="margin-top:1rem;">This summary and your answers come straight to me. Then pick a time below and we'll talk it through.</p>
           <form class="sk-form" id="sk-form" novalidate>
             <label class="sk-field"><span>Your name</span><input name="name" autocomplete="name" maxlength="200" required></label>
             <label class="sk-field"><span>Email</span><input name="email" type="email" autocomplete="email" maxlength="254" required></label>
@@ -156,7 +156,7 @@
           </form>
           <div class="sk-sent" id="sk-sent" hidden tabindex="-1">
             <h3 class="t-xs mw-18">Got it. Thank you.</h3>
-            <p class="copy mw-40" style="margin-top:1rem;">Pick a time below and I'll have read your sketch before we talk.</p>
+            <p class="copy mw-40" style="margin-top:1rem;">Pick a time below. I'll have read your summary before we talk.</p>
             <a class="btn" href="#consult" data-cta="sketch-book" style="margin-top:1.4rem;">Pick a time →</a>
           </div>
         </div>
