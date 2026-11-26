@@ -1,8 +1,8 @@
-/* Shared by functions/api/sketch.js and functions/api/brief.js (the /start
-   wizard). Exports no onRequest handler, so Pages makes no route of it.
+/* Shared by worker/sketch.js and worker/brief.js (the /start wizard).
 
-   Bindings and variables (Pages → Settings → Variables and Secrets / Bindings;
-   locally, .dev.vars, which is gitignored):
+   Variables and secrets: Workers & Pages → mcw-site → Settings → Variables and
+   Secrets (locally, .dev.vars at the repo root, which is gitignored). The KV
+   binding is in wrangler.jsonc.
      ANTHROPIC_API_KEY        secret   Claude API key (set a monthly spend limit on it)
      SKETCH_SECRET            secret   signs the session tickets; any long random string
      TURNSTILE_SITEKEY        var      Cloudflare Turnstile site key (public)

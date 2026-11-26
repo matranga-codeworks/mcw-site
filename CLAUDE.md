@@ -5,16 +5,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 Static brochure site for Frank Matranga / Matranga Codeworks LLC. Eight hand-written
-HTML pages, one stylesheet, three small scripts, and two Cloudflare Pages Functions
-for the `/start` wizard. **No build step, no dependencies, no test suite, no
-package.json.** Deployed by pushing `main` to **Cloudflare Pages**.
+HTML pages, one stylesheet, three small scripts, and a small Worker script for the
+`/start` wizard's API. **No build step, no dependencies, no test suite, no
+package.json.** It's a **Cloudflare Worker named `mcw-site`** (not a Pages
+project): Workers Builds runs `npx wrangler deploy` on every push to `main`,
+which reads `wrangler.jsonc`.
 
-**Only `public/` is published** (the Pages build output directory, set in the
-Cloudflare dashboard). Everything a visitor can load lives there; everything else
-in the repo (this file, `README.md`, `docs/`, `functions/` source, `videos/`
-masters, `.dev.vars`) never reaches the site. Don't put internal notes, source
-files or secrets in `public/`; it's all downloadable. Pages Functions stay in
-`functions/` at the repo root, where Pages looks for them.
+**Only `public/` is published** (`assets.directory` in `wrangler.jsonc`).
+Everything a visitor can load lives there; everything else in the repo (this
+file, `README.md`, `docs/`, `worker/` source, `videos/` masters, `.dev.vars`)
+never reaches the site. Don't put internal notes, source files or secrets in
+`public/`; it's all downloadable. The Worker script (`worker/index.js`) runs only
+for `/api/*` (`run_worker_first`); every other request is served straight from
+`public/`, with `public/404.html` for missing paths. Pages-only features don't
+apply: a `functions/` folder would be ignored.
 
 `CNAME` and `.nojekyll` are inert leftovers from the old GitHub Pages setup — the
 domain is configured in the Cloudflare dashboard, not in this repo. Don't add
@@ -23,7 +27,7 @@ anything that depends on them.
 ## Commands
 
 ```sh
-npx wrangler pages dev public   # accurate: extensionless URLs + _redirects + Functions, like production
+npx wrangler dev                # accurate: extensionless URLs + _redirects + the API, like production
 python3 -m http.server 8000 -d public   # quick, but /organizations 404s — use /organizations.html
 ```
 
@@ -38,9 +42,10 @@ into the markup), JSON-LD parsing, and the FAQ byte-identity check.
 
 ## URLs
 
-**Cloudflare Pages serves every page extensionless and 301s the `.html` form to
+**Cloudflare serves every page extensionless and redirects the `.html` form to
 it.** `organizations.html` is served at `/organizations`; `work/index.html` at
-`/work`. Every `canonical`, `og:url`, JSON-LD `@id`, `sitemap.xml` entry, and
+`/work/` (Worker assets add the trailing slash to folder pages and redirect
+`/work` there; `html_handling` in `wrangler.jsonc` would change that). Every `canonical`, `og:url`, JSON-LD `@id`, `sitemap.xml` entry, and
 internal link uses the extensionless, **root-relative** form (`/work`, `/styles.css`)
 — never a relative path and never a `.html` suffix. A `.html` suffix anywhere in
 the markup means an internal link that eats a redirect hop.
@@ -67,12 +72,12 @@ eight HTML files** (`index`, `about`, `organizations`, `startups`, `start`, `wor
   dateline, and `[data-tip]` tooltips.
 - `analytics.js` — PostHog, live (real project key). No cookies, no autocapture, no
   session recording; honors Do Not Track.
-- `start.html` + `start.js` + `functions/` — `/start`, the "sketch your idea"
-  wizard (README § **The /start wizard**). `functions/api/sketch.js` calls Claude
-  with plain `fetch` (no SDK: there's no package.json); `functions/api/brief.js`
-  posts the lead to Business OS's signed website form webhook;
-  `functions/_sketch.js` is shared and lists the variables and bindings.
-  `start.js` must keep working with no Functions at all (it draws the sketch
+- `start.html` + `start.js` + `worker/` — `/start`, the "sketch your idea"
+  wizard (README § **The /start wizard**). `worker/index.js` routes `/api/*`;
+  `worker/sketch.js` calls Claude with plain `fetch` (no SDK: there's no
+  package.json); `worker/brief.js` posts the lead to Business OS's signed
+  website form webhook; `worker/shared.js` is shared and lists the variables.
+  `start.js` must keep working with no API at all (it draws the sketch
   itself), contact details must never reach `/api/sketch`, and every string from
   Claude goes on the page via `textContent`, never `innerHTML`.
   `.dev.vars` (local secrets) lives at the repo root, outside `public/`, and is
@@ -173,7 +178,7 @@ Breaking any of these is a real regression, not a style nit.
   hatch and feature-quote tints, `--muted` drops below the floor, so those step down
   to `--ink-3`.
 - **The `/start` prompt and copy follow Positioning too.** Its system prompt
-  (`functions/api/sketch.js`) forbids prices, timelines, feasibility promises,
+  (`worker/sketch.js`) forbids prices, timelines, feasibility promises,
   "small business", "consulting" and places; the brief ends on the free
   Discovery week, never a price or month count. Claude's lines are tagged
   "Claude" in the conversation and must never claim to be Frank.

@@ -3,7 +3,7 @@
    POST { sid, ticket, answers, sketch, brief, used_claude, contact }
      → { ok: true } once Business OS has it; 400 { error, fields } for a field
        Business OS rejected (start.js points at the email field); 403 without a
-       valid ticket (only issued after the Turnstile check); 429 over the
+       valid ticket or Turnstile token; 429 over the
        limits; 502/503 when Business OS can't be reached or isn't configured,
        and start.js offers a prefilled email instead.
 
@@ -16,7 +16,7 @@
 import {
   BLOCKS, KINDS, PLATFORMS, TIMING, TODAY, USERS,
   admit, cleanAnswers, clientIp, clip, countUse, hmacKey, isSid, json, sendConfigured, today, usedUp,
-} from '../_sketch.js';
+} from './shared.js';
 
 const SESSION_SENDS = 3;
 const IP_SENDS_PER_DAY = 5;
@@ -86,7 +86,7 @@ function compose({ answers: a, brief: b, screens, usedClaude, sid }) {
   return lines.join('\n');
 }
 
-export async function onRequestPost({ request, env }) {
+export async function handlePost({ request, env }) {
   let body;
   try {
     body = await request.json();

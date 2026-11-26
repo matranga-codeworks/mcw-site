@@ -1,0 +1,25 @@
+// The mcw-site Worker: public/ as static assets, plus worker/ for /api/*.
+// Workers Builds deploys it on every push to main with `npx wrangler deploy`,
+// which reads this file. Variables and secrets are set in the dashboard
+// (Workers & Pages → mcw-site → Settings → Variables and Secrets);
+// worker/shared.js lists them, and keep_vars stops a deploy from removing them.
+{
+  "name": "mcw-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Only the API runs the Worker; every page and file is served straight from assets.
+    "run_worker_first": ["/api/*"],
+    // Serve public/404.html, with a 404 status, for paths that don't exist.
+    "not_found_handling": "404-page"
+  },
+  "kv_namespaces": [
+    // Rate-limit counters for /api/sketch and /api/brief.
+    { "binding": "SKETCH_KV", "id": "a013ac3eef4f42d9baa451fcf6073a77" }
+  ],
+  "keep_vars": true,
+  // Keeps the Worker's console.error lines (sketch_claude_failed, brief_webhook_*) in the dashboard logs.
+  "observability": { "enabled": true }
+}

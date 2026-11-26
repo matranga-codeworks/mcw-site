@@ -1,8 +1,8 @@
 /* /api/sketch — the /start wizard asks Claude for one step's drawing.
 
-   GET  → { enabled, sitekey }: whether the wizard can use Claude here, and the
-          Turnstile site key (kept out of the HTML so local runs can use
-          Cloudflare's test keys).
+   GET  → { enabled, send, sitekey }: whether Claude and sending are switched
+          on, and the Turnstile site key (kept out of the HTML so local runs
+          can use Cloudflare's test keys).
    POST { step, sid, answers, ticket? | turnstile? }
         → { result } for that step, or { fallback: true } when Claude can't
           help (not configured, over a limit, an API error); start.js then
@@ -17,7 +17,7 @@
 import {
   BLOCKS, KINDS, PLATFORMS, TIMING, TODAY, USERS,
   admit, claudeConfigured, cleanAnswers, clientIp, clip, countUse, isSid, json, sendConfigured, today, turnstileConfigured, usedUp,
-} from '../_sketch.js';
+} from './shared.js';
 
 const MODEL = 'claude-opus-5-5';
 const SESSION_CALLS = 6; // the wizard makes 3; leaves room for a retry or two
@@ -140,7 +140,7 @@ async function callClaude(env, step, answers, appName) {
   return STEPS[step].clean(JSON.parse(text));
 }
 
-export function onRequestGet({ env }) {
+export function handleGet({ env }) {
   return json({
     enabled: claudeConfigured(env),
     send: sendConfigured(env),
@@ -148,7 +148,7 @@ export function onRequestGet({ env }) {
   });
 }
 
-export async function onRequestPost({ request, env }) {
+export async function handlePost({ request, env }) {
   let body;
   try {
     body = await request.json();

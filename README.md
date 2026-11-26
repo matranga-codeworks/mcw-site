@@ -2,10 +2,10 @@
 
 Static site for Frank Matranga / Matranga Codeworks LLC. Eight pages, no build
 step, no dependencies. **Only `public/` is published**; this README, `CLAUDE.md`,
-`docs/`, `functions/` source and `videos/` masters stay private.
+`docs/`, `worker/` source and `videos/` masters stay private.
 
 ```sh
-npx wrangler pages dev public            # accurate: extensionless URLs + _redirects + Functions, like production
+npx wrangler dev                         # accurate: extensionless URLs + _redirects + the API, like production
 python3 -m http.server 8000 -d public    # quick, but /organizations 404s — use /organizations.html
 ```
 
@@ -24,13 +24,14 @@ including `_redirects`.
 | `public/work/index.html` | Work — three case studies, Miirror Health first as the primary proof asset |
 | `public/work/miirror-health.html` | The Miirror Health case study in full. **On hold — not published.** See **Held back** below |
 | `public/about.html`    | About — background, beliefs, locally + event photos. The only page that carries the Capital Region material — it's who Frank is, not who MCW serves |
-| `public/404.html`      | Custom not-found page. Cloudflare Pages serves this automatically |
-| `public/_redirects`    | Cloudflare Pages 301s. Only for paths whose file moved or was deleted |
+| `public/404.html`      | Custom not-found page, served for any missing path (`not_found_handling` in `wrangler.jsonc`) |
+| `public/_redirects`    | 301s. Only for paths whose file moved or was deleted |
 | `public/styles.css`    | The whole design system: tokens, layout, components |
 | `public/site.js`       | Scroll reveal, image-slot fallback, self-updating dateline, `[data-tip]` tooltips. Progressive enhancement — every page reads fine with JS off |
 | `public/analytics.js`  | PostHog. Live — see **Analytics** below |
 | `public/start.html`, `public/start.js` | `/start`, the "sketch your idea" wizard. See **The /start wizard** below |
-| `functions/`    | Cloudflare Pages Functions for `/start`: `api/sketch.js` (Claude), `api/brief.js` (sends the lead to Business OS), `_sketch.js` (shared) |
+| `wrangler.jsonc` | The `mcw-site` Worker's config: `public/` as assets, the API script, the KV binding |
+| `worker/`       | The API for `/start`: `index.js` (routes `/api/*`), `sketch.js` (Claude), `brief.js` (sends the lead to Business OS), `shared.js` |
 | `public/images/`       | `og.png` (social card) plus drop-in photos. See `docs/images.md` |
 | `public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Site icons — a geometric "F" drawn as rects, so it never depends on a font |
 | `public/robots.txt`, `sitemap.xml` | Crawler directives. Both hard-code the canonical domain |
@@ -42,14 +43,16 @@ including `_redirects`.
 
 ## Deployment and URLs
 
-The site is deployed by **Cloudflare Pages** from `main`, with the build output
-directory set to `public` and no build command (both in the dashboard). Only
-`public/` is uploaded; `functions/` is picked up from the repo root. The custom
-domain is configured in the Cloudflare dashboard, not in this repo.
+The site is a **Cloudflare Worker named `mcw-site`** with static assets (not a
+Pages project). Workers Builds runs `npx wrangler deploy` on every push to
+`main`, and that reads `wrangler.jsonc`: `public/` is uploaded as the assets,
+and `worker/index.js` runs only for `/api/*`. Variables and secrets live in the
+dashboard (`keep_vars` keeps deploys from removing them). The custom domain is
+configured in the Cloudflare dashboard, not in this repo.
 
 Cloudflare serves every page **extensionless** and redirects the `.html` form to
 it. So `organizations.html` is served at `/organizations`, and `work/index.html`
-at `/work`. Everything in the markup — canonicals, `og:url`, JSON-LD `@id`s,
+at `/work/` (folder pages get a trailing slash, and `/work` redirects there). Everything in the markup — canonicals, `og:url`, JSON-LD `@id`s,
 sitemap entries, internal links, asset paths — uses the extensionless,
 **root-relative** form:
 
@@ -189,7 +192,7 @@ replaces (struck through), then one screen per must-do. It ends with a one-page
 brief, a contact form, and the booking embed. Booking stays the primary CTA; the
 home hero links here as a quiet second option.
 
-- **Claude** (`functions/api/sketch.js`, model `claude-opus-5-5` at low effort,
+- **Claude** (`worker/sketch.js`, model `claude-opus-5-5` at low effort,
   with server-side fallbacks) names the app, picks the screens' interface blocks
   from a fixed list and writes the brief: three calls per finished wizard, about
   10¢. Every answer is a JSON schema the function re-validates, and `start.js`
@@ -205,19 +208,19 @@ home hero links here as a quiet second option.
   Turnstile gets the prefilled-email fallback instead of Send.
   Also set a monthly spend limit on the API key in the Anthropic console.
 - **Privacy:** name, email, company and phone are asked for only after the brief
-  and go only to `functions/api/brief.js`, never to Claude. PostHog gets step
+  and go only to `worker/brief.js`, never to Claude. PostHog gets step
   numbers (`sketch_started`, `sketch_step`, `sketch_sent`), never answers.
 - **The lead** goes to Business OS's website form webhook, signed with
   `WEBSITE_FORM_SECRET`: a client, contact and opportunity (lead source "Website
   form"), with the brief, the screens and the visitor's own words as a note on
   the client's timeline. Business OS needs no change.
-- **Configuration** (Pages → Settings): `ANTHROPIC_API_KEY`, `SKETCH_SECRET`,
+- **Configuration** (Workers & Pages → mcw-site → Settings → Variables and Secrets): `ANTHROPIC_API_KEY`, `SKETCH_SECRET`,
   `TURNSTILE_SITEKEY`, `TURNSTILE_SECRET`, `WEBSITE_FORM_SECRET`,
-  `BUSINESS_OS_WEBHOOK_URL`, and a KV namespace bound as `SKETCH_KV`.
-  `functions/_sketch.js` describes each. Locally, put them in `.dev.vars`
+  `BUSINESS_OS_WEBHOOK_URL`. The `SKETCH_KV` namespace is bound in `wrangler.jsonc`.
+  `worker/shared.js` describes each. Locally, put them in `.dev.vars`
   (gitignored) and use Cloudflare's Turnstile test keys
   (`1x00000000000000000000AA` / `1x0000000000000000000000000000000AA`), then
-  `npx wrangler pages dev public --kv SKETCH_KV`. `.dev.vars` stays at the
+  `npx wrangler dev`. `.dev.vars` stays at the
   repo root, outside `public/`, so it can never be uploaded.
 
 ## Conversion & proof
@@ -387,13 +390,9 @@ Things that can't be done from this repo:
       Health) — there's a commented slot ready on the home page.
 - [ ] Decide whether the retainer and hourly numbers stay published. They
       currently are, on both audience pages.
-- [ ] **Before the push that moves the site into `public/`:** in Cloudflare Pages
-      → Settings → Builds, set the build output directory to `public` (no
-      build command). Changing it doesn't trigger a build; the next push builds
-      with it. Pushing first would publish an empty-looking site.
 - [ ] Turn on `/start`'s Claude sketches and sending: create a Turnstile widget
-      for the domain, a KV namespace bound as `SKETCH_KV`, and set the variables
-      listed under **The /start wizard**. Claude and sending switch on
+      for the domain and set the variables listed under **The /start wizard**
+      on the `mcw-site` Worker (the KV namespace is already bound). Claude and sending switch on
       separately: without `ANTHROPIC_API_KEY` the wizard draws its own sketches,
       and without the Business OS variables it offers a prefilled email
       instead of sending.
